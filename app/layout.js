@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
           <CssBaseline />
           <Provider store={store}>
             <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
-            {children}
+            <Box sx={{ mt: 8 }}>{children}</Box>
             <Footer />
           </Provider>
         </ThemeProvider>

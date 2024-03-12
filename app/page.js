@@ -6,9 +6,11 @@ import Testimonials from "./components/Testimonials";
 import Highlights from "./components/Highlights";
 import Products from "./components/Products";
 import FAQ from "./components/FAQ";
+import ExampleCarousel from "./components/ExampleCarousel";
 export default function Home() {
   return (
     <main>
+      <ExampleCarousel/>
       <Hero />
       <Box sx={{ bgcolor: "background.default" }}>
         <LogoCollection />
