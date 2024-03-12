@@ -4,7 +4,7 @@ import LogoCollection from "./components/LogoCollection";
 import Features from "./components/Features";
 import Testimonials from "./components/Testimonials";
 import Highlights from "./components/Highlights";
-import Pricing from "./components/Pricing";
+import Products from "./components/Products";
 import FAQ from "./components/FAQ";
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
         <Divider />
         <Highlights />
         <Divider />
-        <Pricing />
+        <Products />
         <Divider />
         <FAQ />
         <Divider />

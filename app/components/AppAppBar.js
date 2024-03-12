@@ -15,9 +15,17 @@ import ToggleColorMode from "./ToggleColorMode";
 import CustomImage from "../../lib/customImage";
 import whiteLogo from "../../public/assets/white-logo.png";
 import darkLogo from "../../public/assets/black-logo.png";
+import { menuItems } from "../../lib/fakeData";
+import AlertDialog from "../../lib/AlertDialog";
+import { Link } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { openDialog } from "../redux/slices/alertDialogSlice";
+import CustomWhatsAppIcon from "../../public/assets/WhatsApp-Logo..png";
+import CustomWeChatIcon from "../../public/assets/WeChat-Icon-Logo.png";
 
 function AppAppBar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
+  const [openQRCode, setOpenQRCode] = React.useState("");
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
@@ -35,9 +43,14 @@ function AppAppBar({ mode, toggleColorMode }) {
       setOpen(false);
     }
   };
-
+  const isOpen = useSelector((state) => state.dialog.isOpen);
+  const dispatch = useDispatch();
+  const handleQRShow = (plateForm) => {
+    dispatch(openDialog(plateForm));
+  };
   return (
-    <div>
+    <React.Fragment>
+      {isOpen && <AlertDialog />}
       <AppBar
         position="fixed"
         sx={(theme) => ({
@@ -47,8 +60,8 @@ function AppAppBar({ mode, toggleColorMode }) {
           flexShrink: 0,
           bgcolor:
             theme.palette.mode === "light"
-              ? "rgba(255, 255, 255, 0.4)"
-              : "rgba(0, 0, 0, 0.4)",
+              ? "rgba(255, 255, 255, 0.7)"
+              : "rgba(0, 0, 0, 0.7)",
           backdropFilter: "blur(24px)",
           border: "1px solid",
           borderColor: "divider",
@@ -73,41 +86,19 @@ function AppAppBar({ mode, toggleColorMode }) {
                 alt="logo of east company"
               />
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                <MenuItem
-                  onClick={() => scrollToSection("features")}
-                  sx={{ py: "6px", px: "12px" }}>
-                  <Typography variant="body2" color="text.primary">
-                    Features
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection("testimonials")}
-                  sx={{ py: "6px", px: "12px" }}>
-                  <Typography variant="body2" color="text.primary">
-                    Testimonials
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection("highlights")}
-                  sx={{ py: "6px", px: "12px" }}>
-                  <Typography variant="body2" color="text.primary">
-                    Highlights
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection("pricing")}
-                  sx={{ py: "6px", px: "12px" }}>
-                  <Typography variant="body2" color="text.primary">
-                    Pricing
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection("faq")}
-                  sx={{ py: "6px", px: "12px" }}>
-                  <Typography variant="body2" color="text.primary">
-                    FAQ
-                  </Typography>
-                </MenuItem>
+                {menuItems.map((menu) => (
+                  <MenuItem
+                    key={menu}
+                    onClick={() => scrollToSection(menu)}
+                    sx={{ py: "6px", px: "12px" }}>
+                    <Typography
+                      variant="body2"
+                      sx={{ textTransform: "uppercase" }}
+                      color="text.primary">
+                      {menu}
+                    </Typography>
+                  </MenuItem>
+                ))}
               </Box>
             </Box>
             <Box
@@ -116,26 +107,45 @@ function AppAppBar({ mode, toggleColorMode }) {
                 gap: 0.5,
                 alignItems: "center",
               }}>
-              <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+              <MenuItem sx={{ py: "6px", px: "12px" }}>
+                <Link
+                  variant="body2"
+                  href="mailto:sales1@eastlongsz.com"
+                  color="text.primary">
+                  E-mail: sales1@eastlongsz.com
+                </Link>
+              </MenuItem>
+              <MenuItem sx={{ py: "6px", px: "12px" }}>
+                <Link
+                  variant="body2"
+                  href="tel:+861712345667"
+                  color="text.primary">
+                  WhatsApp/WeChat: +86 13692181738
+                </Link>
+              </MenuItem>
               <Button
-                color="primary"
-                variant="text"
-                size="small"
-                component="a"
-                href="/material-ui/getting-started/templates/sign-in/"
-                target="_blank">
-                Sign in
-              </Button>
-              <Button
+                sx={{ mr: "5px" }}
                 color="primary"
                 variant="contained"
-                size="small"
-                component="a"
-                href="/material-ui/getting-started/templates/sign-up/"
-                target="_blank">
-                Sign up
+                size="medium"
+                onClick={() => handleQRShow("WhatsApp")}>
+                <CustomImage style={{width:"33px", height:"auto"}} src={CustomWhatsAppIcon} />
+                WhatsApp
               </Button>
+              <Button
+                sx={{ ml: "5px" }}
+                color="primary"
+                variant="outlined"
+                size="medium"
+                onClick={() => handleQRShow("WeChat")}>
+                <CustomImage style={{width:"30px", height:"auto"}} src={CustomWeChatIcon} />
+                WeChat
+              </Button>
+              <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
             </Box>
+            {/* ================
+               For Mobile menus start here
+               =================*/}
             <Box sx={{ display: { sm: "", md: "none" } }}>
               <Button
                 variant="text"
@@ -165,21 +175,15 @@ function AppAppBar({ mode, toggleColorMode }) {
                       toggleColorMode={toggleColorMode}
                     />
                   </Box>
-                  <MenuItem onClick={() => scrollToSection("features")}>
-                    Features
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("testimonials")}>
-                    Testimonials
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("highlights")}>
-                    Highlights
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("pricing")}>
-                    Pricing
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("faq")}>
-                    FAQ
-                  </MenuItem>
+                  {menuItems.map((menu) => (
+                    <MenuItem
+                      onClick={() => scrollToSection(menu)}
+                      key={menu}
+                      sx={{ textTransform: "uppercase" }}>
+                      {menu}
+                    </MenuItem>
+                  ))}
+
                   <Divider />
                   <MenuItem>
                     <Button
@@ -209,7 +213,7 @@ function AppAppBar({ mode, toggleColorMode }) {
           </Toolbar>
         </Container>
       </AppBar>
-    </div>
+    </React.Fragment>
   );
 }
 

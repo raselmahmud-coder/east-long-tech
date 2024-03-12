@@ -111,7 +111,7 @@ export default function Footer() {
             Highlights
           </Link>
           <Link color="text.secondary" href="#">
-            Pricing
+            Products
           </Link>
           <Link color="text.secondary" href="#">
             FAQs
