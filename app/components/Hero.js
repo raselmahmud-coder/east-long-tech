@@ -75,8 +75,8 @@ export default function Hero() {
               aria-label="Enter your email address"
               placeholder="Your email address"
               inputProps={{
-                autocomplete: 'off',
-                ariaLabel: 'Enter your email address',
+                "aria-autocomplete": 'off',
+                "aria-label": 'Enter your email address',
               }}
             />
             <Button variant="contained" color="primary">
@@ -100,8 +100,8 @@ export default function Hero() {
             width: '100%',
             backgroundImage:
               theme.palette.mode === 'light'
-                ? 'url("/static/images/templates/templates-images/hero-light.png")'
-                : 'url("/static/images/templates/templates-images/hero-dark.png")',
+                ? 'url("https://mui.com/static/images/templates/templates-images/hero-light.png")'
+                : 'url("https://mui.com/static/images/templates/templates-images/hero-dark.png")',
             backgroundSize: 'cover',
             borderRadius: '10px',
             outline: '1px solid',
