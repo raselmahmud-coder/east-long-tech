@@ -15,7 +15,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import CustomImage from "../../lib/customImage";
 import { carouseImage } from "../../lib/fakeData";
 
-const ExampleCarousel = () => {
+const BannerCarousel = () => {
   return (
     <>
       <Swiper
@@ -70,4 +70,4 @@ const ExampleCarousel = () => {
   );
 };
 
-export default ExampleCarousel;
+export default BannerCarousel;

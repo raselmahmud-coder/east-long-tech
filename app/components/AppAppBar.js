@@ -23,9 +23,9 @@ import { openDialog } from "../redux/slices/alertDialogSlice";
 import CustomWhatsAppIcon from "../../public/assets/WhatsApp-Logo..png";
 import CustomWeChatIcon from "../../public/assets/WeChat-Icon-Logo.png";
 
-function AppAppBar({ mode, toggleColorMode }) {
+function AppAppBar() {
   const [open, setOpen] = React.useState(false);
-  const [openQRCode, setOpenQRCode] = React.useState("");
+  const { colorMode } = useSelector((state) => state.colorMode);
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
@@ -60,8 +60,8 @@ function AppAppBar({ mode, toggleColorMode }) {
           flexShrink: 0,
           bgcolor:
             theme.palette.mode === "light"
-              ? "rgba(255, 255, 255, 0.7)"
-              : "rgba(0, 0, 0, 0.7)",
+              ? "rgba(255, 255, 255, 0.8)"
+              : "rgba(0, 0, 0, 0.8)",
           backdropFilter: "blur(24px)",
           border: "1px solid",
           borderColor: "divider",
@@ -82,7 +82,7 @@ function AppAppBar({ mode, toggleColorMode }) {
               }}>
               <CustomImage
                 style={{ width: "150px", height: "auto", cursor: "pointer" }}
-                src={mode === "dark" ? whiteLogo : darkLogo}
+                src={colorMode === "dark" ? whiteLogo : darkLogo}
                 alt="logo of east company"
               />
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
@@ -129,7 +129,10 @@ function AppAppBar({ mode, toggleColorMode }) {
                 variant="contained"
                 size="medium"
                 onClick={() => handleQRShow("WhatsApp")}>
-                <CustomImage style={{width:"33px", height:"auto"}} src={CustomWhatsAppIcon} />
+                <CustomImage
+                  style={{ width: "33px", height: "auto" }}
+                  src={CustomWhatsAppIcon}
+                />
                 WhatsApp
               </Button>
               <Button
@@ -138,10 +141,13 @@ function AppAppBar({ mode, toggleColorMode }) {
                 variant="outlined"
                 size="medium"
                 onClick={() => handleQRShow("WeChat")}>
-                <CustomImage style={{width:"30px", height:"auto"}} src={CustomWeChatIcon} />
+                <CustomImage
+                  style={{ width: "30px", height: "auto" }}
+                  src={CustomWeChatIcon}
+                />
                 WeChat
               </Button>
-              <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+              <ToggleColorMode />
             </Box>
             {/* ================
                For Mobile menus start here
@@ -170,10 +176,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                       alignItems: "end",
                       flexGrow: 1,
                     }}>
-                    <ToggleColorMode
-                      mode={mode}
-                      toggleColorMode={toggleColorMode}
-                    />
+                    <ToggleColorMode />
                   </Box>
                   {menuItems.map((menu) => (
                     <MenuItem
@@ -216,10 +219,5 @@ function AppAppBar({ mode, toggleColorMode }) {
     </React.Fragment>
   );
 }
-
-AppAppBar.propTypes = {
-  mode: PropTypes.oneOf(["dark", "light"]).isRequired,
-  toggleColorMode: PropTypes.func.isRequired,
-};
 
 export default AppAppBar;
