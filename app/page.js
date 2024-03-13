@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 export default function Home() {
   const { colorMode: mode } = useSelector((state) => state.colorMode);
   const LPtheme = createTheme(getLPTheme(mode));
+  const defaultTheme = createTheme({ palette: { mode } });
   return (
     <React.Fragment>
       <ThemeProvider theme={LPtheme}>

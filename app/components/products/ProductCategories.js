@@ -7,13 +7,13 @@ import {
   CardActionArea,
   CardContent,
   Grid,
-  Link,
   Typography,
 } from "@mui/material";
 import ForwardIcon from "@mui/icons-material/Forward";
 import CustomImage from "../../../lib/customImage";
 import { products } from "../../../lib/fakeData";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const ProductCategories = () => {
   const { colorMode } = useSelector((state) => state.colorMode);
@@ -71,14 +71,13 @@ const ProductCategories = () => {
                   <CustomImage
                     src={img}
                     style={{
-                      border: "3px",
+                      border: "1px",
                       borderStyle: "solid",
-                      borderColor:
-                        colorMode === "dark" ? "redCustom.main" : "accent.main",
+                      borderColor: "grey",
                       borderRadius: "15px",
-                      height: 100,
-                      width: 100,
-                      padding: "5px",
+                      width: 320,
+                      height: "auto",
+                      padding: "3px",
                       margin: "0 auto",
                       display: "flex",
                     }}
@@ -86,18 +85,15 @@ const ProductCategories = () => {
                   />
                   <CardContent>
                     <Typography
-                      component="h2"
-                      variant="h4"
-                      color="text.primary">
-                      {title}
-                    </Typography>
-                    <Typography
-                      variant="body1"
                       sx={{
-                        mx: 3,
-                        textAlign: "justify",
-                      }}>
-                      {description}
+                        px: 3,
+                        textAlign: "center",
+                        color:
+                          colorMode === "dark" ? "text.primary" : "grey.100",
+                      }}
+                      component="h2"
+                      variant="h4">
+                      {title}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -106,8 +102,8 @@ const ProductCategories = () => {
               <Card
                 variant="elevation"
                 sx={{
-                  bgcolor: "deepGray.main",
-                  color: "whiteCustom.main",
+                  // bgcolor: "deepGray.main",
+                  // color: "whiteCustom.main",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -121,35 +117,38 @@ const ProductCategories = () => {
                   backfaceVisibility: "hidden",
                   transform: "rotateY(180deg)",
                 }}>
-                <CardContent>
-                  <Link
-                    style={{
-                      display: "block",
-                      textAlign: "center",
-                    }}
-                    to={"/apply-now"}>
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      px: 3,
+                      textAlign: "justify",
+                      mb:3,
+                    }}>
+                    {description}
+                  </Typography>
+                  <a
+                    href="http://google.com/"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     <Button
-                      sx={{
-                        fontSize: { xs: 12, sm: 20, md: 30 },
-                        borderRadius: 15,
-                        py: 2,
-                        px: { xs: 3, sm: 4, md: 5 },
-                        bgcolor: "redCustom.main",
-                        color: "#fff",
-                        transition: "all 0.6s ease",
-                        "&:hover": {
-                          bgcolor: "btnHover.main",
-                          transform: "scale(1.2)",
-                        },
-                      }}
                       variant="contained"
-                      size="medium">
-                      Apply Now{" "}
+                      sx={{
+                        flexShrink: 0,
+                      }}
+                      size="large">
+                      View Details{" "}
                       <ForwardIcon
-                        sx={{ fontSize: { xs: 12, sm: 20, md: 30 } }}
+                        sx={{ fontSize: { xs: 12, sm: 20, md: 22 } }}
                       />
                     </Button>
-                  </Link>
+                  </a>
                 </CardContent>
               </Card>
             </Box>
