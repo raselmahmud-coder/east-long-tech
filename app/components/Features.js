@@ -13,6 +13,7 @@ import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
 import EdgesensorHighRoundedIcon from "@mui/icons-material/EdgesensorHighRounded";
 import ViewQuiltRoundedIcon from "@mui/icons-material/ViewQuiltRounded";
+import image1 from "../../public/assets/solder-paste-printing-machine.png";
 
 const items = [
   {
@@ -20,9 +21,8 @@ const items = [
     title: "Dashboard",
     description:
       "This item could provide a snapshot of the most important metrics or data points related to the product.",
-    imageLight:
-      'url("https://mui.com/static/images/templates/templates-images/dash-light.png")',
-    imageDark: 'url("https://mui.com/static/images/templates/templates-images/dash-dark.png")',
+    imageLight: `url(${image1.src})`,
+    imageDark: `url(${image1.src})`,
   },
   {
     icon: <EdgesensorHighRoundedIcon />,
@@ -119,6 +119,7 @@ export default function Features() {
                     : items[selectedItemIndex].imageDark,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
                 minHeight: 280,
               }}
             />
@@ -265,6 +266,7 @@ export default function Features() {
                 width: 420,
                 height: 500,
                 backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
                 backgroundImage: (theme) =>
                   theme.palette.mode === "light"
                     ? items[selectedItemIndex].imageLight
