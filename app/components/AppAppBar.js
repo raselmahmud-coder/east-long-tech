@@ -188,28 +188,46 @@ function AppAppBar() {
                   ))}
 
                   <Divider />
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      component="a"
-                      href="/material-ui/getting-started/templates/sign-up/"
-                      target="_blank"
-                      sx={{ width: "100%" }}>
-                      Sign up
-                    </Button>
-                  </MenuItem>
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="outlined"
-                      component="a"
-                      href="/material-ui/getting-started/templates/sign-in/"
-                      target="_blank"
-                      sx={{ width: "100%" }}>
-                      Sign in
-                    </Button>
-                  </MenuItem>
+                  <MenuItem sx={{ py: "6px", px: "12px" }}>
+                <Link
+                  variant="body2"
+                  href="mailto:sales1@eastlongsz.com"
+                  color="text.primary">
+                  E-mail: sales1@eastlongsz.com
+                </Link>
+              </MenuItem>
+              <MenuItem sx={{ py: "6px", px: "12px" }}>
+                <Link
+                  variant="body2"
+                  href="tel:+861712345667"
+                  color="text.primary">
+                  WhatsApp/WeChat: +86 13692181738
+                </Link>
+              </MenuItem>
+              <Button
+                sx={{ mr: "5px" }}
+                color="primary"
+                variant="contained"
+                size="medium"
+                onClick={() => handleQRShow("WhatsApp")}>
+                <CustomImage
+                  style={{ width: "33px", height: "auto" }}
+                  src={CustomWhatsAppIcon}
+                />
+                WhatsApp
+              </Button>
+              <Button
+                sx={{ ml: "5px" }}
+                color="primary"
+                variant="outlined"
+                size="medium"
+                onClick={() => handleQRShow("WeChat")}>
+                <CustomImage
+                  style={{ width: "30px", height: "auto" }}
+                  src={CustomWeChatIcon}
+                />
+                WeChat
+              </Button>
                 </Box>
               </Drawer>
             </Box>

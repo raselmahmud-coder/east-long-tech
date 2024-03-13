@@ -29,7 +29,6 @@ export default function Home() {
           sx={{ bgcolor: "background.default", mt: { sx: 8, md: 10 } }}>
           <BannerCarousel />
           <Hero />
-          <LogoCollection />
           <Features />
           <Divider />
           <Testimonials />
@@ -39,6 +38,7 @@ export default function Home() {
           <Products />
           <Divider />
           <FAQ />
+          <LogoCollection />
           <Divider />
           <Footer />
         </Box>
