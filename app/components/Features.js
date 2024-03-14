@@ -23,7 +23,7 @@ export default function Features() {
   const selectedFeature = featureProducts[selectedItemIndex];
 
   return (
-    <Container id="features" sx={{ py: { xs: 8, sm: 16 } }}>
+    <Box id="features" sx={{ py: { xs: 8, sm: 16 } }}>
       <Grid container spacing={6}>
         <Grid item xs={12} md={6}>
           <div>
@@ -228,6 +228,6 @@ export default function Features() {
           </Card>
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 }

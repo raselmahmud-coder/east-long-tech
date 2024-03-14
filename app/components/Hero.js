@@ -22,8 +22,7 @@ export default function Hero() {
         backgroundSize: "100% 20%",
         backgroundRepeat: "no-repeat",
       })}>
-      <Container
-        maxWidth="xl"
+      <Box
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -41,7 +40,7 @@ export default function Hero() {
               alignSelf: "center",
               textAlign: "center",
             }}>
-            Our latest&nbsp;
+            Our Latest&nbsp;
             <Typography
               component="span"
               variant="h1"
@@ -51,7 +50,7 @@ export default function Hero() {
                     ? "primary.main"
                     : "primary.light",
               }}>
-              products
+              Products
             </Typography>
           </Typography>
           <Typography
@@ -67,7 +66,7 @@ export default function Hero() {
           </Typography>
         </Stack>
         <ProductCategories />
-      </Container>
+      </Box>
     </Box>
   );
 }

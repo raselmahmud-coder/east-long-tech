@@ -13,7 +13,6 @@ import ForwardIcon from "@mui/icons-material/Forward";
 import CustomImage from "../../../lib/customImage";
 import { products } from "../../../lib/fakeData";
 import { useSelector } from "react-redux";
-import Link from "next/link";
 
 const ProductCategories = () => {
   const { colorMode } = useSelector((state) => state.colorMode);

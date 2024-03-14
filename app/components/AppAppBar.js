@@ -54,9 +54,9 @@ function AppAppBar() {
       <AppBar
         position="fixed"
         sx={(theme) => ({
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+          // display: "flex",
+          // alignItems: "center",
+          // justifyContent: "space-between",
           flexShrink: 0,
           bgcolor:
             theme.palette.mode === "light"
@@ -71,14 +71,14 @@ function AppAppBar() {
               : "0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)",
         })}>
         <Container maxWidth="xl">
-          <Toolbar variant="dense">
+          <Toolbar variant="dense" disableGutters>
             <Box
               sx={{
                 flexGrow: 1,
                 display: "flex",
                 alignItems: "center",
-                ml: "-18px",
-                px: 0,
+                // ml: "-18px",
+                // px: 0,
               }}>
               <CustomImage
                 style={{ width: "150px", height: "auto", cursor: "pointer" }}
@@ -189,45 +189,45 @@ function AppAppBar() {
 
                   <Divider />
                   <MenuItem sx={{ py: "6px", px: "12px" }}>
-                <Link
-                  variant="body2"
-                  href="mailto:sales1@eastlongsz.com"
-                  color="text.primary">
-                  E-mail: sales1@eastlongsz.com
-                </Link>
-              </MenuItem>
-              <MenuItem sx={{ py: "6px", px: "12px" }}>
-                <Link
-                  variant="body2"
-                  href="tel:+861712345667"
-                  color="text.primary">
-                  WhatsApp/WeChat: +86 13692181738
-                </Link>
-              </MenuItem>
-              <Button
-                sx={{ mr: "5px" }}
-                color="primary"
-                variant="contained"
-                size="medium"
-                onClick={() => handleQRShow("WhatsApp")}>
-                <CustomImage
-                  style={{ width: "33px", height: "auto" }}
-                  src={CustomWhatsAppIcon}
-                />
-                WhatsApp
-              </Button>
-              <Button
-                sx={{ ml: "5px" }}
-                color="primary"
-                variant="outlined"
-                size="medium"
-                onClick={() => handleQRShow("WeChat")}>
-                <CustomImage
-                  style={{ width: "30px", height: "auto" }}
-                  src={CustomWeChatIcon}
-                />
-                WeChat
-              </Button>
+                    <Link
+                      variant="body2"
+                      href="mailto:sales1@eastlongsz.com"
+                      color="text.primary">
+                      E-mail: sales1@eastlongsz.com
+                    </Link>
+                  </MenuItem>
+                  <MenuItem sx={{ py: "6px", px: "12px" }}>
+                    <Link
+                      variant="body2"
+                      href="tel:+861712345667"
+                      color="text.primary">
+                      WhatsApp/WeChat: +86 13692181738
+                    </Link>
+                  </MenuItem>
+                  <Button
+                    sx={{ mr: "5px" }}
+                    color="primary"
+                    variant="contained"
+                    size="medium"
+                    onClick={() => handleQRShow("WhatsApp")}>
+                    <CustomImage
+                      style={{ width: "33px", height: "auto" }}
+                      src={CustomWhatsAppIcon}
+                    />
+                    WhatsApp
+                  </Button>
+                  <Button
+                    sx={{ ml: "5px" }}
+                    color="primary"
+                    variant="outlined"
+                    size="medium"
+                    onClick={() => handleQRShow("WeChat")}>
+                    <CustomImage
+                      style={{ width: "30px", height: "auto" }}
+                      src={CustomWeChatIcon}
+                    />
+                    WeChat
+                  </Button>
                 </Box>
               </Drawer>
             </Box>

@@ -1,5 +1,5 @@
 "use client";
-import { Box, CssBaseline, Divider } from "@mui/material";
+import { Box, Container, CssBaseline, Divider } from "@mui/material";
 import Hero from "./components/Hero";
 import LogoCollection from "./components/LogoCollection";
 import Features from "./components/Features";
@@ -14,6 +14,7 @@ import AppAppBar from "./components/AppAppBar";
 import Footer from "./components/Footer";
 import getLPTheme from "../lib/getLPTheme";
 import { useSelector } from "react-redux";
+import HotProductsPresent from "./components/products/HotProductsPresent";
 
 export default function Home() {
   const { colorMode: mode } = useSelector((state) => state.colorMode);
@@ -23,13 +24,15 @@ export default function Home() {
     <React.Fragment>
       <ThemeProvider theme={LPtheme}>
         <CssBaseline />
-        <AppAppBar />
-        <Box
+        <Container
+          maxWidth="xl"
           component={"main"}
           sx={{ bgcolor: "background.default", mt: { sx: 8, md: 10 } }}>
+          <AppAppBar />
           <BannerCarousel />
           <Hero />
           <Features />
+          <HotProductsPresent />
           <Divider />
           <Testimonials />
           <Divider />
@@ -41,7 +44,7 @@ export default function Home() {
           <LogoCollection />
           <Divider />
           <Footer />
-        </Box>
+        </Container>
       </ThemeProvider>
     </React.Fragment>
   );
