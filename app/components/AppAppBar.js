@@ -60,8 +60,8 @@ function AppAppBar() {
           flexShrink: 0,
           bgcolor:
             theme.palette.mode === "light"
-              ? "rgba(255, 255, 255, 0.8)"
-              : "rgba(0, 0, 0, 0.8)",
+              ? "rgba(255, 255, 255, 0.9)"
+              : "rgba(0, 0, 0, 0.9)",
           backdropFilter: "blur(24px)",
           border: "1px solid",
           borderColor: "divider",
