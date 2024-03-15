@@ -33,7 +33,6 @@ export default function Home() {
           <Hero />
           <Features />
           <HotProductsPresent />
-          <Divider />
           <Testimonials />
           <Divider />
           <Highlights />

@@ -65,8 +65,8 @@ const HotProductsPresent = () => {
   return (
     <>
       <Typography
-        component="h1"
-        variant="h1"
+        component="h2"
+        variant="h2"
         sx={{
           textAlign: "center",
           my: 2,

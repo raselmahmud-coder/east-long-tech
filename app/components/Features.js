@@ -12,8 +12,18 @@ import Typography from "@mui/material/Typography";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import { featureProducts } from "../../lib/fakeData";
 import CustomImage from "../../lib/customImage";
+import {
+  Avatar,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+} from "@mui/material";
+import VerifiedIcon from "@mui/icons-material/Verified";
+import { useSelector } from "react-redux";
 
 export default function Features() {
+  const { colorMode } = useSelector((state) => state.colorMode);
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
 
   const handleItemClick = (index) => {
@@ -76,23 +86,43 @@ export default function Features() {
             variant="outlined"
             sx={{
               display: { xs: "flex", sm: "none" },
-              flexDirection:"column",
+              flexDirection: "column",
               mt: 4,
             }}>
             <CustomImage
               src={featureProducts[selectedItemIndex].imageLight}
-              style={{ width: "300px", height: "auto", margin:"auto" }}
+              style={{ width: "300px", height: "auto", margin: "auto" }}
             />
             <Box sx={{ px: 2, pb: 2 }}>
               <Typography color="text.primary" variant="h6" fontWeight="bold">
                 {selectedFeature.title}
               </Typography>
-              <Typography
-                color="text.secondary"
-                variant="body2"
-                sx={{ my: 0.5 }}>
-                {selectedFeature.description}
-              </Typography>
+              {selectedFeature.list.map((item, index) => (
+                <List key={index}>
+                  <ListItem
+                    sx={{
+                      m: 0,
+                      p: 0,
+                    }}>
+                    <ListItemAvatar>
+                      <Avatar
+                        sx={{
+                          bgcolor:
+                            colorMode === "dark"
+                              ? "secondary.dark"
+                              : "secondary.light",
+                        }}>
+                        <VerifiedIcon
+                          sx={{
+                            color: "success.main",
+                          }}
+                        />
+                      </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={item} />
+                  </ListItem>
+                </List>
+              ))}
               <Link
                 color="primary"
                 variant="body2"
@@ -103,7 +133,7 @@ export default function Features() {
                   "& > svg": { transition: "0.2s" },
                   "&:hover > svg": { transform: "translateX(2px)" },
                 }}>
-                <span>Learn more</span>
+                <span>View more</span>
                 <ChevronRightRoundedIcon
                   fontSize="small"
                   sx={{ mt: "1px", ml: "2px" }}
@@ -111,6 +141,10 @@ export default function Features() {
               </Link>
             </Box>
           </Box>
+          {/*
+          ==================
+           For desktop view start
+          ================= */}
           <Stack
             direction="column"
             justifyContent="center"
@@ -118,7 +152,7 @@ export default function Features() {
             spacing={2}
             useFlexGap
             sx={{ width: "100%", display: { xs: "none", sm: "flex" } }}>
-            {featureProducts.map(({ icon, title, description }, index) => (
+            {featureProducts.map(({ title, list }, index) => (
               <Card
                 key={index}
                 variant="outlined"
@@ -151,21 +185,6 @@ export default function Features() {
                     alignItems: { md: "center" },
                     gap: 2.5,
                   }}>
-                  <Box
-                    sx={{
-                      color: (theme) => {
-                        if (theme.palette.mode === "light") {
-                          return selectedItemIndex === index
-                            ? "primary.main"
-                            : "grey.300";
-                        }
-                        return selectedItemIndex === index
-                          ? "primary.main"
-                          : "grey.700";
-                      },
-                    }}>
-                    {icon}
-                  </Box>
                   <Box sx={{ textTransform: "none" }}>
                     <Typography
                       color="text.primary"
@@ -173,12 +192,33 @@ export default function Features() {
                       fontWeight="bold">
                       {title}
                     </Typography>
-                    <Typography
-                      color="text.secondary"
-                      variant="body1"
-                      sx={{ my: 0.5 }}>
-                      {description}
-                    </Typography>
+                    {list.map((item, index) => (
+                      <List key={index}>
+                        <ListItem
+                          sx={{
+                            m: 0,
+                            p: 0,
+                          }}>
+                          <ListItemAvatar>
+                            <Avatar
+                              sx={{
+                                bgcolor:
+                                  colorMode === "dark"
+                                    ? "secondary.dark"
+                                    : "secondary.light",
+                              }}>
+                              <VerifiedIcon
+                                sx={{
+                                  color: "success.main",
+                                }}
+                              />
+                            </Avatar>
+                          </ListItemAvatar>
+                          <ListItemText primary={item} />
+                        </ListItem>
+                      </List>
+                    ))}
+
                     <Link
                       color="primary"
                       variant="body2"
@@ -192,7 +232,7 @@ export default function Features() {
                       onClick={(event) => {
                         event.stopPropagation();
                       }}>
-                      <span>Learn more</span>
+                      <span>View more</span>
                       <ChevronRightRoundedIcon
                         fontSize="small"
                         sx={{ mt: "1px", ml: "2px" }}
