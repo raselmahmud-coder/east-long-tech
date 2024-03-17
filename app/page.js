@@ -5,7 +5,6 @@ import LogoCollection from "./components/LogoCollection";
 import Features from "./components/Features";
 import Testimonials from "./components/Testimonials";
 import Highlights from "./components/Highlights";
-import Products from "./components/Products";
 import FAQ from "./components/FAQ";
 import BannerCarousel from "./components/BannerCarousel";
 import React from "react";
@@ -15,6 +14,7 @@ import Footer from "./components/Footer";
 import getLPTheme from "../lib/getLPTheme";
 import { useSelector } from "react-redux";
 import HotProductsPresent from "./components/products/HotProductsPresent";
+import CompanyProfile from "./components/aboutUs/CompanyProfile";
 
 export default function Home() {
   const { colorMode: mode } = useSelector((state) => state.colorMode);
@@ -34,11 +34,8 @@ export default function Home() {
           <Features />
           <HotProductsPresent />
           <Testimonials />
-          <Divider />
           <Highlights />
-          <Divider />
-          <Products />
-          <Divider />
+          <CompanyProfile />
           <FAQ />
           <LogoCollection />
           <Divider />

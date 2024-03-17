@@ -43,8 +43,7 @@ export default function Testimonials() {
       }}>
       <Box
         sx={{
-          width: { sm: "100%", md: "60%" },
-          textAlign: { sm: "left", md: "center" },
+          textAlign: "center",
         }}>
         <Typography component="h2" variant="h2" color="text.primary">
           Testimonials
@@ -53,7 +52,7 @@ export default function Testimonials() {
           variant="middle"
           sx={{
             borderTop: `2px solid ${colorMode === "dark" ? "red" : "black"}`,
-            width: 350,
+            width: {xs:200, sm:300, md:350},
             mx: "auto",
           }}
         />

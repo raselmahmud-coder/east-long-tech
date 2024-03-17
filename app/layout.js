@@ -1,10 +1,12 @@
 "use client"
-import { Inter } from "next/font/google";
 import React from "react";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/reduxStore";
 
-const inter = Inter({ subsets: ["latin"] });
+import localFont from 'next/font/local'
+ 
+// Font files can be colocated inside of `pages`
+const myFont = localFont({ src: '../public/fonts/Inter/Inter-VariableFont_slnt,wght.ttf' })
 
 /* export const metadata = {
   title: "Create Next App",
@@ -20,7 +22,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
 
-      <body className={inter.className}>
+      <body className={myFont.className}>
         <Provider store={store}>{children}</Provider>
       </body>
     </html>

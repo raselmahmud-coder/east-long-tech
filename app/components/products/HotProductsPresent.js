@@ -74,7 +74,7 @@ const HotProductsPresent = () => {
         Hot Products&nbsp;
         <Typography
           component="span"
-          variant="h1"
+          variant="h2"
           sx={{
             color: (theme) =>
               theme.palette.mode === "light" ? "primary.main" : "primary.light",
