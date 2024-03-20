@@ -3,7 +3,7 @@ const nextConfig = {
     loader: "custom",
     loaderFile: './lib/ImageLoader.js'
   },
-  output: "export",
+  output: "export", //remember to enable when deploy the project
   distDir: "dist",
   // Other Next.js configuration options can be added here
 
