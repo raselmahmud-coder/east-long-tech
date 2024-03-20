@@ -103,7 +103,8 @@ const HotProductsPresent = () => {
                   </Typography>
                 </Box>
                 <CustomImage
-                  src={image}
+                  unoptimized={true}
+                  src={"https://eastlongsz.com/_next/static/media/carousel%20(1).b8338af3.jpg"}
                   width={350}
                   height={300}
                   blurDataURL={`https://placehold.co/600x400/EEE/31343C`}

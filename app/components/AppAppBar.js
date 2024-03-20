@@ -81,7 +81,7 @@ function AppAppBar() {
                 // px: 0,
               }}>
               <Image
-                src="/images/WeChat-Icon-Logo.png" // Correct path to your image
+                src="https://eastlongsz.com/_next/static/media/carousel%20(1).b8338af3.jpg" // Correct path to your image
                 alt="Description"
                 width={90} // Set the image's size
                 height={90}
