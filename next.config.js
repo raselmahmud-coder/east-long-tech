@@ -1,7 +1,13 @@
-// const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
+const nextConfig = {
+  images: {
+    unoptimized: true,
+  },
+  output: "export",
+  distDir: "dist",
+  // Other Next.js configuration options can be added here
 
-const webpackConfig = {
-  webpack(config, { isServer }) {
+  webpack: (config, options) => {
+    const { isServer } = options;
     const prefix = config.assetPrefix ?? config.basePath ?? "";
     config.module.rules.push({
       test: /\.mp4$/,
@@ -16,17 +22,11 @@ const webpackConfig = {
         },
       ],
     });
-    return config;
+
+    // Apply additional custom webpack configurations here
+
+    return config; // Important: Return the modified config
   },
 };
 
-const nextConfig = {
-  images: {
-    unoptimized: true,
-  },
-  output: "export",
-  distDir: "dist",
-  // Other Next.js configuration options can be added here
-};
-
-module.exports = { ...nextConfig, ...webpackConfig };
+module.exports = nextConfig;
