@@ -19,8 +19,8 @@ import AlertDialog from "@/lib/AlertDialog";
 import { Link } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { openDialog } from "../redux/slices/alertDialogSlice";
-import CustomWeChatIcon from "@/public/images/WeChat-Icon-Logo.png";
-import CustomWhatsAppIcon from "@/public/images/WhatsApp-Logo..png"
+import CustomWhatsAppIcon from "../../public/images/WhatsApp-Logo..png"
+import CustomWeChatIcon from "../../public/images/WeChat-Icon-Logo.png";
 
 
 function AppAppBar() {
@@ -210,10 +210,7 @@ function AppAppBar() {
                     variant="contained"
                     size="medium"
                     onClick={() => handleQRShow("WhatsApp")}>
-                    <img
-                      style={{ width: "33px", height: "auto" }}
-                      src={CustomWhatsAppIcon}
-                    />
+                   <img src="/images/WeChat-Icon-Logo.png" alt="Team Member" />
                     WhatsApp
                   </Button>
                   <Button
@@ -224,7 +221,7 @@ function AppAppBar() {
                     onClick={() => handleQRShow("WeChat")}>
                     <img
                       style={{ width: "30px", height: "auto" }}
-                      src={CustomWeChatIcon}
+                      src={"../../public/images/WeChat-Icon-Logo.png"}
                     />
                     WeChat
                   </Button>
