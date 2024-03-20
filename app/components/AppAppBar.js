@@ -19,9 +19,9 @@ import AlertDialog from "@/lib/AlertDialog";
 import { Link } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { openDialog } from "../redux/slices/alertDialogSlice";
-import CustomWhatsAppIcon from "../../public/images/WhatsApp-Logo..png"
+import CustomWhatsAppIcon from "../../public/images/WhatsApp-Logo..png";
 import CustomWeChatIcon from "../../public/images/WeChat-Icon-Logo.png";
-
+import Image from "next/image";
 
 function AppAppBar() {
   const [open, setOpen] = React.useState(false);
@@ -80,11 +80,18 @@ function AppAppBar() {
                 // ml: "-18px",
                 // px: 0,
               }}>
-              <img
+              <Image
+                src="/images/WeChat-Icon-Logo.png" // Correct path to your image
+                alt="Description"
+                width={90} // Set the image's size
+                height={90}
+                unoptimized={true} // This should bypass Next.js image optimization
+              />
+              {/* <img
                 style={{ width: "150px", height: "auto", cursor: "pointer" }}
                 src={colorMode === "dark" ? whiteLogo : darkLogo}
                 alt="logo of east company"
-              />
+              /> */}
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 {menuItems.map((menu) => (
                   <MenuItem
@@ -129,9 +136,11 @@ function AppAppBar() {
                 variant="contained"
                 size="medium"
                 onClick={() => handleQRShow("WhatsApp")}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   style={{ width: "33px", height: "auto" }}
                   src={CustomWhatsAppIcon}
+                  alt="bal"
                 />
                 WhatsApp
               </Button>
@@ -210,7 +219,7 @@ function AppAppBar() {
                     variant="contained"
                     size="medium"
                     onClick={() => handleQRShow("WhatsApp")}>
-                   <img src="/images/WeChat-Icon-Logo.png" alt="Team Member" />
+                    <img src="/images/WeChat-Icon-Logo.png" alt="Team Member" />
                     WhatsApp
                   </Button>
                   <Button
