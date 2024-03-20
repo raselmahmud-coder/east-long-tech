@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
-import companyPreview from "../../../public/assets/companyPreview.mp4";
+// import companyPreview from "../../../public/assets/companyPreview.mp4";
 import CompanyValues from "./CompanyValues";
 import StrengthOfCompany from "./StrengthOfCompany";
 import BrandQuality from "./BrandQuality";
