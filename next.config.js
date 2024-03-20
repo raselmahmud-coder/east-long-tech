@@ -1,3 +1,5 @@
+const path = require('path');
+
 const webpackConfig = {
   webpack(config, { isServer }) {
     const prefix = config.assetPrefix ?? config.basePath ?? "";
@@ -14,7 +16,10 @@ const webpackConfig = {
         },
       ],
     });
-
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, './'),
+    };
     return config;
   },
 };
