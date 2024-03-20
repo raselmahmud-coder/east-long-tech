@@ -15,6 +15,7 @@ import getLPTheme from "../lib/getLPTheme";
 import { useSelector } from "react-redux";
 import HotProductsPresent from "./components/products/HotProductsPresent";
 import CompanyProfile from "./components/aboutUs/CompanyProfile";
+import ContactUs from './components/contactUs/ContactUs';
 
 export default function Home() {
   const { colorMode: mode } = useSelector((state) => state.colorMode);
@@ -38,6 +39,7 @@ export default function Home() {
           <CompanyProfile />
           <FAQ />
           <LogoCollection />
+          <ContactUs/>
           <Divider />
           <Footer />
         </Container>
