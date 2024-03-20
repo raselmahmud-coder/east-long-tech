@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { useTheme } from "@mui/system";
 import CustomImage from "../../lib/customImage";
+import sydneyBlack from "@/public/images/sydney-black.svg";
+import sydneyWhite from "@/public/images/sydney_white.svg";
 
 const whiteLogos = [
   "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/6560628e8573c43893fe0ace_Sydney-white.svg",
@@ -47,9 +49,10 @@ export default function LogoCollection() {
           <Grid item key={index}>
             <CustomImage
               blurDataURL={`https://placehold.co/600x400/EEE/31343C`}
-              width={200}
-              height={160}
-              src={logo}
+              width={180}
+              height={150}
+              unoptimized={true}
+              src={theme.palette.mode === "light" ? sydneyBlack : sydneyWhite}
               alt={`Fake company number ${index + 1}`}
               style={logoStyle}
             />
