@@ -1,9 +1,9 @@
 const nextConfig = {
   images: {
     loader: "custom",
-    loaderFile: './lib/ImageLoader.js'
+    loaderFile: "./lib/ImageLoader.js",
   },
-  output: "export", //remember to enable when deploy the project
+  output: process.env.NODE_ENV == "production" && "export", //remember to enable when deploy the project
   distDir: "dist",
   // Other Next.js configuration options can be added here
 
