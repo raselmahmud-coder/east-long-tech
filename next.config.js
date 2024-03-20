@@ -1,3 +1,5 @@
+// const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
+
 const webpackConfig = {
   webpack(config, { isServer }) {
     const prefix = config.assetPrefix ?? config.basePath ?? "";
@@ -19,7 +21,10 @@ const webpackConfig = {
 };
 
 const nextConfig = {
-  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+  output: "export",
   distDir: "dist",
   // Other Next.js configuration options can be added here
 };
