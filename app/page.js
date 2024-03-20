@@ -14,7 +14,7 @@ import Footer from "./components/Footer";
 import getLPTheme from "../lib/getLPTheme";
 import { useSelector } from "react-redux";
 import HotProductsPresent from "./components/products/HotProductsPresent";
-// import CompanyProfile from "./components/aboutUs/CompanyProfile";
+import CompanyProfile from "./components/aboutUs/CompanyProfile";
 import ContactUs from './components/contactUs/ContactUs';
 
 export default function Home() {
@@ -36,7 +36,7 @@ export default function Home() {
           <HotProductsPresent />
           <Testimonials />
           <Highlights />
-          {/* <CompanyProfile /> */}
+          <CompanyProfile />
           <FAQ />
           <LogoCollection />
           <ContactUs/>
