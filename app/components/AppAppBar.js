@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import ToggleColorMode from "./ToggleColorMode";
-import CustomImage from "../../lib/customImage";
+// import img from "../../lib/customImage";
 import whiteLogo from "../../public/assets/white-logo.png";
 import darkLogo from "../../public/assets/black-logo.png";
 import { menuItems } from "@/lib/fakeData";
@@ -80,7 +80,7 @@ function AppAppBar() {
                 // ml: "-18px",
                 // px: 0,
               }}>
-              <CustomImage
+              <img
                 style={{ width: "150px", height: "auto", cursor: "pointer" }}
                 src={colorMode === "dark" ? whiteLogo : darkLogo}
                 alt="logo of east company"
@@ -129,7 +129,7 @@ function AppAppBar() {
                 variant="contained"
                 size="medium"
                 onClick={() => handleQRShow("WhatsApp")}>
-                <CustomImage
+                <img
                   style={{ width: "33px", height: "auto" }}
                   src={CustomWhatsAppIcon}
                 />
@@ -141,7 +141,7 @@ function AppAppBar() {
                 variant="outlined"
                 size="medium"
                 onClick={() => handleQRShow("WeChat")}>
-                <CustomImage
+                <img
                   style={{ width: "30px", height: "auto" }}
                   src={CustomWeChatIcon}
                 />
