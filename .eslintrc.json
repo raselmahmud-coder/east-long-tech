@@ -1,3 +1,10 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    // Example: Disable a specific Next.js ESLint rule
+    "next/image-component": "off"
+  }
 }
+
+
+

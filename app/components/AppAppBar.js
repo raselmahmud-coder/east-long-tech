@@ -143,7 +143,7 @@ function AppAppBar() {
                 onClick={() => handleQRShow("WeChat")}>
                 <img
                   style={{ width: "30px", height: "auto" }}
-                  src={CustomWeChatIcon}
+                  src={"https://eastlongsz.com/images/WeChat-Icon-Logo.png"}
                 />
                 WeChat
               </Button>
