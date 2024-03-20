@@ -20,9 +20,8 @@ import AlertDialog from "../../lib/AlertDialog";
 import { Link } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { openDialog } from "../redux/slices/alertDialogSlice";
-import CustomWhatsAppIcon from "@/public/assets/WhatsApp-Logo.png"
-import CustomWeChatIcon from "@public/assets/WeChat-Icon-Logo.png";
-// import CustomWhatsAppIcon from "../../public/assets/WhatsApp-Logo..png";
+import CustomWeChatIcon from "@/public/assets/WeChat-Icon-Logo.png";
+import CustomWhatsAppIcon from "@/public/assets/WhatsApp-Logo..png"
 
 
 function AppAppBar() {
