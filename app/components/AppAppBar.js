@@ -1,6 +1,5 @@
 "use client";
 import * as React from "react";
-import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,13 +14,13 @@ import ToggleColorMode from "./ToggleColorMode";
 import CustomImage from "../../lib/customImage";
 import whiteLogo from "../../public/assets/white-logo.png";
 import darkLogo from "../../public/assets/black-logo.png";
-import { menuItems } from "../../lib/fakeData";
-import AlertDialog from "../../lib/AlertDialog";
+import { menuItems } from "@/lib/fakeData";
+import AlertDialog from "@/lib/AlertDialog";
 import { Link } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { openDialog } from "../redux/slices/alertDialogSlice";
-import CustomWeChatIcon from "@/public/assets/WeChat-Icon-Logo.png";
-import CustomWhatsAppIcon from "@/public/assets/WhatsApp-Logo..png"
+import CustomWeChatIcon from "@/public/images/WeChat-Icon-Logo.png";
+import CustomWhatsAppIcon from "@/public/images/WhatsApp-Logo..png"
 
 
 function AppAppBar() {
