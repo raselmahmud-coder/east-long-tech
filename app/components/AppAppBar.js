@@ -210,7 +210,7 @@ function AppAppBar() {
                     variant="contained"
                     size="medium"
                     onClick={() => handleQRShow("WhatsApp")}>
-                    <CustomImage
+                    <img
                       style={{ width: "33px", height: "auto" }}
                       src={CustomWhatsAppIcon}
                     />
@@ -222,7 +222,7 @@ function AppAppBar() {
                     variant="outlined"
                     size="medium"
                     onClick={() => handleQRShow("WeChat")}>
-                    <CustomImage
+                    <img
                       style={{ width: "30px", height: "auto" }}
                       src={CustomWeChatIcon}
                     />
