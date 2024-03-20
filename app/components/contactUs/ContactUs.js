@@ -138,6 +138,7 @@ const ContactUs = () => {
             }}>
             <CustomImage
               src={courierServices}
+              unoptimized={true}
               style={{
                 width: "100%",
                 height: "auto",

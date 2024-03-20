@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import ToggleColorMode from "./ToggleColorMode";
-// import img from "../../lib/customImage";
+import CustomImage from "../../lib/customImage";
 import whiteLogo from "../../public/assets/white-logo.png";
 import darkLogo from "../../public/assets/black-logo.png";
 import { menuItems } from "@/lib/fakeData";
@@ -19,9 +19,9 @@ import AlertDialog from "@/lib/AlertDialog";
 import { Link } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { openDialog } from "../redux/slices/alertDialogSlice";
-import CustomWhatsAppIcon from "../../public/images/WhatsApp-Logo..png";
-import CustomWeChatIcon from "../../public/images/WeChat-Icon-Logo.png";
-import Image from "next/image";
+import CustomWeChatIcon from "@/public/images/WeChat-Icon-Logo.png";
+import CustomWhatsAppIcon from "@/public/images/WhatsApp-Logo..png"
+
 
 function AppAppBar() {
   const [open, setOpen] = React.useState(false);
@@ -80,18 +80,11 @@ function AppAppBar() {
                 // ml: "-18px",
                 // px: 0,
               }}>
-              <Image
-                src="https://eastlongsz.com/_next/static/media/carousel%20(1).b8338af3.jpg" // Correct path to your image
-                alt="Description"
-                width={90} // Set the image's size
-                height={90}
-                unoptimized={true} // This should bypass Next.js image optimization
-              />
-              {/* <img
+              <CustomImage
                 style={{ width: "150px", height: "auto", cursor: "pointer" }}
                 src={colorMode === "dark" ? whiteLogo : darkLogo}
                 alt="logo of east company"
-              /> */}
+              />
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 {menuItems.map((menu) => (
                   <MenuItem
@@ -136,11 +129,9 @@ function AppAppBar() {
                 variant="contained"
                 size="medium"
                 onClick={() => handleQRShow("WhatsApp")}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <CustomImage
                   style={{ width: "33px", height: "auto" }}
                   src={CustomWhatsAppIcon}
-                  alt="bal"
                 />
                 WhatsApp
               </Button>
@@ -150,9 +141,9 @@ function AppAppBar() {
                 variant="outlined"
                 size="medium"
                 onClick={() => handleQRShow("WeChat")}>
-                <img
+                <CustomImage
                   style={{ width: "30px", height: "auto" }}
-                  src={"https://eastlongsz.com/images/WeChat-Icon-Logo.png"}
+                  src={CustomWeChatIcon}
                 />
                 WeChat
               </Button>
@@ -219,7 +210,10 @@ function AppAppBar() {
                     variant="contained"
                     size="medium"
                     onClick={() => handleQRShow("WhatsApp")}>
-                    <img src="/images/WeChat-Icon-Logo.png" alt="Team Member" />
+                    <CustomImage
+                      style={{ width: "33px", height: "auto" }}
+                      src={CustomWhatsAppIcon}
+                    />
                     WhatsApp
                   </Button>
                   <Button
@@ -228,9 +222,9 @@ function AppAppBar() {
                     variant="outlined"
                     size="medium"
                     onClick={() => handleQRShow("WeChat")}>
-                    <img
+                    <CustomImage
                       style={{ width: "30px", height: "auto" }}
-                      src={"../../public/images/WeChat-Icon-Logo.png"}
+                      src={CustomWeChatIcon}
                     />
                     WeChat
                   </Button>
