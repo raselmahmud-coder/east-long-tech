@@ -1,32 +1,33 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const sendContactForm = createAsyncThunk(
-  'contact/sendContactForm',
+  "contact/sendContactForm",
   async (formData, { rejectWithValue }) => {
     try {
-      const response = await fetch("/api/contact", {
+      const formJSON = Object.fromEntries(formData.entries());
+      const response = await fetch("http://localhost:5000/api/contact", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formJSON),
       });
-
-      if (!response.ok) {
-        console.log("falling over from slice");
-        throw new Error(`response status: ${response.status}`);
+      const data = await response.json();
+      console.log(data, "Hello data");
+      if (response.status === 200) {
+        return data;
+      } else {
+        throw new Error(`response : ${data}`);
       }
-
-      const responseData = await response.json();
-      console.log(responseData["message"], "from slice");
-
-      return responseData; 
     } catch (error) {
       console.error(error);
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 const contactSlice = createSlice({
-  name: 'contact',
+  name: "contact",
   initialState: {
     loading: false,
     message: null,

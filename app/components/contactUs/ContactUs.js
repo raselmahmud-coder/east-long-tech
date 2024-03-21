@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import CustomImage from "../../../lib/customImage";
 import courierServices from "../../../public/assets/OurExpressPartners.png";
-// import { sendContactForm } from "@/app/redux/slices/sendEmailSlice";
+import { sendContactForm } from "@/app/redux/slices/sendEmailSlice";
 import GradientCircleProgress from "@/lib/GradientCircleProgress";
 
 const ContactUs = () => {
@@ -24,27 +24,8 @@ const ContactUs = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        body: formData,
-      });
 
-      console.log(response, "falling over from slice");
-
-      if (!response.ok) {
-        throw new Error(`response status`);
-      }
-
-      const responseData = await response.json();
-      console.log(responseData["message"], "from slice");
-
-      return responseData;
-    } catch (error) {
-      console.log(error, "from Catch block");
-      // return rejectWithValue(error.message);
-    }
-    // dispatch(sendContactForm(formData));
+    await dispatch(sendContactForm(formData));
     // event.target.reset();
   };
 
