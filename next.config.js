@@ -3,7 +3,6 @@ const nextConfig = {
     loader: "custom",
     loaderFile: "./lib/ImageLoader.js",
   },
-  output: process.env.NODE_ENV == "production" && "export", //remember to enable when deploy the project
   distDir: "dist",
   // Other Next.js configuration options can be added here
 
@@ -29,5 +28,8 @@ const nextConfig = {
     return config; // Important: Return the modified config
   },
 };
+if (process.env.NODE_ENV === "production") {
+  nextConfig.output = "export";
+}
 
 module.exports = nextConfig;

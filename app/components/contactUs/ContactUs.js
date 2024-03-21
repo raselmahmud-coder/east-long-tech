@@ -1,60 +1,65 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
+  Alert,
   Box,
   Button,
-  CircularProgress,
   Grid,
+  Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import PhoneForwardedIcon from "@mui/icons-material/PhoneForwarded";
-// import { useAddFreeConsultationMutation } from "../../redux/feature/FreeConsultation/FreeConsultationAPI";
-// import PositionedSnackbar from "../../globalsComponents/PositionSnakBar";
-import { useSelector } from "react-redux";
-import RingVolumeIcon from "@mui/icons-material/RingVolume";
+import { useDispatch, useSelector } from "react-redux";
 import CustomImage from "../../../lib/customImage";
-// import courierServices from "../../../public/assets/courier-services.jpg";
 import courierServices from "../../../public/assets/OurExpressPartners.png";
+import { sendContactForm } from "@/app/redux/slices/sendEmailSlice";
+import GradientCircleProgress from "@/lib/GradientCircleProgress";
 
 const ContactUs = () => {
-  //   const { isDarkMode } = useSelector((state) => state.colorMode);
-  /*  const [
-    addFreeConsultation,
-    { isError, isLoading, data: consultationData, isSuccess },
-  ] = useAddFreeConsultationMutation(); */
+  const [open, setOpen] = React.useState(false);
 
-  const handleConsultationForm = async (even) => {
-    even.preventDefault();
-    const name = even.target[0].value;
-    const email = even.target[1].value;
-    const phone = even.target[2].value;
-    const message = even.target[3].value;
-    const data = {
-      name,
-      email,
-      phone,
-      message,
-    };
-    await addFreeConsultation(data);
-    even.target[0].value = "";
-    even.target[1].value = "";
-    even.target[2].value = "";
-    even.target[3].value = "";
+  const dispatch = useDispatch();
+  const { loading, message, error } = useSelector((state) => state.contact);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    dispatch(sendContactForm(formData));
+    event.target.reset();
   };
 
+  useEffect(() => {
+    if (message || error) {
+      setOpen(true);
+    }
+  }, [message, error]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
     <>
-      {/* {consultationData?.id && isSuccess && (
-          <PositionedSnackbar severity={"success"} isOpen={true} />
-      )} */}
-      {/*  {isError && (
-         <PositionedSnackbar
-         severity={"warning"}
-         message={"There is an error, try again later"}
-         isOpen={true}
-         />
-        )} */}
+      {(message || error) && (
+        <Snackbar
+          anchorOrigin={{ horizontal: "center", vertical: "top" }}
+          open={open}
+          autoHideDuration={5000}
+          onClose={handleClose}>
+          <Alert
+            onClose={handleClose}
+            severity={error ? "warning.main" : "success"}
+            variant="filled"
+            sx={{ width: "100%" }}>
+            {error
+              ? error
+              : "Successfully submitted, We will contact as soon as possible"}
+          </Alert>
+        </Snackbar>
+      )}
+
       <Typography
         component="h2"
         variant="h2"
@@ -75,18 +80,17 @@ const ContactUs = () => {
       </Typography>
       <Grid
         container
-        spacing={{ xs: 2, md: 3 }}
+        spacing={{ xs: 4, md: 15 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
         sx={{ p: 2, mb: 15 }}>
         <Grid item xs={12} sm={6} md={6}>
-          <Box component="form" onSubmit={handleConsultationForm}>
+          <Box component="form" onSubmit={handleSubmit}>
             <TextField
               required
               sx={{
                 my: 2,
-                // color: isDarkMode ? "whiteCustom.main" : "black.main",
               }}
-              id="standard-basic"
+              name="name"
               label="Name"
               fullWidth
               variant="standard"
@@ -95,9 +99,8 @@ const ContactUs = () => {
               required
               sx={{
                 my: 2,
-                // color: isDarkMode ? "whiteCustom.main" : "black.main",
               }}
-              id="standard-basic"
+              name="email"
               label="Email"
               fullWidth
               variant="standard"
@@ -105,9 +108,8 @@ const ContactUs = () => {
             <TextField
               sx={{
                 my: 2,
-                // color: isDarkMode ? "whiteCustom.main" : "black.main",
               }}
-              id="standard-basic"
+              name="phone"
               label="Phone"
               fullWidth
               variant="standard"
@@ -116,16 +118,15 @@ const ContactUs = () => {
               required
               sx={{
                 my: 2,
-                // color: isDarkMode ? "whiteCustom.main" : "black.main",
               }}
-              id="standard-basic"
+              name="message"
               label="Your Message"
               variant="standard"
               fullWidth
             />
-            {/* <Button disabled={isLoading} type="submit" variant="contained">
-              {isLoading ? <CircularProgress color="success" /> : "Submit"}
-            </Button> */}
+            <Button disabled={loading} type="submit" variant="contained">
+              {loading ? <GradientCircleProgress /> : "Submit"}
+            </Button>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
@@ -134,7 +135,7 @@ const ContactUs = () => {
             sx={{
               display: "flex",
               alignItems: "center",
-            //   my: 4,
+              //   my: 4,
             }}>
             <CustomImage
               src={courierServices}
