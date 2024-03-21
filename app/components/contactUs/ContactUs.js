@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import {
   Alert,
@@ -11,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import CustomImage from "../../../lib/customImage";
 import courierServices from "../../../public/assets/OurExpressPartners.png";
-import { sendContactForm } from "@/app/redux/slices/sendEmailSlice";
+// import { sendContactForm } from "@/app/redux/slices/sendEmailSlice";
 import GradientCircleProgress from "@/lib/GradientCircleProgress";
 
 const ContactUs = () => {
@@ -20,7 +21,7 @@ const ContactUs = () => {
   const dispatch = useDispatch();
   const { loading, message, error } = useSelector((state) => state.contact);
 
-  const handleSubmit =async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     try {
@@ -29,17 +30,18 @@ const ContactUs = () => {
         body: formData,
       });
 
+      console.log(response, "falling over from slice");
+
       if (!response.ok) {
-        console.error("falling over from slice");
         throw new Error(`response status`);
       }
 
       const responseData = await response.json();
       console.log(responseData["message"], "from slice");
 
-      return responseData; 
+      return responseData;
     } catch (error) {
-      console.error(error, "from Catch block");
+      console.log(error, "from Catch block");
       // return rejectWithValue(error.message);
     }
     // dispatch(sendContactForm(formData));
