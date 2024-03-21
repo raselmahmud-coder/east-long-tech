@@ -20,11 +20,30 @@ const ContactUs = () => {
   const dispatch = useDispatch();
   const { loading, message, error } = useSelector((state) => state.contact);
 
-  const handleSubmit = (event) => {
+  const handleSubmit =async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    dispatch(sendContactForm(formData));
-    event.target.reset();
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        console.error("falling over from slice");
+        throw new Error(`response status`);
+      }
+
+      const responseData = await response.json();
+      console.log(responseData["message"], "from slice");
+
+      return responseData; 
+    } catch (error) {
+      console.error(error, "from Catch block");
+      // return rejectWithValue(error.message);
+    }
+    // dispatch(sendContactForm(formData));
+    // event.target.reset();
   };
 
   useEffect(() => {
@@ -51,7 +70,7 @@ const ContactUs = () => {
           onClose={handleClose}>
           <Alert
             onClose={handleClose}
-            severity={error ? "warning.main" : "success"}
+            severity={error ? "error" : "success"}
             variant="filled"
             sx={{ width: "100%" }}>
             {error
