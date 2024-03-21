@@ -8,10 +8,15 @@ export const sendContactForm = createAsyncThunk(
         method: "POST",
         body: formData,
       });
+
       if (!response.ok) {
+        console.log("falling over from slice");
         throw new Error(`response status: ${response.status}`);
       }
+
       const responseData = await response.json();
+      console.log(responseData["message"], "from slice");
+
       return responseData; 
     } catch (error) {
       console.error(error);

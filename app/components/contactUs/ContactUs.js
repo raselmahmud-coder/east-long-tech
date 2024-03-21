@@ -40,6 +40,7 @@ const ContactUs = () => {
 
     setOpen(false);
   };
+  console.log(error, "conact us form");
   return (
     <>
       {(message || error) && (
