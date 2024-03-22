@@ -54,9 +54,9 @@ function AppAppBar() {
       <AppBar
         position="fixed"
         sx={(theme) => ({
-          // display: "flex",
-          // alignItems: "center",
-          // justifyContent: "space-between",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
           flexShrink: 0,
           bgcolor:
             theme.palette.mode === "light"
@@ -70,7 +70,7 @@ function AppAppBar() {
               ? `0 0 1px rgba(85, 166, 246, 0.1), 1px 1.5px 2px -1px rgba(85, 166, 246, 0.15), 4px 4px 12px -2.5px rgba(85, 166, 246, 0.15)`
               : "0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)",
         })}>
-        <Container maxWidth="xl">
+        {/* <Container maxWidth="xl"> */}
           <Toolbar variant="dense" disableGutters>
             <Box
               sx={{
@@ -232,7 +232,7 @@ function AppAppBar() {
               </Drawer>
             </Box>
           </Toolbar>
-        </Container>
+        {/* </Container> */}
       </AppBar>
     </React.Fragment>
   );

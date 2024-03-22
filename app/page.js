@@ -24,6 +24,7 @@ export default function Home() {
   return (
     <React.Fragment>
       <ThemeProvider theme={LPtheme}>
+      {/* <ThemeProvider theme={defaultTheme}> */}
         <CssBaseline />
         <Container
           maxWidth="xl"
