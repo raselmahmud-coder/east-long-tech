@@ -1,68 +1,67 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
-import Link from '@mui/material/Link';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-
-import FacebookIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/X';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import whiteLogo from "../../public/assets/white-logo.png";
+import darkLogo from "../../public/assets/black-logo.png";
+import FacebookIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TwitterIcon from "@mui/icons-material/X";
+import CustomImage from "@/lib/customImage";
 
 const logoStyle = {
-  width: '140px',
-  height: 'auto',
+  width: "140px",
+  height: "auto",
 };
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" mt={1}>
-      {'Copyright © '}
+      {"Copyright © "}
       <Link href="/">Shenzhen Eastlong Technology Co., Ltd.&nbsp;</Link>
       {new Date().getFullYear()}
     </Typography>
   );
 }
 
-export default function Footer() {
+export default function Footer({ mode }) {
   return (
     <Container
+      maxWidth="xl"
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         gap: { xs: 4, sm: 8 },
-        py: { xs: 8, sm: 10 },
-        textAlign: { sm: 'center', md: 'left' },
-      }}
-    >
+        pt: { xs: 8, sm: 10 },
+        pb: { xs: 4, sm:5 },
+        textAlign: { sm: "center", md: "left" },
+      }}>
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column', sm: 'row' },
-          width: '100%',
-          justifyContent: 'space-between',
-        }}
-      >
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
+          width: "100%",
+          justifyContent: "space-between",
+        }}>
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
             gap: 4,
-            minWidth: { xs: '100%', sm: '60%' },
-          }}
-        >
-          <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
-            <Box sx={{ ml: '-15px' }}>
-              <img
-                src={
-                  'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e6faf73568658154dae_SitemarkDefault.svg'
-                }
-                style={logoStyle}
-                alt="logo of sitemark"
+            minWidth: { xs: "100%", sm: "60%" },
+          }}>
+          <Box sx={{ width: { xs: "100%", sm: "60%" } }}>
+            <Box sx={{ ml: "-15px" }}>
+              <CustomImage
+                style={{ width: "150px", height: "auto", cursor: "pointer" }}
+                src={mode === "dark" ? whiteLogo : darkLogo}
+                alt="logo of east company"
               />
             </Box>
             <Typography variant="body2" fontWeight={600} gutterBottom>
@@ -81,11 +80,14 @@ export default function Footer() {
                 aria-label="Enter your email address"
                 placeholder="Your email address"
                 inputProps={{
-                  "aria-autocomplete": 'off',
-                  "aria-label": 'Enter your email address',
+                  "aria-autocomplete": "off",
+                  "aria-label": "Enter your email address",
                 }}
               />
-              <Button variant="contained" color="primary" sx={{ flexShrink: 0 }}>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ flexShrink: 0 }}>
                 Subscribe
               </Button>
             </Stack>
@@ -93,11 +95,10 @@ export default function Footer() {
         </Box>
         <Box
           sx={{
-            display: { xs: 'none', sm: 'flex' },
-            flexDirection: 'column',
+            display: { xs: "none", sm: "flex" },
+            flexDirection: "column",
             gap: 1,
-          }}
-        >
+          }}>
           <Typography variant="body2" fontWeight={600}>
             Product
           </Typography>
@@ -119,11 +120,10 @@ export default function Footer() {
         </Box>
         <Box
           sx={{
-            display: { xs: 'none', sm: 'flex' },
-            flexDirection: 'column',
+            display: { xs: "none", sm: "flex" },
+            flexDirection: "column",
             gap: 1,
-          }}
-        >
+          }}>
           <Typography variant="body2" fontWeight={600}>
             Company
           </Typography>
@@ -139,11 +139,10 @@ export default function Footer() {
         </Box>
         <Box
           sx={{
-            display: { xs: 'none', sm: 'flex' },
-            flexDirection: 'column',
+            display: { xs: "none", sm: "flex" },
+            flexDirection: "column",
             gap: 1,
-          }}
-        >
+          }}>
           <Typography variant="body2" fontWeight={600}>
             Legal
           </Typography>
@@ -160,14 +159,14 @@ export default function Footer() {
       </Box>
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "end",
           pt: { xs: 4, sm: 8 },
-          width: '100%',
-          borderTop: '1px solid',
-          borderColor: 'divider',
-        }}
-      >
+          width: "100%",
+          borderTop: "1px solid",
+          borderColor: "divider",
+        }}>
         <div>
           <Link color="text.secondary" href="#">
             Privacy Policy
@@ -180,40 +179,44 @@ export default function Footer() {
           </Link>
           <Copyright />
         </div>
-        <Stack
+        <div>
+          <Link
+            color="text.secondary"
+            target="_blank"
+            href="https://github.com/raselmahmud-coder">
+            This site Developed By Rasel Mahmud
+          </Link>
+        </div>
+        {/* <Stack
           direction="row"
           justifyContent="left"
           spacing={1}
           useFlexGap
           sx={{
-            color: 'text.secondary',
-          }}
-        >
+            color: "text.secondary",
+          }}>
           <IconButton
             color="inherit"
-            href="https://github.com/mui"
+            href="#"
             aria-label="GitHub"
-            sx={{ alignSelf: 'center' }}
-          >
+            sx={{ alignSelf: "center" }}>
             <FacebookIcon />
           </IconButton>
           <IconButton
             color="inherit"
-            href="https://twitter.com/MaterialUI"
+            href="#"
             aria-label="X"
-            sx={{ alignSelf: 'center' }}
-          >
+            sx={{ alignSelf: "center" }}>
             <TwitterIcon />
           </IconButton>
           <IconButton
             color="inherit"
-            href="https://www.linkedin.com/company/mui/"
+            href="#"
             aria-label="LinkedIn"
-            sx={{ alignSelf: 'center' }}
-          >
+            sx={{ alignSelf: "center" }}>
             <LinkedInIcon />
           </IconButton>
-        </Stack>
+        </Stack> */}
       </Box>
     </Container>
   );

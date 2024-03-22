@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  colorMode: "dark",
+  colorMode: process.env.NODE_ENV == "production" ? "light" : "dark",
 };
 const colorModeSlice = createSlice({
   name: "colorMode",

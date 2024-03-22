@@ -92,6 +92,7 @@ const HotProductsPresent = () => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    flexDirection:"column",
                     py: 3,
                   }}>
                   <CustomImage

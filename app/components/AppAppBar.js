@@ -110,9 +110,9 @@ function AppAppBar() {
               <MenuItem sx={{ py: "6px", px: "12px" }}>
                 <Link
                   variant="body2"
-                  href="mailto:sales1@eastlongsz.com"
+                  href="mailto:info@eastlongsz.com"
                   color="text.primary">
-                  E-mail: sales1@eastlongsz.com
+                  E-mail: info@eastlongsz.com
                 </Link>
               </MenuItem>
               <MenuItem sx={{ py: "6px", px: "12px" }}>
@@ -191,9 +191,9 @@ function AppAppBar() {
                   <MenuItem sx={{ py: "6px", px: "12px" }}>
                     <Link
                       variant="body2"
-                      href="mailto:sales1@eastlongsz.com"
+                      href="mailto:info@eastlongsz.com"
                       color="text.primary">
-                      E-mail: sales1@eastlongsz.com
+                      E-mail: info@eastlongsz.com
                     </Link>
                   </MenuItem>
                   <MenuItem sx={{ py: "6px", px: "12px" }}>

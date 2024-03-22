@@ -25,7 +25,7 @@ const ContactUs = () => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-    await dispatch(sendContactForm(formData));
+     dispatch(sendContactForm(formData));
     // event.target.reset();
   };
 

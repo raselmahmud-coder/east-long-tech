@@ -39,7 +39,7 @@ try {
     await transporter.sendMail({
       from: email,
       to: ["raselmahmud98262@gmail.com", "demo@dreameduinfo.com"],
-      subject: `New client request from ➡️ ${email}`,
+      subject: `New contact request from ➡️ ${email}`,
       html: `
                 <!DOCTYPE html>
                 <html lang="en">

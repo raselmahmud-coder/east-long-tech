@@ -51,7 +51,7 @@ export default function FAQ() {
             aria-controls="panel1d-content"
             id="panel1d-header"
           >
-            <Typography component="h3" variant="subtitle2">
+            <Typography component="h3" variant="subtitle2" >
               How do I contact customer support if I have a question or issue?
             </Typography>
           </AccordionSummary>

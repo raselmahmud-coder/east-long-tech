@@ -41,7 +41,7 @@ export default function Home() {
           <LogoCollection />
           <ContactUs/>
           <Divider />
-          <Footer />
+          <Footer mode={mode}/>
         </Container>
       </ThemeProvider>
     </React.Fragment>

@@ -9,15 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setColorMode } from "../redux/slices/colorModeSlice";
 
 function ToggleColorMode() {
-  const [mode, setMode] = React.useState("dark");
-  const toggleColorMode = () => {
-    setMode((prev) => (prev === "dark" ? "light" : "dark"));
-  };
   const dispatch = useDispatch();
   const { colorMode } = useSelector((state) => state.colorMode);
-  React.useEffect(() => {
-    dispatch(setColorMode({ colorMode: mode }));
-  }, [mode, dispatch]);
+  const toggleColorMode = () => {
+    dispatch(
+      setColorMode({ colorMode: colorMode === "dark" ? "light" : "dark" }),
+    );
+  };
 
   return (
     <Box sx={{ maxWidth: "32px" }}>
