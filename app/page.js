@@ -30,16 +30,16 @@ export default function Home() {
           component={"main"}
           sx={{ bgcolor: "background.default", mt: { sx: 8, md: 10 } }}>
           <AppAppBar />
-          <BannerCarousel />
-          <Hero />
-          <Features />
-          <HotProductsPresent />
-          <Testimonials />
-          <Highlights />
-          <CompanyProfile />
-          <FAQ />
-          <LogoCollection />
-          <ContactUs/>
+          <BannerCarousel mode={mode} />
+          <Hero mode={mode}o />
+          <Features mode={mode} />
+          <HotProductsPresent mode={mode} />
+          <Testimonials mode={mode} />
+          <Highlights mode={mode} />
+          <CompanyProfile mode={mode} />
+          <FAQ mode={mode} />
+          <LogoCollection mode={mode} />
+          <ContactUs mode={mode}/>
           <Divider />
           <Footer mode={mode}/>
         </Container>

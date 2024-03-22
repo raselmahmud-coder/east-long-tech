@@ -1,9 +1,7 @@
-"use client";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import { useTheme } from "@mui/system";
 import CustomImage from "../../lib/customImage";
 import sydneyBlack from "@/public/images/sydney-black.svg";
 import sydneyWhite from "@/public/images/sydney_white.svg";
@@ -31,9 +29,8 @@ const logoStyle = {
   opacity: 0.7,
 };
 
-export default function LogoCollection() {
-  const theme = useTheme();
-  const logos = theme.palette.mode === "light" ? darkLogos : whiteLogos;
+export default function LogoCollection({ mode }) {
+  const logos = mode == "light" ? darkLogos : whiteLogos;
 
   return (
     <Box id="logoCollection" sx={{ py: 4 }}>
@@ -52,7 +49,7 @@ export default function LogoCollection() {
               width={180}
               height={150}
               unoptimized={true}
-              src={theme.palette.mode === "light" ? sydneyBlack : sydneyWhite}
+              src={mode == "light" ? sydneyBlack : sydneyWhite}
               alt={`Fake company number ${index + 1}`}
               style={logoStyle}
             />

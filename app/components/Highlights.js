@@ -75,7 +75,7 @@ export default function Highlights() {
             width: { sm: "100%", md: "60%" },
             textAlign: { sm: "left", md: "center" },
           }}>
-          <Typography component="h2" variant="h2" color="text.primary">
+          <Typography component="h2" variant="h2" color="inherit">
             Why Choose Us?
           </Typography>
           <Typography variant="body1" sx={{ color: "grey.400" }}>

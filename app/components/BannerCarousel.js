@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import "../styles/ExampleCarousel.css";
+import "../styles/BannerCarousel.css";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
@@ -20,7 +20,7 @@ const BannerCarousel = () => {
     <>
       <Swiper
         slidesPerView={1}
-        spaceBetween={30}
+        spaceBetween={50}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -56,7 +56,7 @@ const BannerCarousel = () => {
           <SwiperSlide
             key={id}
             style={{
-              backgroundColor: "yellow",
+              // backgroundColor: "yellow",
             }}>
             <CustomImage
               src={image}

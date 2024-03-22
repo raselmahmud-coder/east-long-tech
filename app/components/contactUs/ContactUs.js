@@ -15,7 +15,7 @@ import courierServices from "../../../public/assets/OurExpressPartners.png";
 import { sendContactForm } from "@/app/redux/slices/sendEmailSlice";
 import GradientCircleProgress from "@/lib/GradientCircleProgress";
 
-const ContactUs = () => {
+const ContactUs = ({ mode }) => {
   const [open, setOpen] = React.useState(false);
 
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const ContactUs = () => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-     dispatch(sendContactForm(formData));
+    dispatch(sendContactForm(formData));
     // event.target.reset();
   };
 
