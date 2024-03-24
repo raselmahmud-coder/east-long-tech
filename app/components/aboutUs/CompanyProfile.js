@@ -38,7 +38,7 @@ const CompanyProfile = () => {
         }}>
         Company{" "}
         <Typography
-          component="Typography"
+          component="span"
           variant="h2"
           sx={{
             color: (theme) =>

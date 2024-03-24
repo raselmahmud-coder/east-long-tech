@@ -48,9 +48,7 @@ const ProductCategories = ({ mode: colorMode }) => {
                 variant="elevation"
                 sx={{
                   bgcolor:
-                    colorMode === "dark" ? "deepGray.main" : "grey.400",
-                  color:
-                    colorMode === "dark" ? "whiteCustom.main" : "black.main",
+                    colorMode === "dark" ? "grey.800" : "grey.400",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",

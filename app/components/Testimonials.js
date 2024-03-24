@@ -17,8 +17,7 @@ import { Divider } from "@mui/material";
 import { useSelector } from "react-redux";
 import CustomImage from "../../lib/customImage";
 import { UserTestimonials, darkLogos, whiteLogos } from "../../lib/fakeData";
-
-
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
 const logoStyle = {
   width: "64px",
@@ -52,12 +51,18 @@ export default function Testimonials() {
           variant="middle"
           sx={{
             borderTop: `2px solid ${colorMode === "dark" ? "red" : "black"}`,
-            width: {xs:200, sm:300, md:350},
+            width: { xs: 200, sm: 300, md: 350 },
             mx: "auto",
           }}
         />
 
-        <Typography variant="body1" color="text.secondary">
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          sx={{
+            mt: 2,
+            textAlign: "justify",
+          }}>
           See what our customers love about our products. Discover how we excel
           in efficiency, durability, and satisfaction. Join us for quality,
           innovation, and reliable support.
@@ -103,20 +108,25 @@ export default function Testimonials() {
             }}>
             <Card
               sx={{
-                minHeight: { md: "260px" },
+                minHeight: {xs:"300px", sm:"300px", md: "300px" },
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
                 flexGrow: 1,
                 p: 1,
               }}>
-              <CardContent>
-                <Typography variant="body2" color="text.secondary">
+              <CardContent sx={{position:"relative"}}>
+                <FormatQuoteIcon sx={{position:"absolute", transform:"rotate(180deg)"}} />
+                <Typography variant="body2" color="text.secondary" sx={{
+                  pt:4
+                }}>
                   {testimonial.testimonial}
                 </Typography>
+                <FormatQuoteIcon sx={{position:"absolute", right:22,}} />
               </CardContent>
               <Box
                 sx={{
+                  mt:6,
                   display: "flex",
                   flexDirection: "row",
                   justifyContent: "space-between",

@@ -1,6 +1,5 @@
-"use client";
+import React from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -10,10 +9,8 @@ import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import CustomImage from "../../../lib/customImage";
-import { useSelector } from "react-redux";
 import whiteLogo from "../../../public/assets/white-logo.png";
 import blackLogo from "../../../public/assets/black-logo.png";
-import machine1 from "../../../public/assets/5.SMT Pick and Place Machine RS-1R.jpg";
 import { hotProductsCollection } from "../../../lib/fakeData";
 
 const ExpandMore = styled((props) => {
@@ -27,7 +24,7 @@ const ExpandMore = styled((props) => {
   },
 }));
 
-const HotProductsPresent = () => {
+const HotProductsPresent = ({ mode }) => {
   const [favorites, setFavorites] = React.useState([]);
 
   const handleFavoriteClick = (id) => {
@@ -53,7 +50,6 @@ const HotProductsPresent = () => {
     isExpanded: false,
     id: null,
   });
-  const { colorMode } = useSelector((state) => state.colorMode);
 
   const handleExpandClick = (id) => {
     if (id === expanded.id) {
@@ -65,11 +61,11 @@ const HotProductsPresent = () => {
   return (
     <>
       <Typography
-        component="h2"
+        component="h1"
         variant="h2"
         sx={{
           textAlign: "center",
-          my: 2,
+          mb: 8,
         }}>
         Hot Products&nbsp;
         <Typography
@@ -82,22 +78,26 @@ const HotProductsPresent = () => {
           Presentation
         </Typography>
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={5}>
         {hotProductsCollection.map(
           ({ id, title, description, details, image }) => (
-            <Grid item xs={12} sm={6} md={3} key={id}>
-              <Card sx={{}}>
+            <Grid item xs={12} sm={6} md={4} key={id}>
+              <Card
+                sx={{
+                  bgcolor: mode === "dark" ? "grey.800" : "grey.400",
+                  // minHeight: { xs: "auto", sm: "880px", md: "880px" },
+                }}>
                 <Box
                   sx={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    flexDirection:"column",
+                    flexDirection: "column",
                     py: 3,
                   }}>
                   <CustomImage
-                    src={colorMode === "dark" ? whiteLogo : blackLogo}
-                    style={{ width: "70px", height: "40px" }} //these logo need to export small size 70X40
+                    src={mode === "dark" ? whiteLogo : blackLogo}
+                    style={{ width: "120px", height: "auto" }} //these logo need to export small size 70X40
                   />
                   <Typography>
                     Shenzhen Eastlong Technology Co., Ltd.
@@ -105,25 +105,29 @@ const HotProductsPresent = () => {
                 </Box>
                 <CustomImage
                   src={image}
-                  width={350}
-                  height={300}
                   blurDataURL={`https://placehold.co/600x400/EEE/31343C`}
-                  //   style={{ width: "300px", height: "auto", margin: "auto" }}
+                  style={{
+                    width: "70%",
+                    height: "auto",
+                    display: "block",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                  }}
                 />
                 <CardContent>
-                  <Typography variant="h5" sx={{ my: 2 }}>
+                  <Typography variant="h5" sx={{ my: 2, textAlign: "center" }}>
                     {title}
                   </Typography>
                   <Typography
-                    variant="body2"
+                    variant="body1"
                     sx={{
                       textAlign: "justify",
                     }}
                     color="text.secondary">
-                    {description}
+                    {description.slice(0, 120)}...
                   </Typography>
                 </CardContent>
-                <CardActions disableSpacing>
+                <CardActions disableSpacing sx={{ pt: 1 }}>
                   <IconButton
                     onClick={() => handleFavoriteClick(id.toString())}
                     aria-label="add to favorites"

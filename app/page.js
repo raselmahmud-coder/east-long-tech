@@ -1,5 +1,4 @@
 "use client";
-import { Box, Container, CssBaseline, Divider } from "@mui/material";
 import Hero from "./components/Hero";
 import LogoCollection from "./components/LogoCollection";
 import Features from "./components/Features";
@@ -16,6 +15,7 @@ import { useSelector } from "react-redux";
 import HotProductsPresent from "./components/products/HotProductsPresent";
 import CompanyProfile from "./components/aboutUs/CompanyProfile";
 import ContactUs from './components/contactUs/ContactUs';
+import { Box, Container, CssBaseline, Divider } from "@mui/material";
 
 export default function Home() {
   const { colorMode: mode } = useSelector((state) => state.colorMode);

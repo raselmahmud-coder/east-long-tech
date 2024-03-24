@@ -33,22 +33,31 @@ export default function Features() {
   const selectedFeature = featureProducts[selectedItemIndex];
 
   return (
-    <Box id="features" sx={{ py: { xs: 8, sm: 16 } }}>
+    <Box id="features" sx={{ py: { xs: 8, sm: 12 } }}>
       <Grid container spacing={6}>
         <Grid item xs={12} md={6}>
           <div>
-            <Typography component="h2" variant="h2" color="text.primary">
+            <Typography
+              component="h2"
+              variant="h2"
+              color="text.primary"
+              sx={{ textAlign: "center" }}>
               Featured Product
             </Typography>
             <Typography
               variant="body1"
               color="text.secondary"
-              sx={{ mb: { xs: 2, sm: 4 } }}>
+              sx={{ mb: { xs: 2, sm: 4 }, textAlign: "justify", mt: 3 }}>
               Here you can provide a brief overview of the key features of the
               product. For example, you could list the number of features, the
               types of features, add-ons, or the benefits of the features.
             </Typography>
           </div>
+
+          {/*
+          ==================
+           For Mobile view start
+          ================= */}
           <Grid
             container
             item
@@ -60,11 +69,12 @@ export default function Features() {
                 label={title}
                 onClick={() => handleItemClick(index)}
                 sx={{
+                  width:"100%",
                   borderColor: (theme) => {
                     if (theme.palette.mode === "light") {
-                      return selectedItemIndex === index ? "primary.light" : "";
+                      return selectedItemIndex === index ? "success.main" : "grey.100";
                     }
-                    return selectedItemIndex === index ? "primary.light" : "";
+                    return selectedItemIndex === index ? "success.main" : "grey.100";
                   },
                   background: (theme) => {
                     if (theme.palette.mode === "light") {
