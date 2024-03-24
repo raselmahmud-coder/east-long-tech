@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import {
   Box,
@@ -12,10 +11,8 @@ import {
 import ForwardIcon from "@mui/icons-material/Forward";
 import CustomImage from "../../../lib/customImage";
 import { products } from "../../../lib/fakeData";
-import { useSelector } from "react-redux";
 
-const ProductCategories = () => {
-  const { colorMode } = useSelector((state) => state.colorMode);
+const ProductCategories = ({ mode: colorMode }) => {
   return (
     <>
       <Grid container spacing={4}>
@@ -42,7 +39,7 @@ const ProductCategories = () => {
               sx={{
                 position: "relative",
                 width: "100%",
-                minHeight: { xs: "500px", sm: "490px", md: "480px" },
+                minHeight: { xs: "400px", sm: "480px", md: "480px" },
                 transition: "transform 1s",
                 transformStyle: "preserve-3d",
               }}>
@@ -51,7 +48,7 @@ const ProductCategories = () => {
                 variant="elevation"
                 sx={{
                   bgcolor:
-                    colorMode === "dark" ? "deepGray.main" : "primary.main",
+                    colorMode === "dark" ? "deepGray.main" : "grey.400",
                   color:
                     colorMode === "dark" ? "whiteCustom.main" : "black.main",
                   display: "flex",
@@ -91,7 +88,7 @@ const ProductCategories = () => {
                           colorMode === "dark" ? "text.primary" : "grey.100",
                       }}
                       component="h2"
-                      variant="h4">
+                      variant="h5">
                       {title}
                     </Typography>
                   </CardContent>
@@ -128,14 +125,16 @@ const ProductCategories = () => {
                     sx={{
                       px: 3,
                       textAlign: "justify",
-                      mb:3,
+                      mb: 3,
                     }}>
                     {description}
                   </Typography>
                   <a
-                    href="http://google.com/"
-                    target="_blank"
-                    rel="noopener noreferrer">
+                    href="#"
+                    // target="_blank"
+                    // rel="noopener noreferrer"
+                  
+                  >
                     <Button
                       variant="contained"
                       sx={{

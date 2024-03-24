@@ -32,7 +32,7 @@ export default function Home() {
           sx={{ bgcolor: "background.default", mt: { sx: 8, md: 10 } }}>
           <AppAppBar />
           <BannerCarousel mode={mode} />
-          <Hero mode={mode}o />
+          <Hero mode={mode} />
           <Features mode={mode} />
           <HotProductsPresent mode={mode} />
           <Testimonials mode={mode} />

@@ -124,6 +124,7 @@ function AppAppBar() {
                 </Link>
               </MenuItem>
               <Button
+              title="Click Here"
                 sx={{ mr: "5px" }}
                 color="primary"
                 variant="contained"
@@ -136,6 +137,7 @@ function AppAppBar() {
                 WhatsApp
               </Button>
               <Button
+              title="Click Here"
                 sx={{ ml: "5px" }}
                 color="primary"
                 variant="outlined"
