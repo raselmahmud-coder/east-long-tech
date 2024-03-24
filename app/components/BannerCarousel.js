@@ -37,14 +37,14 @@ const BannerCarousel = () => {
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 50,
           },
         }}
         // autoHeight={true}
         style={{
           zIndex: 0,
           // height: "40vh",
-          // marginTop: "60px",
+          marginTop: "60px",
         }}
         loop={true}
         pagination={{
@@ -56,12 +56,12 @@ const BannerCarousel = () => {
           <SwiperSlide
             key={id}
             style={{
-              // backgroundColor: "yellow",
+              // backgroundColor: "bisque",
             }}>
             <CustomImage
               src={image}
               alt="carousel"
-              style={{ width: "550px", height: "auto" }}
+              style={{ width: "450px", height: "auto" }}
             />
           </SwiperSlide>
         ))}

@@ -33,17 +33,16 @@ export default function Hero() {
         <Stack spacing={2} useFlexGap sx={{ width: { xs: "100%", sm: "70%" } }}>
           <Typography
             component="h1"
-            variant="h1"
+            variant="h2"
             sx={{
               display: "flex",
-              flexDirection: { xs: "column", md: "row" },
               alignSelf: "center",
               textAlign: "center",
             }}>
             Our Latest&nbsp;
             <Typography
               component="span"
-              variant="h1"
+              variant="h2"
               sx={{
                 color: (theme) =>
                   theme.palette.mode === "light"
@@ -55,13 +54,15 @@ export default function Hero() {
           </Typography>
           <Typography
             sx={{
-              mb: 3,
+              mb: { xs: 1, md: 4 },
+              px:{xs:2},
+              textAlign: { xs: "justify", md: "center" },
             }}
             variant="body1"
-            textAlign="center"
             color="text.secondary">
             Explore our cutting-edge Machines, delivering high-quality solutions
-            tailored to your needs. <br />
+            tailored to your needs.{" "}
+            <Box component={"br"} sx={{ display: { xs: "none", md:"block", } }} />
             Elevate your experience with top-tier features and services.
           </Typography>
         </Stack>
