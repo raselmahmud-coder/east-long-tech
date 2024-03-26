@@ -13,7 +13,7 @@ const OurTeam = () => {
         variant="h2"
         sx={{
           textAlign: "center",
-          mt: { xs: 4, sm: 5, md: 8 },
+          // mt: { xs: 4, sm: 5, md: 5 },
         }}>
         Our{" "}
         <Typography

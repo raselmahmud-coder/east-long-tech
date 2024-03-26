@@ -1,61 +1,76 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
 import CustomImage from "../../lib/customImage";
-import sydneyBlack from "@/public/images/sydney-black.svg";
-import sydneyWhite from "@/public/images/sydney_white.svg";
+import huawei from "@/public/assets/company_logo/1.png";
+import tpLink from "@/public/assets/company_logo/2.png";
+import vivo from "@/public/assets/company_logo/3.png";
+import SKYWORTH from "@/public/assets/company_logo/4.png";
+import BOE from "@/public/assets/company_logo/5.png";
+import tianam from "@/public/assets/company_logo/6.png";
+import Hikvision from "@/public/assets/company_logo/Hikvision-Logo.png";
+import { keyframes } from "@emotion/react";
 
-const whiteLogos = [
-  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/6560628e8573c43893fe0ace_Sydney-white.svg",
-  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f4d520d0517ae8e8ddf13_Bern-white.svg",
-  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f46794c159024c1af6d44_Montreal-white.svg",
-  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e891fa22f89efd7477a_TerraLight.svg",
-  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/6560a09d1f6337b1dfed14ab_colorado-white.svg",
-  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f5caa77bf7d69fb78792e_Ankara-white.svg",
-];
+const Logos = [huawei, tpLink, vivo, SKYWORTH, BOE, tianam, Hikvision];
 
-const darkLogos = [
-  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/6560628889c3bdf1129952dc_Sydney-black.svg",
-  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f4d4d8b829a89976a419c_Bern-black.svg",
-  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f467502f091ccb929529d_Montreal-black.svg",
-  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e911fa22f2203d7514c_TerraDark.svg",
-  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/6560a0990f3717787fd49245_colorado-black.svg",
-  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f5ca4e548b0deb1041c33_Ankara-black.svg",
-];
-
-const logoStyle = {
-  margin: "0 32px",
-  opacity: 0.7,
-};
+const slide = keyframes`
+to {
+  right: 100%;
+  transform: translate(0);
+}
+`;
 
 export default function LogoCollection({ mode }) {
-  const logos = mode == "light" ? darkLogos : whiteLogos;
-
   return (
-    <Box id="logoCollection" sx={{ py: 4 }}>
-      <Typography
-        component="h2"
-        variant="h2"
-        align="center"
-        color="text.secondary">
-        Trusted by many Companies
-      </Typography>
-      <Grid container justifyContent="center" sx={{ mt: 0.5, opacity: 0.6 }}>
-        {logos.map((logo, index) => (
-          <Grid item key={index}>
-            <CustomImage
-              blurDataURL={`https://placehold.co/600x400/EEE/31343C`}
-              width={180}
-              height={150}
-              unoptimized={true}
-              src={mode == "light" ? sydneyBlack : sydneyWhite}
-              alt={`Fake company number ${index + 1}`}
-              style={logoStyle}
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+    <>
+      <Box id="logoCollection" sx={{ py: 4 }}>
+        <Typography
+          sx={{ mb: 4 }}
+          component="h2"
+          variant="h2"
+          align="center"
+          color="text.secondary">
+          Trusted by many Companies
+        </Typography>
+        <Box
+          sx={{
+            margin: "auto",
+            overflow: "hidden",
+            "&:hover .logos-slide": {
+              animationPlayState: "paused",
+            },
+          }}>
+          <Box
+            className="logos-slide"
+            sx={{
+              position: "relative",
+              display: "flex",
+              right: "0",
+              transform: "translate(100%)",
+              marginLeft: "-160vw",
+              animation: `${slide} 60s linear infinite 0s`,
+            }}>
+            {Logos.map((logo, index) => (
+              <CustomImage
+                key={index}
+                blurDataURL={`https://placehold.co/600x400/EEE/31343C`}
+                src={logo}
+                alt={`company logo`}
+                style={{ width: 250, height: "auto", margin: "0 40px" }}
+              />
+            ))}
+            {Logos.map((logo, index) => (
+              <CustomImage
+                key={index}
+                blurDataURL={`https://placehold.co/600x400/EEE/31343C`}
+                src={logo}
+                alt={`company logo`}
+                style={{ width: 250, height: "auto", margin: "0 40px" }}
+              />
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    </>
   );
 }

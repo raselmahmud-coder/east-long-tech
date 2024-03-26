@@ -7,7 +7,7 @@ import img4 from "../../../public/assets/4.png";
 import img5 from "../../../public/assets/5.png";
 
 const descriptionData = [
-  `Shenzhen EASTLONG Technology Co.,Ltd.is the professional
+  `Shenzhen EASTLONG Technology Co., Ltd. is the professional
 manufacturer which focus on R&D, manufacturing and servicing
 One-stop SMT/DIP production equipment solution and One-stop LCD
 Module Automation equipment solution.`,
@@ -57,10 +57,16 @@ const StrengthOfCompany = ({ colorMode }) => (
                   : "linear-gradient(to right, #BFCCD9, #FBFCFE)",
               mb: index != 3 && 2,
               borderRadius: 2,
-              px: 2,
-              py: 1,
+              px: 3,
+              py: 2,
             }}>
-            <Typography variant="h6">{item}</Typography>
+            <Typography
+              variant="subtitle2"
+              sx={{
+                textAlign: "justify",
+              }}>
+              {item}
+            </Typography>
           </Box>
         ))}
       </Grid>
