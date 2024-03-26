@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
@@ -20,8 +19,8 @@ import { Link } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { openDialog } from "../redux/slices/alertDialogSlice";
 import CustomWeChatIcon from "@/public/images/WeChat-Icon-Logo.png";
-import CustomWhatsAppIcon from "@/public/images/WhatsApp-Logo..png"
-
+import CustomWhatsAppIcon from "@/public/images/WhatsApp-Logo..png";
+import HoverNAnimation from "@/lib/HoverNAnimation";
 
 function AppAppBar() {
   const [open, setOpen] = React.useState(false);
@@ -71,169 +70,171 @@ function AppAppBar() {
               : "0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)",
         })}>
         {/* <Container maxWidth="xl"> */}
-          <Toolbar variant="dense" disableGutters>
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: "flex",
-                alignItems: "center",
-                // ml: "-18px",
-                // px: 0,
-              }}>
-              <CustomImage
-                style={{ width: "150px", height: "auto", cursor: "pointer" }}
-                src={colorMode === "dark" ? whiteLogo : darkLogo}
-                alt="logo of east company"
-              />
-              <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                {menuItems.map((menu) => (
-                  <MenuItem
-                    key={menu}
-                    onClick={() => scrollToSection(menu)}
-                    sx={{ py: "6px", px: "12px" }}>
-                    <Typography
-                      variant="body2"
-                      sx={{ textTransform: "uppercase" }}
-                      color="text.primary">
-                      {menu}
-                    </Typography>
-                  </MenuItem>
-                ))}
-              </Box>
+        <Toolbar variant="dense" disableGutters>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              alignItems: "center",
+              // ml: "-18px",
+              // px: 0,
+            }}>
+            <CustomImage
+              style={{ width: "150px", height: "auto", cursor: "pointer" }}
+              src={colorMode === "dark" ? whiteLogo : darkLogo}
+              alt="logo of east company"
+            />
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              {menuItems.map((menu) => (
+                <MenuItem
+                  key={menu}
+                  onClick={() => scrollToSection(menu)}
+                  sx={{ py: "6px", px: "12px" }}>
+                  <Typography
+                    variant="body2"
+                    sx={{ textTransform: "uppercase" }}
+                    color="text.primary">
+                    {menu}
+                  </Typography>
+                </MenuItem>
+              ))}
             </Box>
-            <Box
-              sx={{
-                display: { xs: "none", md: "flex" },
-                gap: 0.5,
-                alignItems: "center",
-              }}>
-              <MenuItem sx={{ py: "6px", px: "12px" }}>
-                <Link
-                  variant="body2"
-                  href="mailto:info@eastlongsz.com"
-                  color="text.primary">
-                  E-mail: info@eastlongsz.com
-                </Link>
-              </MenuItem>
-              <MenuItem sx={{ py: "6px", px: "12px" }}>
+          </Box>
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              gap: 0.5,
+              alignItems: "center",
+            }}>
+            <MenuItem sx={{ py: "6px", px: "12px" }}>
+              <Link
+                variant="body2"
+                href="mailto:info@eastlongsz.com"
+                color="text.primary">
+                E-mail: info@eastlongsz.com
+              </Link>
+            </MenuItem>
+            <MenuItem sx={{ py: "6px", px: "12px" }}>
+              <HoverNAnimation isAnimate={true}>
                 <Link
                   variant="body2"
                   href="tel:+861712345667"
                   color="text.primary">
                   WhatsApp/WeChat: +86 13692181738
                 </Link>
-              </MenuItem>
-              <Button
+              </HoverNAnimation>
+            </MenuItem>
+            <Button
               title="Click Here"
-                sx={{ mr: "5px" }}
-                color="primary"
-                variant="contained"
-                size="medium"
-                onClick={() => handleQRShow("WhatsApp")}>
-                <CustomImage
-                  style={{ width: "33px", height: "auto" }}
-                  src={CustomWhatsAppIcon}
-                />
-                WhatsApp
-              </Button>
-              <Button
+              sx={{ mr: "5px" }}
+              color="primary"
+              variant="contained"
+              size="medium"
+              onClick={() => handleQRShow("WhatsApp")}>
+              <CustomImage
+                style={{ width: "33px", height: "auto" }}
+                src={CustomWhatsAppIcon}
+              />
+              WhatsApp
+            </Button>
+            <Button
               title="Click Here"
-                sx={{ ml: "5px" }}
-                color="primary"
-                variant="outlined"
-                size="medium"
-                onClick={() => handleQRShow("WeChat")}>
-                <CustomImage
-                  style={{ width: "30px", height: "auto" }}
-                  src={CustomWeChatIcon}
-                />
-                WeChat
-              </Button>
-              <ToggleColorMode />
-            </Box>
-            {/* ================
+              sx={{ ml: "5px" }}
+              color="primary"
+              variant="outlined"
+              size="medium"
+              onClick={() => handleQRShow("WeChat")}>
+              <CustomImage
+                style={{ width: "30px", height: "auto" }}
+                src={CustomWeChatIcon}
+              />
+              WeChat
+            </Button>
+            <ToggleColorMode />
+          </Box>
+          {/* ================
                For Mobile menus start here
                =================*/}
-            <Box sx={{ display: { sm: "", md: "none" } }}>
-              <Button
-                variant="text"
-                color="primary"
-                aria-label="menu"
-                onClick={toggleDrawer(true)}
-                sx={{ minWidth: "30px", p: "4px" }}>
-                <MenuIcon />
-              </Button>
-              <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+          <Box sx={{ display: { sm: "", md: "none" } }}>
+            <Button
+              variant="text"
+              color="primary"
+              aria-label="menu"
+              onClick={toggleDrawer(true)}
+              sx={{ minWidth: "30px", p: "4px" }}>
+              <MenuIcon />
+            </Button>
+            <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+              <Box
+                sx={{
+                  minWidth: "60dvw",
+                  p: 2,
+                  backgroundColor: "background.paper",
+                  flexGrow: 1,
+                }}>
                 <Box
                   sx={{
-                    minWidth: "60dvw",
-                    p: 2,
-                    backgroundColor: "background.paper",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "end",
                     flexGrow: 1,
                   }}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "end",
-                      flexGrow: 1,
-                    }}>
-                    <ToggleColorMode />
-                  </Box>
-                  {menuItems.map((menu) => (
-                    <MenuItem
-                      onClick={() => scrollToSection(menu)}
-                      key={menu}
-                      sx={{ textTransform: "uppercase" }}>
-                      {menu}
-                    </MenuItem>
-                  ))}
-
-                  <Divider />
-                  <MenuItem sx={{ py: "6px", px: "12px" }}>
-                    <Link
-                      variant="body2"
-                      href="mailto:info@eastlongsz.com"
-                      color="text.primary">
-                      E-mail: info@eastlongsz.com
-                    </Link>
-                  </MenuItem>
-                  <MenuItem sx={{ py: "6px", px: "12px" }}>
-                    <Link
-                      variant="body2"
-                      href="tel:+861712345667"
-                      color="text.primary">
-                      WhatsApp/WeChat: +86 13692181738
-                    </Link>
-                  </MenuItem>
-                  <Button
-                    sx={{ mr: "5px" }}
-                    color="primary"
-                    variant="contained"
-                    size="medium"
-                    onClick={() => handleQRShow("WhatsApp")}>
-                    <CustomImage
-                      style={{ width: "33px", height: "auto" }}
-                      src={CustomWhatsAppIcon}
-                    />
-                    WhatsApp
-                  </Button>
-                  <Button
-                    sx={{ ml: "5px" }}
-                    color="primary"
-                    variant="outlined"
-                    size="medium"
-                    onClick={() => handleQRShow("WeChat")}>
-                    <CustomImage
-                      style={{ width: "30px", height: "auto" }}
-                      src={CustomWeChatIcon}
-                    />
-                    WeChat
-                  </Button>
+                  <ToggleColorMode />
                 </Box>
-              </Drawer>
-            </Box>
-          </Toolbar>
+                {menuItems.map((menu) => (
+                  <MenuItem
+                    onClick={() => scrollToSection(menu)}
+                    key={menu}
+                    sx={{ textTransform: "uppercase" }}>
+                    {menu}
+                  </MenuItem>
+                ))}
+
+                <Divider />
+                <MenuItem sx={{ py: "6px", px: "12px" }}>
+                  <Link
+                    variant="body2"
+                    href="mailto:info@eastlongsz.com"
+                    color="text.primary">
+                    E-mail: info@eastlongsz.com
+                  </Link>
+                </MenuItem>
+                <MenuItem sx={{ py: "6px", px: "12px" }}>
+                  <Link
+                    variant="body2"
+                    href="tel:+861712345667"
+                    color="text.primary">
+                    WhatsApp/WeChat: +86 13692181738
+                  </Link>
+                </MenuItem>
+                <Button
+                  sx={{ mr: "5px" }}
+                  color="primary"
+                  variant="contained"
+                  size="medium"
+                  onClick={() => handleQRShow("WhatsApp")}>
+                  <CustomImage
+                    style={{ width: "33px", height: "auto" }}
+                    src={CustomWhatsAppIcon}
+                  />
+                  WhatsApp
+                </Button>
+                <Button
+                  sx={{ ml: "5px" }}
+                  color="primary"
+                  variant="outlined"
+                  size="medium"
+                  onClick={() => handleQRShow("WeChat")}>
+                  <CustomImage
+                    style={{ width: "30px", height: "auto" }}
+                    src={CustomWeChatIcon}
+                  />
+                  WeChat
+                </Button>
+              </Box>
+            </Drawer>
+          </Box>
+        </Toolbar>
         {/* </Container> */}
       </AppBar>
     </React.Fragment>

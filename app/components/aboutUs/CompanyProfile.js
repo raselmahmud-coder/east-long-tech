@@ -14,7 +14,6 @@ const CompanyProfile = () => {
 
   const handleVideoClick = () => {
     const video = videoRef.current;
-    console.log("play it again", video);
     if (video && video.paused) {
       video.pause();
       setTimeout(() => {

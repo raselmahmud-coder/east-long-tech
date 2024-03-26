@@ -11,6 +11,7 @@ import {
 import ForwardIcon from "@mui/icons-material/Forward";
 import CustomImage from "../../../lib/customImage";
 import { products } from "../../../lib/fakeData";
+import SlidingCard from "@/lib/SlidingCard";
 
 const ProductCategories = ({ mode: colorMode }) => {
   return (
@@ -18,7 +19,6 @@ const ProductCategories = ({ mode: colorMode }) => {
       <Grid container spacing={4}>
         {products.map(({ title, description, img }) => (
           <Grid
-            key={title}
             item
             xs={12}
             sm={6}
@@ -34,7 +34,8 @@ const ProductCategories = ({ mode: colorMode }) => {
                   transform: "rotateY(180deg)",
                 },
               },
-            }}>
+            }}
+            key={title}>
             <Box
               sx={{
                 position: "relative",
@@ -47,8 +48,7 @@ const ProductCategories = ({ mode: colorMode }) => {
               <Card
                 variant="elevation"
                 sx={{
-                  bgcolor:
-                    colorMode === "dark" ? "grey.800" : "grey.400",
+                  bgcolor: colorMode === "dark" ? "grey.800" : "grey.400",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -62,34 +62,39 @@ const ProductCategories = ({ mode: colorMode }) => {
                   backfaceVisibility: "hidden",
                 }}>
                 <CardActionArea>
-                  <CustomImage
-                    src={img}
-                    style={{
-                      border: "1px",
-                      borderStyle: "solid",
-                      borderColor: "grey",
-                      borderRadius: "15px",
-                      width: 320,
-                      height: "auto",
-                      padding: "3px",
-                      margin: "0 auto",
-                      display: "flex",
-                    }}
-                    alt={title}
-                  />
-                  <CardContent>
-                    <Typography
-                      sx={{
-                        px: 3,
-                        textAlign: "center",
-                        color:
-                          colorMode === "dark" ? "text.primary" : "grey.100",
+                  <SlidingCard
+                    animationA={"translateY(0%)"}
+                    animationB={"translateY(50%)"}
+                    delay={10}>
+                    <CustomImage
+                      src={img}
+                      style={{
+                        border: "1px",
+                        borderStyle: "solid",
+                        borderColor: "grey",
+                        borderRadius: "15px",
+                        width: 320,
+                        height: "auto",
+                        padding: "3px",
+                        margin: "0 auto",
+                        display: "flex",
                       }}
-                      component="h2"
-                      variant="h5">
-                      {title}
-                    </Typography>
-                  </CardContent>
+                      alt={title}
+                    />
+                    <CardContent>
+                      <Typography
+                        sx={{
+                          px: 3,
+                          textAlign: "center",
+                          color:
+                            colorMode === "dark" ? "text.primary" : "grey.100",
+                        }}
+                        component="h2"
+                        variant="h5">
+                        {title}
+                      </Typography>
+                    </CardContent>
+                  </SlidingCard>
                 </CardActionArea>
               </Card>
               {/* Back side content */}
@@ -131,7 +136,6 @@ const ProductCategories = ({ mode: colorMode }) => {
                     href="#"
                     // target="_blank"
                     // rel="noopener noreferrer"
-                  
                   >
                     <Button
                       variant="contained"

@@ -21,6 +21,7 @@ import {
 } from "@mui/material";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { useSelector } from "react-redux";
+import SlidingCard from "@/lib/SlidingCard";
 
 export default function Features() {
   const { colorMode } = useSelector((state) => state.colorMode);
@@ -36,7 +37,7 @@ export default function Features() {
     <Box id="features" sx={{ py: { xs: 8, sm: 12 } }}>
       <Grid container spacing={6}>
         <Grid item xs={12} md={6}>
-          <div>
+          <SlidingCard>
             <Typography
               component="h2"
               variant="h2"
@@ -52,7 +53,7 @@ export default function Features() {
               product. For example, you could list the number of features, the
               types of features, add-ons, or the benefits of the features.
             </Typography>
-          </div>
+          </SlidingCard>
 
           {/*
           ==================

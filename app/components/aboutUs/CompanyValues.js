@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
+import AnimatedNumber from "@/lib/AnimatedNumber";
 
 const CompanyValues = ({ title, number, colorMode, marginBottom }) => {
   return (
@@ -10,9 +11,9 @@ const CompanyValues = ({ title, number, colorMode, marginBottom }) => {
             colorMode === "dark"
               ? "linear-gradient(to right, #090E10, #5B6B7C)"
               : "linear-gradient(to right, #BFCCD9, #FBFCFE)",
-                  mb: marginBottom && marginBottom,
-                  borderRadius: 1,
-          pr:2
+          mb: marginBottom && marginBottom,
+          borderRadius: 1,
+          pr: 2,
         }}>
         <Typography
           variant="h6"
@@ -28,7 +29,7 @@ const CompanyValues = ({ title, number, colorMode, marginBottom }) => {
               ml: 3,
               fontSize: 45,
             }}>
-            {number}+
+            <AnimatedNumber value={number} />+
           </Typography>
         </Typography>
       </Box>

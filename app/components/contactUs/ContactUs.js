@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import CustomImage from "../../../lib/customImage";
-import courierServices from "../../../public/assets/OurExpressPartners.png";
+import courierServices from "@/public/assets/Express_collection.png";
 import { sendContactForm } from "@/app/redux/slices/sendEmailSlice";
 import GradientCircleProgress from "@/lib/GradientCircleProgress";
 
@@ -133,7 +133,9 @@ const ContactUs = ({ mode }) => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
-          {/* <HeadingH4 HeadingH4Text={"Direct Phone Call"} /> */}
+          <Typography variant="h3" sx={{ textAlign: "center" }}>
+            Our Int. Express Partner
+          </Typography>
           <Box
             sx={{
               display: "flex",
@@ -148,7 +150,7 @@ const ContactUs = ({ mode }) => {
                 height: "auto",
                 borderRadius: "5px",
               }}
-              alt="company awards"
+              alt="express collection logo"
             />
           </Box>
         </Grid>

@@ -5,7 +5,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ProductCategories from "./products/ProductCategories";
 
-export default function Hero({mode}) {
+export default function Hero({ mode }) {
   return (
     <Box
       id="hero"
@@ -51,18 +51,22 @@ export default function Hero({mode}) {
           <Typography
             sx={{
               mb: { xs: 1, md: 4 },
-              px:{xs:2},
+              px: { xs: 2 },
               textAlign: { xs: "justify", md: "center" },
             }}
             variant="body1"
             color="text.secondary">
             Explore our cutting-edge Machines, delivering high-quality solutions
             tailored to your needs.{" "}
-            <Box component={"br"} sx={{ display: { xs: "none", md:"block", } }} />
+            <Box
+              component={"br"}
+              sx={{ display: { xs: "none", md: "block" } }}
+            />
             Elevate your experience with top-tier features and services.
           </Typography>
         </Stack>
-        <ProductCategories mode={mode}/>
+
+        <ProductCategories mode={mode} />
       </Box>
     </Box>
   );

@@ -11,20 +11,21 @@ import whiteLogo from "@/public/assets/white-logo.png";
 import darkLogo from "@/public/assets/black-logo.png";
 import FacebookIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import TwitterIcon from "@mui/icons-material/X";
 import CustomImage from "@/lib/customImage";
 
-const logoStyle = {
-  width: "140px",
-  height: "auto",
-};
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" mt={1}>
-      {"Copyright © "}
-      <Link href="/">Shenzhen Eastlong Technology Co., Ltd.&nbsp;</Link>
-      {new Date().getFullYear()}
+      {"© "}
+      <Link href="/">Shenzhen Eastlong Technology Co., Ltd. </Link>
+      {new Date().getFullYear()}{" "}
+      <Link
+        color="text.secondary"
+        target="_blank"
+        href="https://github.com/raselmahmud-coder">
+        Developed By RM
+      </Link>
     </Typography>
   );
 }
@@ -39,7 +40,7 @@ export default function Footer({ mode }) {
         alignItems: "center",
         gap: { xs: 4, sm: 8 },
         pt: { xs: 8, sm: 10 },
-        pb: { xs: 4, sm:5 },
+        pb: { xs: 4, sm: 5 },
         textAlign: { sm: "center", md: "left" },
       }}>
       <Box
@@ -130,12 +131,6 @@ export default function Footer({ mode }) {
           <Link color="text.secondary" href="#">
             About us
           </Link>
-          <Link color="text.secondary" href="#">
-            Careers
-          </Link>
-          <Link color="text.secondary" href="#">
-            Press
-          </Link>
         </Box>
         <Box
           sx={{
@@ -174,20 +169,13 @@ export default function Footer({ mode }) {
           <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>
             &nbsp;•&nbsp;
           </Typography>
-          <Link color="text.secondary" href="#">
+          <Link color="text.secondary" sx={{ display: "block" }} href="#">
             Terms of Service
           </Link>
           <Copyright />
         </div>
-        <div>
-          <Link
-            color="text.secondary"
-            target="_blank"
-            href="https://github.com/raselmahmud-coder">
-            This site Developed By Rasel Mahmud
-          </Link>
-        </div>
-        {/* <Stack
+
+        <Stack
           direction="row"
           justifyContent="left"
           spacing={1}
@@ -197,26 +185,21 @@ export default function Footer({ mode }) {
           }}>
           <IconButton
             color="inherit"
-            href="#"
+            target="_blank"
+            href="https://github.com/raselmahmud-coder"
             aria-label="GitHub"
             sx={{ alignSelf: "center" }}>
             <FacebookIcon />
           </IconButton>
+
           <IconButton
             color="inherit"
-            href="#"
-            aria-label="X"
-            sx={{ alignSelf: "center" }}>
-            <TwitterIcon />
-          </IconButton>
-          <IconButton
-            color="inherit"
-            href="#"
+            href="https://www.linkedin.com/in/rasel-mahmud-coder/"
             aria-label="LinkedIn"
             sx={{ alignSelf: "center" }}>
             <LinkedInIcon />
           </IconButton>
-        </Stack> */}
+        </Stack>
       </Box>
     </Container>
   );
