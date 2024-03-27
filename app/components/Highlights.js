@@ -6,8 +6,9 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { brandQuality } from "@/lib/fakeData";
 import { alpha } from "@mui/material";
+import RibbonHeading from "@/lib/RibbonHeading";
 
-export default function Highlights({mode}) {
+export default function Highlights({ mode }) {
   return (
     <Box
       id="highlights"
@@ -28,25 +29,28 @@ export default function Highlights({mode}) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: { xs: 3, sm: 6 },
+          gap: { xs: 3, sm: 4 },
         }}>
-        <Box>
-          <Typography
-            component="h2"
-            variant="h2"
-            sx={{
-              textAlign: "center",
-            }}>
-            Why Choose Us?
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ textAlign: "justify", mt:3 }}>
-            Explore why our product stands out: adaptability, durability,
-            user-friendly design, and innovation. Enjoy reliable customer
-            support and precision in every detail.
-          </Typography>
+        <Box sx={{
+          mt:2
+        }}>
+          <RibbonHeading>
+            <Typography
+              gutterBottom
+              component="h2"
+              variant="h2"
+              sx={{
+                textAlign: "center",
+              }}>
+              Why Choose Us?
+            </Typography>
+          </RibbonHeading>
         </Box>
+        <Typography variant="body1" sx={{ textAlign: "justify", width:"50%", color: mode =="dark" ? "primary.main" :"grey.900" }}>
+          Explore why our product stands out: adaptability, durability,
+          user-friendly design, and innovation. Enjoy reliable customer support
+          and precision in every detail.
+        </Typography>
         <Grid container spacing={5}>
           {brandQuality.map((item, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
@@ -61,8 +65,7 @@ export default function Highlights({mode}) {
                   height: "100%",
                   border: "1px solid",
                   borderColor: "grey.800",
-                  // background: "transparent",
-                  backgroundColor: "grey.800",
+                  bgcolor: mode === "dark" ? "grey.800" : "grey.400"
                 }}>
                 <Box
                   sx={{
@@ -72,14 +75,14 @@ export default function Highlights({mode}) {
                     flexDirection: "column",
                   }}>
                   {item.icon}
-                  <Typography fontWeight="medium" gutterBottom>
+                  <Typography fontWeight="bold" variant="h6" gutterBottom>
                     {item.title}
                   </Typography>
                 </Box>
 
                 <Typography
                   variant="body2"
-                  sx={{ color: "grey.300", textAlign: "justify" }}>
+                  sx={{  textAlign: "justify" }}>
                   {item.description}
                 </Typography>
               </Stack>

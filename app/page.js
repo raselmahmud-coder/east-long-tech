@@ -79,12 +79,12 @@ export default function Home() {
             </AppBar>
           </HideOnScroll>
         )}
-        <AppAppBar position={"fixed"} top={trigger || matches ? 0 : 42} />
+        <AppAppBar position={"fixed"} top={trigger || matches ? 0 : 40} />
+        <BannerCarousel mode={mode} />
         <Container
           maxWidth="xl"
           component={"main"}
           sx={{ bgcolor: "background.default", mt: { sx: 8, md: 10 } }}>
-          <BannerCarousel mode={mode} />
           <Hero mode={mode} />
           <Features mode={mode} />
           <HotProductsPresent mode={mode} />

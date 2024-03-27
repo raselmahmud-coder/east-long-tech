@@ -17,7 +17,8 @@ import { Divider } from "@mui/material";
 import { useSelector } from "react-redux";
 import CustomImage from "../../lib/customImage";
 import { UserTestimonials, darkLogos, whiteLogos } from "../../lib/fakeData";
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import RibbonHeading from "@/lib/RibbonHeading";
 
 const logoStyle = {
   width: "64px",
@@ -42,20 +43,27 @@ export default function Testimonials() {
       }}>
       <Box
         sx={{
+          display: "flex",
+          flexDirection:"column",
           textAlign: "center",
         }}>
-        <Typography component="h2" variant="h2" color="text.primary">
-          Testimonials
-        </Typography>
+        <RibbonHeading>
+          <Typography component="h2" variant="h2" color="text.primary" sx={{
+          textAlign: "center",
+        }}>
+            Testimonials
+          </Typography>
+        </RibbonHeading>
         <Divider
           variant="middle"
           sx={{
             borderTop: `2px solid ${colorMode === "dark" ? "red" : "black"}`,
-            width: { xs: 200, sm: 300, md: 350 },
+            width: { xs: 200, sm: 300, md: 200 },
             mx: "auto",
           }}
         />
 
+</Box>
         <Typography
           variant="body1"
           color="text.secondary"
@@ -67,7 +75,6 @@ export default function Testimonials() {
           in efficiency, durability, and satisfaction. Join us for quality,
           innovation, and reliable support.
         </Typography>
-      </Box>
 
       <Swiper
         slidesPerView={1}
@@ -108,25 +115,30 @@ export default function Testimonials() {
             }}>
             <Card
               sx={{
-                minHeight: {xs:"300px", sm:"300px", md: "300px" },
+                minHeight: { xs: "300px", sm: "300px", md: "300px" },
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
                 flexGrow: 1,
                 p: 1,
               }}>
-              <CardContent sx={{position:"relative"}}>
-                <FormatQuoteIcon sx={{position:"absolute", transform:"rotate(180deg)"}} />
-                <Typography variant="body2" color="text.secondary" sx={{
-                  pt:4
-                }}>
+              <CardContent sx={{ position: "relative" }}>
+                <FormatQuoteIcon
+                  sx={{ position: "absolute", transform: "rotate(180deg)" }}
+                />
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{
+                    pt: 4,
+                  }}>
                   {testimonial.testimonial}
                 </Typography>
-                <FormatQuoteIcon sx={{position:"absolute", right:22,}} />
+                <FormatQuoteIcon sx={{ position: "absolute", right: 22 }} />
               </CardContent>
               <Box
                 sx={{
-                  mt:6,
+                  mt: 6,
                   display: "flex",
                   flexDirection: "row",
                   justifyContent: "space-between",

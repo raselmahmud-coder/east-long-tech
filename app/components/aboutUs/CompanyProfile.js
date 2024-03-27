@@ -55,31 +55,43 @@ const CompanyProfile = () => {
           mb: 3,
         }}
       />
-      <Grid container spacing={2.5}>
+      <Grid container spacing={2.5} sx={{
+        mb:5
+      }}>
         <Grid item xs={12} sm={6} md={6}>
-          <CompanyValues
-            marginBottom={{ xs: 2, sm: 3, md: 4 }}
-            title={"Two Main Production Equipment Solutions"}
-            number={2}
-            colorMode={colorMode}
-          />
-          <CompanyValues
-            marginBottom={{ xs: 2, sm: 3, md: 4 }}
-            title={`Focused On Machine Designing and Manufacturing Over 20 Years`}
-            number={20}
-            colorMode={colorMode}
-          />
-          <CompanyValues
-            marginBottom={{ xs: 2, sm: 3, md: 4 }}
-            title={`Training More Than 500 Experts and Technician For Customers`}
-            number={500}
-            colorMode={colorMode}
-          />
-          <CompanyValues
-            title={`Helping Customers to Build More Than 100 New Factories Around The World`}
-            number={100}
-            colorMode={colorMode}
-          />
+          <Grid container spacing={2.5}>
+            <Grid item xs={12} sm={6} md={6}>
+              <CompanyValues
+                marginBottom={{ xs: 2, sm: 3, md: 4 }}
+                title={"Two Main Production Equipment Solutions"}
+                number={2}
+                mode={colorMode}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6}>
+              <CompanyValues
+                marginBottom={{ xs: 2, sm: 3, md: 4 }}
+                title={`Focused On Machine Designing and Manufacturing Over 20 Years`}
+                number={20}
+                mode={colorMode}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6}>
+              <CompanyValues
+                marginBottom={{ xs: 2, sm: 3, md: 4 }}
+                title={`Training More Than 500 Experts and Technician For Customers`}
+                number={500}
+                mode={colorMode}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6}>
+              <CompanyValues
+                title={`Helping Customers to Build More Than 100 New Factories Around The World`}
+                number={100}
+                mode={colorMode}
+              />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
           <Box

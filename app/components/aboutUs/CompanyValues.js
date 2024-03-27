@@ -1,38 +1,37 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Card, Stack, Typography } from "@mui/material";
 import AnimatedNumber from "@/lib/AnimatedNumber";
 
-const CompanyValues = ({ title, number, colorMode, marginBottom }) => {
+const CompanyValues = ({ title, number, mode, marginBottom }) => {
   return (
     <>
-      <Box
+      <Stack
+        direction="column"
+        color="inherit"
+        component={Card}
+        spacing={1}
+        useFlexGap
         sx={{
+          p: 3,
+          height: "100%",
+          border: "1px solid",
+          borderColor: "grey.800",
           background:
-            colorMode === "dark"
+            mode === "dark"
               ? "linear-gradient(to right, #090E10, #5B6B7C)"
               : "linear-gradient(to right, #BFCCD9, #FBFCFE)",
-          mb: marginBottom && marginBottom,
-          borderRadius: 1,
-          pr: 2,
         }}>
         <Typography
-          variant="h6"
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "end",
-          }}>
-          {title}
-          <Typography
-            component={"span"}
-            sx={{
-              ml: 3,
-              fontSize: 45,
-            }}>
-            <AnimatedNumber value={number} />+
-          </Typography>
+          fontWeight="bold"
+          variant="h3"
+          gutterBottom
+          sx={{ textAlign: "center" }}>
+          <AnimatedNumber value={number} />+
         </Typography>
-      </Box>
+        <Typography variant="body2" sx={{ textAlign: "justify" }}>
+          {title}
+        </Typography>
+      </Stack>
     </>
   );
 };

@@ -22,6 +22,7 @@ import {
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { useSelector } from "react-redux";
 import SlidingCard from "@/lib/SlidingCard";
+import RibbonHeading from "@/lib/RibbonHeading";
 
 export default function Features() {
   const { colorMode } = useSelector((state) => state.colorMode);
@@ -34,10 +35,12 @@ export default function Features() {
   const selectedFeature = featureProducts[selectedItemIndex];
 
   return (
-    <Box id="features" sx={{ py: { xs: 8, sm: 12 } }}>
+    <Box id="features" sx={{ py: { xs: 5, sm: 6 } }}>
       <Grid container spacing={6}>
         <Grid item xs={12} md={6}>
           <SlidingCard>
+            <RibbonHeading>
+
             <Typography
               component="h2"
               variant="h2"
@@ -45,6 +48,7 @@ export default function Features() {
               sx={{ textAlign: "center" }}>
               Featured Product
             </Typography>
+                </RibbonHeading>
             <Typography
               variant="body1"
               color="text.secondary"

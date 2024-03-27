@@ -29,28 +29,27 @@ build the long term friendship and cooperation.`,
 
 const StrengthOfCompany = ({ colorMode }) => (
   <>
+    <CustomImage
+      src={img1}
+      style={{
+        marginTop:"8px",
+        width: "100%",
+        height: "auto",
+        borderRadius: "5px",
+      }}
+      alt="company view"
+    />
     <Grid
       container
       spacing={4}
       sx={{
         my: { xs: 4, sm: 5, md: 6 },
       }}>
-      <Grid item xs={12} sm={6} md={6}>
-        <CustomImage
-          src={img1}
-          style={{
-            width: "100%",
-            height: "auto",
-            borderRadius: "5px",
-          }}
-          alt="company view"
-        />
-      </Grid>
-      <Grid item xs={12} sm={6} md={6}>
-        {descriptionData.map((item, index) => (
+      {descriptionData.map((item, index) => (
+        <Grid item xs={12} sm={6} md={6} key={item}>
           <Box
-            key={item}
             sx={{
+              minHeight:190,
               background:
                 colorMode === "dark"
                   ? "linear-gradient(to right, #182023, #3B0202)"
@@ -61,16 +60,34 @@ const StrengthOfCompany = ({ colorMode }) => (
               py: 2,
             }}>
             <Typography
-              variant="subtitle2"
+              paragraph
               sx={{
                 textAlign: "justify",
               }}>
               {item}
             </Typography>
           </Box>
-        ))}
-      </Grid>
+        </Grid>
+      ))}
     </Grid>
+    <Typography
+        component="h2"
+        variant="h2"
+        sx={{
+          textAlign: "center",
+          // mt: { xs: 4, sm: 5, md: 5 },
+        }}>
+        Factory{" "}
+        <Typography
+          component="span"
+          variant="h2"
+          sx={{
+            color: (theme) =>
+              colorMode === "light" ? "primary.main" : "primary.light",
+          }}>
+          Show
+        </Typography>
+      </Typography>
     <Grid
       container
       spacing={4}
