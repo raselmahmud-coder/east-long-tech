@@ -10,7 +10,7 @@
 .swiper-slide {
   display: flex;
   gap: 15px;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 
 }

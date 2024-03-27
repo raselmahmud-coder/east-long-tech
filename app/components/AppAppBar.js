@@ -15,14 +15,13 @@ import whiteLogo from "../../public/assets/white-logo.png";
 import darkLogo from "../../public/assets/black-logo.png";
 import { menuItems } from "@/lib/fakeData";
 import AlertDialog from "@/lib/AlertDialog";
-import { Link } from "@mui/material";
+import { Container, Link, useScrollTrigger } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { openDialog } from "../redux/slices/alertDialogSlice";
 import CustomWeChatIcon from "@/public/images/WeChat-Icon-Logo.png";
 import CustomWhatsAppIcon from "@/public/images/WhatsApp-Logo..png";
-import HoverNAnimation from "@/lib/HoverNAnimation";
 
-function AppAppBar() {
+function AppAppBar({ position = "static", top }) {
   const [open, setOpen] = React.useState(false);
   const { colorMode } = useSelector((state) => state.colorMode);
   const toggleDrawer = (newOpen) => () => {
@@ -30,7 +29,9 @@ function AppAppBar() {
   };
 
   const scrollToSection = (sectionId) => {
-    const sectionElement = document.getElementById(sectionId);
+    const sectionElement = document.getElementById(
+      sectionId.split(" ").join("-"),
+    );
     const offset = 128;
     if (sectionElement) {
       const targetScroll = sectionElement.offsetTop - offset;
@@ -47,195 +48,184 @@ function AppAppBar() {
   const handleQRShow = (plateForm) => {
     dispatch(openDialog(plateForm));
   };
+  const trigger = useScrollTrigger();
+  // console.log("Hello triger", trigger);
   return (
     <React.Fragment>
       {isOpen && <AlertDialog />}
       <AppBar
-        position="fixed"
+        position={position}
         sx={(theme) => ({
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+          transition: "top 0.5s",
+          top: top,
+          mt: 0,
+          py: 1,
+          // display: "flex",
+          // alignItems: "center",
+          // justifyContent: "space-between",
           flexShrink: 0,
           bgcolor:
             theme.palette.mode === "light"
               ? "rgba(255, 255, 255, 0.9)"
               : "rgba(0, 0, 0, 0.9)",
           backdropFilter: "blur(24px)",
-          border: "1px solid",
+          borderBottom: "1px solid",
           borderColor: "divider",
           boxShadow:
             theme.palette.mode === "light"
               ? `0 0 1px rgba(85, 166, 246, 0.1), 1px 1.5px 2px -1px rgba(85, 166, 246, 0.15), 4px 4px 12px -2.5px rgba(85, 166, 246, 0.15)`
               : "0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)",
         })}>
-        {/* <Container maxWidth="xl"> */}
-        <Toolbar variant="dense" disableGutters>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: "flex",
-              alignItems: "center",
-              // ml: "-18px",
-              // px: 0,
-            }}>
-            <CustomImage
-              style={{ width: "150px", height: "auto", cursor: "pointer" }}
-              src={colorMode === "dark" ? whiteLogo : darkLogo}
-              alt="logo of east company"
-            />
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              {menuItems.map((menu) => (
-                <MenuItem
-                  key={menu}
-                  onClick={() => scrollToSection(menu)}
-                  sx={{ py: "6px", px: "12px" }}>
-                  <Typography
-                    variant="body2"
-                    sx={{ textTransform: "uppercase" }}
-                    color="text.primary">
-                    {menu}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              display: { xs: "none", md: "flex" },
-              gap: 0.5,
-              alignItems: "center",
-            }}>
-            <MenuItem sx={{ py: "6px", px: "12px" }}>
-              <Link
-                variant="body2"
-                href="mailto:info@eastlongsz.com"
-                color="text.primary">
-                E-mail: info@eastlongsz.com
-              </Link>
-            </MenuItem>
-            <MenuItem sx={{ py: "6px", px: "12px" }}>
-              <HoverNAnimation isAnimate={true}>
-                <Link
-                  variant="body2"
-                  href="tel:+861712345667"
-                  color="text.primary">
-                  WhatsApp/WeChat: +86 13692181738
-                </Link>
-              </HoverNAnimation>
-            </MenuItem>
-            <Button
-              title="Click Here"
-              sx={{ mr: "5px" }}
-              color="primary"
-              variant="contained"
-              size="medium"
-              onClick={() => handleQRShow("WhatsApp")}>
+        <Container maxWidth="xl">
+          <Toolbar variant="dense" disableGutters>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                // ml: "-18px",
+                // px: 0,
+              }}>
               <CustomImage
-                style={{ width: "33px", height: "auto" }}
-                src={CustomWhatsAppIcon}
+                style={{ width: "180px", height: "auto", cursor: "pointer" }}
+                src={colorMode === "dark" ? whiteLogo : darkLogo}
+                alt="logo of east company"
               />
-              WhatsApp
-            </Button>
-            <Button
-              title="Click Here"
-              sx={{ ml: "5px" }}
-              color="primary"
-              variant="outlined"
-              size="medium"
-              onClick={() => handleQRShow("WeChat")}>
-              <CustomImage
-                style={{ width: "30px", height: "auto" }}
-                src={CustomWeChatIcon}
-              />
-              WeChat
-            </Button>
-            <ToggleColorMode />
-          </Box>
-          {/* ================
-               For Mobile menus start here
-               =================*/}
-          <Box sx={{ display: { sm: "", md: "none" } }}>
-            <Button
-              variant="text"
-              color="primary"
-              aria-label="menu"
-              onClick={toggleDrawer(true)}
-              sx={{ minWidth: "30px", p: "4px" }}>
-              <MenuIcon />
-            </Button>
-            <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
-              <Box
-                sx={{
-                  minWidth: "60dvw",
-                  p: 2,
-                  backgroundColor: "background.paper",
-                  flexGrow: 1,
-                }}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "end",
-                    flexGrow: 1,
-                  }}>
-                  <ToggleColorMode />
-                </Box>
+              <Box sx={{ display: { xs: "none", md: "flex", gap:7 } }}>
                 {menuItems.map((menu) => (
                   <MenuItem
-                    onClick={() => scrollToSection(menu)}
                     key={menu}
-                    sx={{ textTransform: "uppercase" }}>
-                    {menu}
+                    onClick={() => scrollToSection(menu)}
+                    sx={{ py: "6px", px: "12px" }}>
+                    <Typography
+                      variant="subtitle1"
+                      sx={{ textTransform: "capitalize" }}
+                      color="text.primary">
+                      {menu}
+                    </Typography>
                   </MenuItem>
                 ))}
-
-                <Divider />
-                <MenuItem sx={{ py: "6px", px: "12px" }}>
-                  <Link
-                    variant="body2"
-                    href="mailto:info@eastlongsz.com"
-                    color="text.primary">
-                    E-mail: info@eastlongsz.com
-                  </Link>
-                </MenuItem>
-                <MenuItem sx={{ py: "6px", px: "12px" }}>
-                  <Link
-                    variant="body2"
-                    href="tel:+861712345667"
-                    color="text.primary">
-                    WhatsApp/WeChat: +86 13692181738
-                  </Link>
-                </MenuItem>
-                <Button
-                  sx={{ mr: "5px" }}
-                  color="primary"
-                  variant="contained"
-                  size="medium"
-                  onClick={() => handleQRShow("WhatsApp")}>
-                  <CustomImage
-                    style={{ width: "33px", height: "auto" }}
-                    src={CustomWhatsAppIcon}
-                  />
-                  WhatsApp
-                </Button>
-                <Button
-                  sx={{ ml: "5px" }}
-                  color="primary"
-                  variant="outlined"
-                  size="medium"
-                  onClick={() => handleQRShow("WeChat")}>
-                  <CustomImage
-                    style={{ width: "30px", height: "auto" }}
-                    src={CustomWeChatIcon}
-                  />
-                  WeChat
-                </Button>
               </Box>
-            </Drawer>
-          </Box>
-        </Toolbar>
-        {/* </Container> */}
+            </Box>
+            <Box
+              sx={{
+                display: { xs: "none", md: "flex" },
+                gap: 3,
+                alignItems: "center",
+              }}>
+              <Button
+                title="Click Here"
+                sx={{ ml: "25px" }}
+                color="primary"
+                variant="contained"
+                size="medium"
+                onClick={() => handleQRShow("WhatsApp")}>
+                <CustomImage
+                  style={{ width: "33px", height: "auto" }}
+                  src={CustomWhatsAppIcon}
+                />
+                WhatsApp
+              </Button>
+              <Button
+                title="Click Here"
+                sx={{ ml: "5px" }}
+                color="primary"
+                variant="outlined"
+                size="medium"
+                onClick={() => handleQRShow("WeChat")}>
+                <CustomImage
+                  style={{ width: "30px", height: "auto" }}
+                  src={CustomWeChatIcon}
+                />
+                WeChat
+              </Button>
+              <ToggleColorMode />
+            </Box>
+            {/* ================
+               For Mobile menus start here
+               =================*/}
+            <Box sx={{ display: { sm: "", md: "none" } }}>
+              <Button
+                variant="text"
+                color="primary"
+                aria-label="menu"
+                onClick={toggleDrawer(true)}
+                sx={{ minWidth: "30px", p: "4px" }}>
+                <MenuIcon />
+              </Button>
+              <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+                <Box
+                  sx={{
+                    minWidth: "60dvw",
+                    p: 2,
+                    backgroundColor: "background.paper",
+                    flexGrow: 1,
+                  }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "end",
+                      flexGrow: 1,
+                    }}>
+                    <ToggleColorMode />
+                  </Box>
+                  {menuItems.map((menu) => (
+                    <MenuItem
+                      onClick={() => scrollToSection(menu)}
+                      key={menu}
+                      sx={{ textTransform: "capitalize" }}>
+                      {menu}
+                    </MenuItem>
+                  ))}
+
+                  <Divider />
+                  <MenuItem sx={{ py: "6px", px: "12px" }}>
+                    <Link
+                      variant="body2"
+                      href="mailto:info@eastlongsz.com"
+                      color="text.primary">
+                      E-mail: info@eastlongsz.com
+                    </Link>
+                  </MenuItem>
+                  <MenuItem sx={{ py: "6px", px: "12px" }}>
+                    <Link
+                      variant="body2"
+                      href="tel:+861712345667"
+                      color="text.primary">
+                      WhatsApp/WeChat: +86 13692181738
+                    </Link>
+                  </MenuItem>
+                  <Button
+                    sx={{ mr: "5px" }}
+                    color="primary"
+                    variant="contained"
+                    size="medium"
+                    onClick={() => handleQRShow("WhatsApp")}>
+                    <CustomImage
+                      style={{ width: "33px", height: "auto" }}
+                      src={CustomWhatsAppIcon}
+                    />
+                    WhatsApp
+                  </Button>
+                  <Button
+                    sx={{ ml: "5px" }}
+                    color="primary"
+                    variant="outlined"
+                    size="medium"
+                    onClick={() => handleQRShow("WeChat")}>
+                    <CustomImage
+                      style={{ width: "30px", height: "auto" }}
+                      src={CustomWeChatIcon}
+                    />
+                    WeChat
+                  </Button>
+                </Box>
+              </Drawer>
+            </Box>
+          </Toolbar>
+        </Container>
       </AppBar>
     </React.Fragment>
   );

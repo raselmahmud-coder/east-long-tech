@@ -1,12 +1,30 @@
-"use client"
+"use client";
 import React from "react";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/reduxStore";
 
-import localFont from 'next/font/local'
- 
+import localFont from "next/font/local";
+
 // Font files can be colocated inside of `pages`
-const myFont = localFont({ src: '../public/fonts/Inter/Inter-VariableFont_slnt,wght.ttf' })
+const myFont = localFont({ src: "../public/fonts/Helvetica/Helvetica.ttf" });
+const myFont1 = localFont({
+  src: "../public/fonts/Helvetica/Helvetica-Bold.ttf",
+});
+const myFont2 = localFont({
+  src: "../public/fonts/Helvetica/Helvetica-BoldOblique.ttf",
+});
+const myFont3 = localFont({
+  src: "../public/fonts/Helvetica/helvetica-compressed-5871d14b6903a.otf",
+});
+const myFont4 = localFont({
+  src: "../public/fonts/Helvetica/helvetica-light-587ebe5a59211.ttf",
+});
+const myFont5 = localFont({
+  src: "../public/fonts/Helvetica/Helvetica-Oblique.ttf",
+});
+const myFont6 = localFont({
+  src: "../public/fonts/Helvetica/helvetica-rounded-bold-5871d05ead8de.otf",
+});
 
 /* export const metadata = {
   title: "Create Next App",
@@ -22,7 +40,8 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
 
-      <body className={`${myFont.className}`}>
+      <body
+        className={`${myFont.className} ${myFont1.className} ${myFont2.className} ${myFont3.className} ${myFont4.className} ${myFont5.className} ${myFont6.className}`}>
         <Provider store={store}>{children}</Provider>
       </body>
     </html>

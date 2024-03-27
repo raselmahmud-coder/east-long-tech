@@ -64,6 +64,7 @@ const ContactUs = ({ mode }) => {
       )}
 
       <Typography
+        id="contact-us"
         component="h2"
         variant="h2"
         sx={{
