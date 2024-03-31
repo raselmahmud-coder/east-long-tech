@@ -5,26 +5,43 @@ import img1 from "../../../public/assets/img1.jpg";
 import img3 from "../../../public/assets/3.png";
 import img4 from "../../../public/assets/4.png";
 import img5 from "../../../public/assets/5.png";
+import InsertChartIcon from "@mui/icons-material/InsertChart";
+import Diversity3Icon from "@mui/icons-material/Diversity3";
+import DataThresholdingIcon from "@mui/icons-material/DataThresholding";
+import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
+import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 
 const descriptionData = [
-  `Shenzhen EASTLONG Technology Co., Ltd. is the professional
+  {
+    item: `Shenzhen EASTLONG Technology Co., Ltd. is the professional
 manufacturer which focus on R&D, manufacturing and servicing
 One-stop SMT/DIP production equipment solution and One-stop LCD
 Module Automation equipment solution.`,
-  `Our main products including Pick and Place Machine, Lead-free Reflow
+    icon: <InsertChartIcon sx={{ fontSize: 45, mb: 2 }} />,
+  },
+  {
+    item: `EASTLONG Technology is committed to providing efficient service,
+    cost effective and high quality one-stop automation production
+    solutions. We sincerely invite every client to visit our company and
+    build the long term friendship and cooperation.`,
+    icon: <BusinessCenterIcon sx={{ fontSize: 45, mb: 2 }} />,
+  },
+  {
+    item: `Our main products including Pick and Place Machine, Lead-free Reflow
 Oven Machine, Lead-free Wave Soldering Machine, Fully Automatic
 Printing Machine,Peripheral Equipment and LCD feeding machine, LCD
 terminal cleaning machine, COG bonding machine, FOG bonding machine,
 3 in1 dispensing machine, all kinds of non-stand equipment and
 intelligent solution for the factory.`,
-  `EASTLONG Technology has more than 20 years industrial experience, we
+    icon: <DataThresholdingIcon sx={{ fontSize: 45, mb: 2 }} />,
+  },
+  {
+    item: `EASTLONG Technology has more than 20 years industrial experience, we
 provided professional Automation production equipment solutions for
 many well -know enterprises at home and abroad, Such as Huawei, ZTE,
 TCL, Hikvision, VIVO, TP-LINK, SKYWORTH, BOE, Huaxing, Tianma, etc.`,
-  `EASTLONG Technology is committed to providing efficient service,
-cost effective and high quality one-stop automation production
-solutions. We sincerely invite every client to visit our company and
-build the long term friendship and cooperation.`,
+    icon: <Diversity3Icon sx={{ fontSize: 45, mb: 2 }} />,
+  },
 ];
 
 const StrengthOfCompany = ({ colorMode }) => (
@@ -32,7 +49,7 @@ const StrengthOfCompany = ({ colorMode }) => (
     <CustomImage
       src={img1}
       style={{
-        marginTop:"8px",
+        marginTop: "8px",
         width: "100%",
         height: "auto",
         borderRadius: "5px",
@@ -45,11 +62,11 @@ const StrengthOfCompany = ({ colorMode }) => (
       sx={{
         my: { xs: 4, sm: 5, md: 6 },
       }}>
-      {descriptionData.map((item, index) => (
+      {descriptionData.map(({ item, icon }, index) => (
         <Grid item xs={12} sm={6} md={6} key={item}>
           <Box
             sx={{
-              minHeight:190,
+              minHeight: 250,
               background:
                 colorMode === "dark"
                   ? "linear-gradient(to right, #182023, #3B0202)"
@@ -59,6 +76,7 @@ const StrengthOfCompany = ({ colorMode }) => (
               px: 3,
               py: 2,
             }}>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>{icon}</Box>
             <Typography
               paragraph
               sx={{
@@ -71,23 +89,23 @@ const StrengthOfCompany = ({ colorMode }) => (
       ))}
     </Grid>
     <Typography
-        component="h2"
+      component="h2"
+      variant="h2"
+      sx={{
+        textAlign: "center",
+        // mt: { xs: 4, sm: 5, md: 5 },
+      }}>
+      Factory{" "}
+      <Typography
+        component="span"
         variant="h2"
         sx={{
-          textAlign: "center",
-          // mt: { xs: 4, sm: 5, md: 5 },
+          color: (theme) =>
+            colorMode === "light" ? "primary.main" : "primary.light",
         }}>
-        Factory{" "}
-        <Typography
-          component="span"
-          variant="h2"
-          sx={{
-            color: (theme) =>
-              colorMode === "light" ? "primary.main" : "primary.light",
-          }}>
-          Show
-        </Typography>
+        Show
       </Typography>
+    </Typography>
     <Grid
       container
       spacing={4}

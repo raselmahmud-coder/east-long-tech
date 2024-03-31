@@ -35,7 +35,7 @@ const BannerCarousel = ({ mode }) => {
         sx={{
           background: `${
             mode == "light"
-              ? "linear-gradient(rgb(255 255 255 / 51%), rgb(255 253 253 / 52%)),"
+              ? "linear-gradient(rgb(0 0 0 / 48%), rgb(0 0 0 / 48%)),"
               : "linear-gradient(rgb(0 0 0 / 44%), rgb(0 0 0 / 44%)),"
           } url(${bannerBg.src})`,
           zIndex: 0,
@@ -91,7 +91,10 @@ const BannerCarousel = ({ mode }) => {
                     item
                     xs={12}
                     md={6}
-                    sx={{ textAlign: "center" }}
+                    sx={{
+                      textAlign: "center",
+                      color: mode == "light" && "grey.50",
+                    }}
                     order={matches && 1}>
                     <Typography variant="h3" sx={{ mb: 3 }}>
                       {title}
@@ -116,6 +119,7 @@ const BannerCarousel = ({ mode }) => {
                           fontSize: { xs: 16, md: 27 },
                           px: { xs: 2, md: 5 },
                           py: { xs: 1, md: 3.5 },
+                          color: mode == "light" && "grey.50",
                         }}>
                         See More
                         <LaunchIcon />
