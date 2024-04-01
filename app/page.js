@@ -37,7 +37,6 @@ function HideOnScroll(props) {
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
   });
-  console.log(trigger, "Hello trigeer");
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       {children}
@@ -65,7 +64,7 @@ export default function Home() {
                 xs: "none",
                 bgcolor:
                   mode === "light"
-                    ? "rgb(203 203 203 / 90%)"
+                    ? "#002D56"
                     : "rgb(45 45 45)",
                 backdropFilter: "blur(24px)",
                 border: "1px solid",

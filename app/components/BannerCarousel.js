@@ -22,123 +22,64 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-import LaunchIcon from "@mui/icons-material/Launch";
-import bannerBg from "../../public/assets/bgImages/bannerBG.png";
 
 const BannerCarousel = ({ mode }) => {
   const matches = useMediaQuery("(max-width:600px)");
 
   return (
     <>
-      <Box
-        sx={{
-          background: `${
-            mode == "light"
-              ? "linear-gradient(rgb(0 0 0 / 48%), rgb(0 0 0 / 48%)),"
-              : "linear-gradient(rgb(0 0 0 / 44%), rgb(0 0 0 / 44%)),"
-          } url(${bannerBg.src})`,
-          zIndex: 0,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}>
-        <Container maxWidth={"xl"}>
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={50}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 1,
-                spaceBetween: 30,
-              },
-              1024: {
-                slidesPerView: 1,
-                spaceBetween: 50,
-              },
-            }}
-            // autoHeight={true}
-            style={{
-              zIndex: 0,
-              height: "84vh",
-              marginTop: "60px",
-            }}
-            loop={true}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            modules={[Autoplay, Pagination, Navigation]}>
-            {carouseImage.map(({ id, image, title }) => (
-              <SwiperSlide key={id} style={{}}>
-                <Grid
-                  container
-                  spacing={1}
-                  sx={{
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}>
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                    sx={{
-                      textAlign: "center",
-                      color: mode == "light" && "grey.50",
-                    }}
-                    order={matches && 1}>
-                    <Typography variant="h3" sx={{ mb: 3 }}>
-                      {title}
-                    </Typography>
-                    {id % 2 == 0 ? (
-                      <Button
-                        variant="contained"
-                        sx={{
-                          mt: { xs: 1, md: 3 },
-                          fontSize: { xs: 16, md: 27 },
-                          px: { xs: 2, md: 5 },
-                          py: { xs: 1, md: 3.5 },
-                        }}>
-                        Contact Us
-                        <ArrowOutwardIcon />
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="outlined"
-                        sx={{
-                          mt: { xs: 1, md: 3 },
-                          fontSize: { xs: 16, md: 27 },
-                          px: { xs: 2, md: 5 },
-                          py: { xs: 1, md: 3.5 },
-                          color: mode == "light" && "grey.50",
-                        }}>
-                        See More
-                        <LaunchIcon />
-                      </Button>
-                    )}
-                  </Grid>
-                  <Grid item xs={12} md={6} order={matches && 0}>
-                    <CustomImage
-                      src={image}
-                      alt="carousel"
-                      style={{ width: "100%", height: "auto" }}
-                    />
-                  </Grid>
-                </Grid>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </Container>
-      </Box>
+      <Container maxWidth={"xl"}>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={50}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 1,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 1,
+              spaceBetween: 50,
+            },
+          }}
+          // autoHeight={true}
+          style={{
+            zIndex: 0,
+            // height: "84vh",
+            marginTop: "60px",
+          }}
+          loop={true}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}>
+          {carouseImage.map(({ id, image }) => (
+            <SwiperSlide key={id}>
+              <CustomImage
+                onClick={() =>
+                  window.open(
+                    "https://eastlong.en.alibaba.com/productgrouplist-936782974/SMT_Reflow_Oven.html?spm=a2700.shop_index.11406.3.88cb7391KHt5l3",
+                    "_blank",
+                  )
+                }
+                src={image}
+                alt="carousel img"
+                style={{ width: "100%", height: "auto", cursor: "pointer" }}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Container>
     </>
   );
 };
