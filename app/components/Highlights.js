@@ -18,7 +18,7 @@ export default function Highlights({ mode }) {
         color: "white",
         backgroundImage:
           mode === "light"
-            ? "linear-gradient(180deg, #357dff, #FFF)"
+            ? "linear-gradient(180deg, #002d56, #FFF)"
             : `linear-gradient(#02294F, ${alpha("#090E10", 0.5)})`,
         backgroundSize: "100% 30%",
         backgroundRepeat: "no-repeat",
@@ -34,7 +34,6 @@ export default function Highlights({ mode }) {
         <Box sx={{
           mt:2
         }}>
-          <RibbonHeading>
             <Typography
               gutterBottom
               component="h2"
@@ -44,7 +43,6 @@ export default function Highlights({ mode }) {
               }}>
               Why Choose Us?
             </Typography>
-          </RibbonHeading>
         </Box>
         <Typography variant="body1" sx={{ textAlign: "justify", width:"50%", color: mode =="dark" ? "primary.main" :"grey.900" }}>
           Explore why our product stands out: adaptability, durability,
@@ -65,7 +63,7 @@ export default function Highlights({ mode }) {
                   height: "100%",
                   border: "1px solid",
                   borderColor: "grey.800",
-                  bgcolor: mode === "dark" ? "grey.800" : "grey.400"
+                  bgcolor: mode === "light" ? "#002d56" : "grey.400"
                 }}>
                 <Box
                   sx={{

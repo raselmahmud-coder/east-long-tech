@@ -70,7 +70,7 @@ const StrengthOfCompany = ({ colorMode }) => (
               background:
                 colorMode === "dark"
                   ? "linear-gradient(to right, #182023, #3B0202)"
-                  : "linear-gradient(to right, #BFCCD9, #FBFCFE)",
+                  : "linear-gradient(to right, #fef8006b, #FBFCFE)",
               mb: index != 3 && 2,
               borderRadius: 2,
               px: 3,

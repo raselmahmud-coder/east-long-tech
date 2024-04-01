@@ -7,7 +7,7 @@ import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import CustomImage from "../../../lib/customImage";
 import whiteLogo from "../../../public/assets/white-logo.png";
 import blackLogo from "../../../public/assets/black-logo.png";
@@ -52,15 +52,15 @@ const HotProductsPresent = ({ mode }) => {
   });
 
   const handleExpandClick = (id) => {
-    if (id === expanded.id) {
-      setExpanded({ isExpanded: !expanded.isExpanded, id: id });
-    } else {
-      setExpanded({ isExpanded: true, id: id });
-    }
+    window.open(
+      "https://eastlong.en.alibaba.com/productgrouplist-936782974/SMT_Reflow_Oven.html?spm=a2700.shop_index.11406.3.88cb7391KHt5l3",
+      "_blank",
+    );
   };
   return (
     <>
       <Typography
+        id="products"
         component="h1"
         variant="h2"
         sx={{
@@ -84,7 +84,8 @@ const HotProductsPresent = ({ mode }) => {
             <Grid item xs={12} sm={6} md={4} key={id}>
               <Card
                 sx={{
-                  bgcolor: mode === "dark" ? "grey.800" : "grey.400",
+                  background: `linear-gradient(0deg, #ffe8c299, #ffd25d)`,
+                  // bgcolor: mode === "dark" ? "grey.800" : "grey.400",
                   // minHeight: { xs: "auto", sm: "880px", md: "880px" },
                 }}>
                 <Box
@@ -99,7 +100,7 @@ const HotProductsPresent = ({ mode }) => {
                     src={mode === "dark" ? whiteLogo : blackLogo}
                     style={{ width: "120px", height: "auto" }} //these logo need to export small size 70X40
                   />
-                  <Typography>
+                  <Typography variant="body1">
                     Shenzhen Eastlong Technology Co., Ltd.
                   </Typography>
                 </Box>
@@ -122,8 +123,7 @@ const HotProductsPresent = ({ mode }) => {
                     variant="body1"
                     sx={{
                       textAlign: "justify",
-                    }}
-                    color="text.secondary">
+                    }}>
                     {description.slice(0, 120)}...
                   </Typography>
                 </CardContent>
@@ -141,24 +141,13 @@ const HotProductsPresent = ({ mode }) => {
                     />
                   </IconButton>
                   <ExpandMore
-                    expand={expanded.isExpanded && id === expanded.id}
                     onClick={() => handleExpandClick(id)}
                     aria-expanded={expanded.isExpanded}
                     aria-label="show more">
-                    <FileDownloadIcon />
-                    {expanded.isExpanded && id === expanded.id
-                      ? "Close Me"
-                      : "View Details"}
+                    <ArrowOutwardIcon />
+                    View Details
                   </ExpandMore>
                 </CardActions>
-                <Collapse
-                  in={expanded.isExpanded && id === expanded.id}
-                  timeout="auto"
-                  unmountOnExit>
-                  <CardContent>
-                    <Typography>{details}</Typography>
-                  </CardContent>
-                </Collapse>
               </Card>
             </Grid>
           ),

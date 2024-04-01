@@ -47,13 +47,11 @@ export default function Testimonials() {
           flexDirection:"column",
           textAlign: "center",
         }}>
-        <RibbonHeading>
           <Typography component="h2" variant="h2" color="text.primary" sx={{
           textAlign: "center",
         }}>
             Testimonials
           </Typography>
-        </RibbonHeading>
         <Divider
           variant="middle"
           sx={{

@@ -18,11 +18,12 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
+  styled,
 } from "@mui/material";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { useSelector } from "react-redux";
 import SlidingCard from "@/lib/SlidingCard";
-import RibbonHeading from "@/lib/RibbonHeading";
+import SubdirectoryArrowRightIcon from "@mui/icons-material/SubdirectoryArrowRight";
 
 export default function Features() {
   const { colorMode } = useSelector((state) => state.colorMode);
@@ -33,255 +34,87 @@ export default function Features() {
   };
 
   const selectedFeature = featureProducts[selectedItemIndex];
+  const GradientText = styled(Typography)(({ theme }) => ({
+    background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.success.main})`,
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  }));
 
   return (
     <Box id="features" sx={{ py: { xs: 5, sm: 6 } }}>
-      <Grid container spacing={6}>
-        <Grid item xs={12} md={6}>
-          <SlidingCard>
-            <RibbonHeading>
-
-            <Typography
-              component="h2"
-              variant="h2"
-              color="text.primary"
-              sx={{ textAlign: "center" }}>
-              Featured Product
-            </Typography>
-                </RibbonHeading>
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              sx={{ mb: { xs: 2, sm: 4 }, textAlign: "justify", mt: 3 }}>
-              Here you can provide a brief overview of the key features of the
-              product. For example, you could list the number of features, the
-              types of features, add-ons, or the benefits of the features.
-            </Typography>
-          </SlidingCard>
-
-          {/*
-          ==================
-           For Mobile view start
-          ================= */}
-          <Grid
-            container
-            item
-            gap={1}
-            sx={{ display: { xs: "auto", sm: "none" } }}>
-            {featureProducts.map(({ title }, index) => (
-              <Chip
-                key={index}
-                label={title}
-                onClick={() => handleItemClick(index)}
-                sx={{
-                  width:"100%",
-                  borderColor: (theme) => {
-                    if (theme.palette.mode === "light") {
-                      return selectedItemIndex === index ? "success.main" : "grey.100";
-                    }
-                    return selectedItemIndex === index ? "success.main" : "grey.100";
-                  },
-                  background: (theme) => {
-                    if (theme.palette.mode === "light") {
-                      return selectedItemIndex === index ? "none" : "";
-                    }
-                    return selectedItemIndex === index ? "none" : "";
-                  },
-                  backgroundColor:
-                    selectedItemIndex === index ? "primary.main" : "",
-                  "& .MuiChip-label": {
-                    color: selectedItemIndex === index ? "#fff" : "",
-                  },
-                }}
-              />
-            ))}
-          </Grid>
-          <Box
-            component={Card}
-            variant="outlined"
+      <SlidingCard>
+        <GradientText component="h2" variant="h2" sx={{ textAlign: "center" }}>
+          Unlock Productivity With EASL SMT Machines
+        </GradientText>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Typography
+            variant="body1"
+            color="text.secondary"
             sx={{
-              display: { xs: "flex", sm: "none" },
-              flexDirection: "column",
-              mt: 4,
+              mb: { xs: 2, sm: 4 },
+              textAlign: "justify",
+              mt: 3,
+              maxWidth: "85%",
             }}>
-            <CustomImage
-              src={featureProducts[selectedItemIndex].imageLight}
-              style={{ width: "300px", height: "auto", margin: "auto" }}
-            />
-            <Box sx={{ px: 2, pb: 2 }}>
-              <Typography color="text.primary" variant="h6" fontWeight="bold">
-                {selectedFeature.title}
-              </Typography>
-              {selectedFeature.list.map((item, index) => (
-                <List key={index}>
-                  <ListItem
-                    sx={{
-                      m: 0,
-                      p: 0,
-                    }}>
-                    <ListItemAvatar>
-                      <Avatar
-                        sx={{
-                          bgcolor:
-                            colorMode === "dark"
-                              ? "secondary.dark"
-                              : "secondary.light",
-                        }}>
-                        <VerifiedIcon
-                          sx={{
-                            color: "success.main",
-                          }}
-                        />
-                      </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={item} />
-                  </ListItem>
-                </List>
-              ))}
-              <Link
-                color="primary"
-                variant="body2"
-                fontWeight="bold"
-                sx={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  "& > svg": { transition: "0.2s" },
-                  "&:hover > svg": { transform: "translateX(2px)" },
-                }}>
-                <span>View more</span>
-                <ChevronRightRoundedIcon
-                  fontSize="small"
-                  sx={{ mt: "1px", ml: "2px" }}
+            EASL&apos;s SMT Machines are top-tier, innovative solutions designed
+            for various industries. These machines are engineered for precision,
+            efficiency, and durability, capable of converting a wide range of
+            materials. They offer superior performance in tasks such as cutting,
+            folding, and packaging. With EASL&apos;s SMT Machines, businesses
+            can significantly enhance their production capabilities and
+            streamline their operations.
+          </Typography>
+        </Box>
+      </SlidingCard>
+      <Grid container spacing={3}>
+        {featureProducts.map(({ imageLight, list, title }) => (
+          <Grid item xs={12} md={6} key={title}>
+            <Grid container spacing={0}>
+              <Grid item xs={12} md={6}>
+                <CustomImage
+                  src={imageLight}
+                  blurDataURL={`https://placehold.co/600x400/EEE/31343C`}
+                  style={{
+                    width: "70%",
+                    height: "auto",
+                    display: "block",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                  }}
                 />
-              </Link>
-            </Box>
-          </Box>
-          {/*
-          ==================
-           For desktop view start
-          ================= */}
-          <Stack
-            direction="column"
-            justifyContent="center"
-            alignItems="flex-start"
-            spacing={2}
-            useFlexGap
-            sx={{ width: "100%", display: { xs: "none", sm: "flex" } }}>
-            {featureProducts.map(({ title, list }, index) => (
-              <Card
-                key={index}
-                variant="outlined"
-                component={Button}
-                onClick={() => handleItemClick(index)}
-                sx={{
-                  p: 3,
-                  height: "fit-content",
-                  width: "100%",
-                  background: "none",
-                  backgroundColor:
-                    selectedItemIndex === index ? "action.selected" : undefined,
-                  borderColor: (theme) => {
-                    if (theme.palette.mode === "light") {
-                      return selectedItemIndex === index
-                        ? "primary.light"
-                        : "grey.200";
-                    }
-                    return selectedItemIndex === index
-                      ? "primary.dark"
-                      : "grey.800";
-                  },
-                }}>
-                <Box
-                  sx={{
-                    width: "100%",
-                    display: "flex",
-                    textAlign: "left",
-                    flexDirection: { xs: "column", md: "row" },
-                    alignItems: { md: "center" },
-                    gap: 2.5,
-                  }}>
-                  <Box sx={{ textTransform: "none" }}>
-                    <Typography
-                      color="text.primary"
-                      variant="h5"
-                      fontWeight="bold">
-                      {title}
-                    </Typography>
-                    {list.map((item, index) => (
-                      <List key={index}>
-                        <ListItem
-                          sx={{
-                            m: 0,
-                            p: 0,
-                          }}>
-                          <ListItemAvatar>
-                            <Avatar
-                              sx={{
-                                bgcolor:
-                                  colorMode === "dark"
-                                    ? "secondary.dark"
-                                    : "secondary.light",
-                              }}>
-                              <VerifiedIcon
-                                sx={{
-                                  color: "success.main",
-                                }}
-                              />
-                            </Avatar>
-                          </ListItemAvatar>
-                          <ListItemText primary={item} />
-                        </ListItem>
-                      </List>
-                    ))}
-
-                    <Link
-                      color="primary"
-                      variant="body2"
-                      fontWeight="bold"
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Typography variant="h5">{title}</Typography>
+                {list.map((li) => (
+                  <List key={li}>
+                    <ListItem
                       sx={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        "& > svg": { transition: "0.2s" },
-                        "&:hover > svg": { transform: "translateX(2px)" },
-                      }}
-                      onClick={(event) => {
-                        event.stopPropagation();
+                        m: 0,
+                        p: 0,
                       }}>
-                      <span>View more</span>
-                      <ChevronRightRoundedIcon
-                        fontSize="small"
-                        sx={{ mt: "1px", ml: "2px" }}
+                      <SubdirectoryArrowRightIcon
+                        sx={{
+                          color: "primary.main",
+                        }}
                       />
-                    </Link>
-                  </Box>
-                </Box>
-              </Card>
-            ))}
-          </Stack>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{ display: { xs: "none", sm: "flex" }, width: "100%" }}>
-          <Card
-            variant="outlined"
-            sx={{
-              height: "100%",
-              width: "100%",
-              display: { xs: "none", sm: "flex" },
-              pointerEvents: "none",
-            }}>
-            <CustomImage
-              style={{
-                width: "523px",
-                height: "auto",
-                margin: "auto",
-              }}
-              src={featureProducts[selectedItemIndex].imageLight}
-            />
-          </Card>
-        </Grid>
+                      <ListItemText primary={li} />
+                    </ListItem>
+                  </List>
+                ))}
+                <Button
+                  variant="contained"
+                  onClick={() =>
+                    window.open(
+                      "https://www.alibaba.com/product-detail/Fully-Automatic-SMT-Stencil-Printer-SMT_1601047844062.html?spm=a2700.shop_plgr.41413.101.bbd553edfQ3bEd",
+                      "_blank",
+                    )
+                  }>
+                  View More
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        ))}
       </Grid>
     </Box>
   );

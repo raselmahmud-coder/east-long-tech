@@ -48,7 +48,7 @@ const ProductCategories = ({ mode: colorMode }) => {
               <Card
                 variant="elevation"
                 sx={{
-                  bgcolor: colorMode === "dark" ? "grey.800" : "grey.400",
+                  bgcolor: colorMode === "dark" ? "grey.800" : "primary.main",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -133,8 +133,8 @@ const ProductCategories = ({ mode: colorMode }) => {
                     {description}
                   </Typography>
                   <a
-                    href="#"
-                    // target="_blank"
+                    href="https://eastlong.en.alibaba.com/productlist.html?spm=a2700.shop_index.88.15"
+                    target="_blank"
                     // rel="noopener noreferrer"
                   >
                     <Button

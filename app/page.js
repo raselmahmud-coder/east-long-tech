@@ -62,10 +62,7 @@ export default function Home() {
               position="sticky"
               sx={{
                 xs: "none",
-                bgcolor:
-                  mode === "light"
-                    ? "#002D56"
-                    : "rgb(45 45 45)",
+                bgcolor: mode === "light" ? "#002D56" : "rgb(45 45 45)",
                 backdropFilter: "blur(24px)",
                 border: "1px solid",
                 borderColor: "divider",
@@ -80,10 +77,7 @@ export default function Home() {
         )}
         <AppAppBar position={"fixed"} top={trigger || matches ? 0 : 40} />
         <BannerCarousel mode={mode} />
-        <Container
-          maxWidth="xl"
-          component={"main"}
-          sx={{ bgcolor: "background.default", mt: { sx: 8, md: 10 } }}>
+        <Container maxWidth="xl" component={"main"}>
           <Hero mode={mode} />
           <Features mode={mode} />
           <HotProductsPresent mode={mode} />
