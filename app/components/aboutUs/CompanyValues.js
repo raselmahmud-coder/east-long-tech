@@ -20,6 +20,7 @@ const CompanyValues = ({ title, number, mode, marginBottom }) => {
             mode === "dark"
               ? "linear-gradient(to right, #090E10, #5B6B7C)"
               : "linear-gradient(to right, #95070761, #FBFCFE)",
+          boxShadow: 9,
         }}>
         <Typography
           fontWeight="bold"

@@ -28,6 +28,9 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 import TopAppBar from "@/app/components/TopAppBar";
+import ProductFeatured from "./components/ProductFeatured";
+import featuredImg1 from '@/public/assets/featuredImg1.png';
+import featuredImg2 from '@/public/assets/featuredImg2.png';
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -81,6 +84,8 @@ export default function Home() {
           <Hero mode={mode} />
           <Features mode={mode} />
           <HotProductsPresent mode={mode} />
+          <ProductFeatured mode={mode} image={featuredImg1}/>
+          <ProductFeatured mode={mode} image={featuredImg2}/>
           <Testimonials mode={mode} />
           <Highlights mode={mode} />
           <CompanyProfile mode={mode} />

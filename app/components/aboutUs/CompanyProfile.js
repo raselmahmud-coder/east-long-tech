@@ -29,6 +29,7 @@ const CompanyProfile = () => {
   return (
     <>
       <Typography
+        id="company-profile"
         component="h2"
         variant="h2"
         sx={{

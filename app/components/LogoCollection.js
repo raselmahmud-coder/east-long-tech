@@ -23,7 +23,7 @@ to {
 export default function LogoCollection({ mode }) {
   return (
     <>
-      <Box id="logoCollection" sx={{ py: 4 }}>
+      <Box id="logoCollection" sx={{ py: 4, mb: { xs: 8, md: 18 } }}>
         <Typography
           sx={{ mb: 4 }}
           component="h2"

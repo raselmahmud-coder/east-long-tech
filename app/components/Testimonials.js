@@ -44,14 +44,18 @@ export default function Testimonials() {
       <Box
         sx={{
           display: "flex",
-          flexDirection:"column",
+          flexDirection: "column",
           textAlign: "center",
         }}>
-          <Typography component="h2" variant="h2" color="text.primary" sx={{
-          textAlign: "center",
-        }}>
-            Testimonials
-          </Typography>
+        <Typography
+          component="h2"
+          variant="h2"
+          color="text.primary"
+          sx={{
+            textAlign: "center",
+          }}>
+          Testimonials
+        </Typography>
         <Divider
           variant="middle"
           sx={{
@@ -60,19 +64,18 @@ export default function Testimonials() {
             mx: "auto",
           }}
         />
-
-</Box>
-        <Typography
-          variant="body1"
-          color="text.secondary"
-          sx={{
-            mt: 2,
-            textAlign: "justify",
-          }}>
-          See what our customers love about our products. Discover how we excel
-          in efficiency, durability, and satisfaction. Join us for quality,
-          innovation, and reliable support.
-        </Typography>
+      </Box>
+      <Typography
+        variant="body1"
+        color="text.secondary"
+        sx={{
+          mt: 2,
+          textAlign: "justify",
+        }}>
+        See what our customers love about our products. Discover how we excel in
+        efficiency, durability, and satisfaction. Join us for quality,
+        innovation, and reliable support.
+      </Typography>
 
       <Swiper
         slidesPerView={1}
@@ -119,6 +122,7 @@ export default function Testimonials() {
                 justifyContent: "space-between",
                 flexGrow: 1,
                 p: 1,
+                boxShadow:9
               }}>
               <CardContent sx={{ position: "relative" }}>
                 <FormatQuoteIcon

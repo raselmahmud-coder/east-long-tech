@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { brandQuality } from "@/lib/fakeData";
-import { alpha } from "@mui/material";
+import { Divider, alpha } from "@mui/material";
 import RibbonHeading from "@/lib/RibbonHeading";
 
 export default function Highlights({ mode }) {
@@ -15,13 +15,13 @@ export default function Highlights({ mode }) {
       sx={{
         // pt: { xs: 0, sm: 12 },
         pb: { xs: 8, sm: 16 },
-        color: "white",
-        backgroundImage:
-          mode === "light"
-            ? "linear-gradient(180deg, #002d56, #FFF)"
-            : `linear-gradient(#02294F, ${alpha("#090E10", 0.5)})`,
-        backgroundSize: "100% 30%",
-        backgroundRepeat: "no-repeat",
+        // color: "white",
+        // backgroundImage:
+        //   mode === "light"
+        //     ? "linear-gradient(180deg, #002d56, #FFF)"
+        //     : `linear-gradient(#02294F, ${alpha("#090E10", 0.5)})`,
+        // backgroundSize: "100% 30%",
+        // backgroundRepeat: "no-repeat",
       }}>
       <Box
         sx={{
@@ -31,20 +31,38 @@ export default function Highlights({ mode }) {
           alignItems: "center",
           gap: { xs: 3, sm: 4 },
         }}>
-        <Box sx={{
-          mt:2
-        }}>
-            <Typography
-              gutterBottom
-              component="h2"
-              variant="h2"
-              sx={{
-                textAlign: "center",
-              }}>
-              Why Choose Us?
-            </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "center",
+            mt: 2,
+          }}>
+          <Typography
+            component="h2"
+            variant="h2"
+            color="text.primary"
+            sx={{
+              textAlign: "center",
+            }}>
+            Why Choose Us?
+          </Typography>
+          <Divider
+            variant="middle"
+            sx={{
+              borderTop: `2px solid ${mode === "dark" ? "red" : "black"}`,
+              width: { xs: 200, sm: 300, md: 450 },
+              mx: "auto",
+            }}
+          />
         </Box>
-        <Typography variant="body1" sx={{ textAlign: "justify", width:"50%", color: mode =="dark" ? "primary.main" :"grey.900" }}>
+        <Typography
+          variant="body1"
+          sx={{
+            textAlign: "justify",
+            width: "50%",
+            color: mode == "dark" ? "primary.main" : "grey.900",
+          }}>
           Explore why our product stands out: adaptability, durability,
           user-friendly design, and innovation. Enjoy reliable customer support
           and precision in every detail.
@@ -63,7 +81,8 @@ export default function Highlights({ mode }) {
                   height: "100%",
                   border: "1px solid",
                   borderColor: "grey.800",
-                  bgcolor: mode === "light" ? "#002d56" : "grey.400"
+                  bgcolor: mode === "light" ? "#fafafa" : "grey.400",
+                  boxShadow:8
                 }}>
                 <Box
                   sx={{
@@ -78,9 +97,7 @@ export default function Highlights({ mode }) {
                   </Typography>
                 </Box>
 
-                <Typography
-                  variant="body2"
-                  sx={{  textAlign: "justify" }}>
+                <Typography variant="body2" sx={{ textAlign: "justify" }}>
                   {item.description}
                 </Typography>
               </Stack>

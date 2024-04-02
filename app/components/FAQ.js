@@ -31,8 +31,7 @@ export default function FAQ() {
       }}
     >
       <Typography
-        component="h2"
-        variant="h4"
+        variant="h3"
         color="text.primary"
         sx={{
           width: { sm: '100%', md: '60%' },
@@ -51,13 +50,13 @@ export default function FAQ() {
             aria-controls="panel1d-content"
             id="panel1d-header"
           >
-            <Typography component="h3" variant="subtitle2" >
+            <Typography component="h3" variant="h5" >
               How do I contact customer support if I have a question or issue?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography
-              variant="body2"
+              variant="body1"
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
@@ -77,13 +76,13 @@ export default function FAQ() {
             aria-controls="panel2d-content"
             id="panel2d-header"
           >
-            <Typography component="h3" variant="subtitle2">
+            <Typography component="h3" variant="h5">
               Can I return the product if it doesn&apos;t meet my expectations?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography
-              variant="body2"
+              variant="body1"
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
@@ -102,13 +101,13 @@ export default function FAQ() {
             aria-controls="panel3d-content"
             id="panel3d-header"
           >
-            <Typography component="h3" variant="subtitle2">
+            <Typography component="h3" variant="h5">
               What makes your product stand out from others in the market?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography
-              variant="body2"
+              variant="body1"
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
@@ -127,13 +126,13 @@ export default function FAQ() {
             aria-controls="panel4d-content"
             id="panel4d-header"
           >
-            <Typography component="h3" variant="subtitle2">
+            <Typography component="h3" variant="h5">
               Is there a warranty on the product, and what does it cover?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography
-              variant="body2"
+              variant="body1"
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >

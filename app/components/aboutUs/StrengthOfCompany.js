@@ -70,11 +70,12 @@ const StrengthOfCompany = ({ colorMode }) => (
               background:
                 colorMode === "dark"
                   ? "linear-gradient(to right, #182023, #3B0202)"
-                  : "linear-gradient(to right, #fef8006b, #FBFCFE)",
+                  : "linear-gradient(to right, #7b060642, #FBFCFE)",
               mb: index != 3 && 2,
               borderRadius: 2,
               px: 3,
               py: 2,
+              boxShadow:5
             }}>
             <Box sx={{ display: "flex", justifyContent: "center" }}>{icon}</Box>
             <Typography

@@ -7,11 +7,12 @@ import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import CustomImage from "../../../lib/customImage";
 import whiteLogo from "../../../public/assets/white-logo.png";
 import blackLogo from "../../../public/assets/black-logo.png";
 import { hotProductsCollection } from "../../../lib/fakeData";
+import bgImage from "@/public/assets/bgImages/bgImg.png";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -58,14 +59,19 @@ const HotProductsPresent = ({ mode }) => {
     );
   };
   return (
-    <>
+    <Box
+      sx={{
+        background: `url(${bgImage.src})`,
+      }}>
       <Typography
         id="products"
         component="h1"
         variant="h2"
         sx={{
           textAlign: "center",
+          pt:3,
           mb: 8,
+          color: mode == "dark" ? "primary.main" : "grey.50"
         }}>
         Hot Products&nbsp;
         <Typography
@@ -78,15 +84,14 @@ const HotProductsPresent = ({ mode }) => {
           Presentation
         </Typography>
       </Typography>
-      <Grid container spacing={5}>
+      <Grid container spacing={3} sx={{px:1, pb:3}}>
         {hotProductsCollection.map(
           ({ id, title, description, details, image }) => (
-            <Grid item xs={12} sm={6} md={4} key={id}>
+            <Grid item xs={12} sm={4} md={3} key={id}>
               <Card
                 sx={{
-                  background: `linear-gradient(0deg, #ffe8c299, #ffd25d)`,
-                  // bgcolor: mode === "dark" ? "grey.800" : "grey.400",
-                  // minHeight: { xs: "auto", sm: "880px", md: "880px" },
+                  bgcolor: mode === "dark" ? "grey.800" : "linear-gradient(0deg, #f3f3f3, #fffdfa)",
+                  minHeight: { xs: "auto", sm: "515px", md: "515px" },
                 }}>
                 <Box
                   sx={{
@@ -119,13 +124,6 @@ const HotProductsPresent = ({ mode }) => {
                   <Typography variant="h5" sx={{ my: 2, textAlign: "center" }}>
                     {title}
                   </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      textAlign: "justify",
-                    }}>
-                    {description.slice(0, 120)}...
-                  </Typography>
                 </CardContent>
                 <CardActions disableSpacing sx={{ pt: 1 }}>
                   <IconButton
@@ -153,7 +151,7 @@ const HotProductsPresent = ({ mode }) => {
           ),
         )}
       </Grid>
-    </>
+    </Box>
   );
 };
 

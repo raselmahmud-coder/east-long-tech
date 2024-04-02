@@ -1,19 +1,13 @@
-import * as React from "react";
-import { alpha } from "@mui/material";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import ProductCategories from "./products/ProductCategories";
 import CustomImage from "@/lib/customImage";
-import image from "@/public/assets/pod.png";
-import image2 from "@/public/assets/prod2.avif";
+import { Box } from "@mui/material";
+import React from "react";
 
-export default function Hero({ mode }) {
+const ProductFeatured = ({ mode, image }) => {
   return (
-    <Box>
+    <Box sx={{mt:5}}>
       <CustomImage
         src={image}
-        alt="carousel img"
+        blurDataURL={`https://placehold.co/600x400/EEE/31343C`}
         style={{
           width: "100%",
           height: "auto",
@@ -30,4 +24,6 @@ export default function Hero({ mode }) {
       />
     </Box>
   );
-}
+};
+
+export default ProductFeatured;
