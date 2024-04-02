@@ -13,9 +13,9 @@ import ToggleColorMode from "./ToggleColorMode";
 import CustomImage from "../../lib/customImage";
 import whiteLogo from "../../public/assets/white-logo.png";
 import darkLogo from "../../public/assets/black-logo.png";
-import { menuItems } from "@/lib/fakeData";
+import { menuItems, nestedMenus } from "@/lib/fakeData";
 import AlertDialog from "@/lib/AlertDialog";
-import { Container, Link, useScrollTrigger } from "@mui/material";
+import { Container, Link, Menu, useScrollTrigger } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { openDialog } from "../redux/slices/alertDialogSlice";
 import CustomWeChatIcon from "@/public/images/WeChat-Icon-Logo.png";
@@ -49,7 +49,21 @@ function AppAppBar({ position = "static", top }) {
     dispatch(openDialog(plateForm));
   };
   const trigger = useScrollTrigger();
-  // console.log("Hello triger", trigger);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [subMenuAnchorEl, setSubMenuAnchorEl] = React.useState(null);
+
+  const handleMainMenuItemMouseEnter = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleSubMenuItemMouseEnter = (event) => {
+    setSubMenuAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setSubMenuAnchorEl(null);
+  };
   return (
     <React.Fragment>
       {isOpen && <AlertDialog />}
@@ -92,11 +106,17 @@ function AppAppBar({ position = "static", top }) {
                 src={colorMode === "dark" ? whiteLogo : darkLogo}
                 alt="logo of east company"
               />
-              <Box sx={{ display: { xs: "none", md: "flex", gap:7 } }}>
+              <Box sx={{ display: { xs: "none", md: "flex", gap: 7 } }}>
                 {menuItems.map((menu) => (
                   <MenuItem
                     key={menu}
                     onClick={() => scrollToSection(menu)}
+                    onMouseEnter={
+                      menu == "products"
+                        ? handleMainMenuItemMouseEnter
+                        : undefined
+                    }
+                    // onMouseLeave={menu === "products" ? handleClose : undefined}
                     sx={{ py: "6px", px: "12px" }}>
                     <Typography
                       variant="subtitle1"
@@ -106,6 +126,24 @@ function AppAppBar({ position = "static", top }) {
                     </Typography>
                   </MenuItem>
                 ))}
+                <Menu
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                  MenuListProps={{ onMouseLeave: handleClose }}>
+                  {nestedMenus.map(({ title, href }) => (
+                    <MenuItem key={title}>
+                      <Link
+                        href={href}
+                        target="_blank"
+                        variant="body1"
+                        sx={{ textTransform: "capitalize" }}
+                        color="text.primary">
+                        {title}
+                      </Link>
+                    </MenuItem>
+                  ))}
+                </Menu>
               </Box>
             </Box>
             <Box

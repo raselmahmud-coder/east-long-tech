@@ -47,7 +47,7 @@ export default function TopAppBar() {
                 color: "grey.50",
               }}>
               <PhoneInTalkIcon sx={{ mr: 2 }} />
-              WhatsApp/WeChat: +86 13692181738
+              Phone/WhatsApp/WeChat: +86 13692181738
             </Link>
           </HoverNAnimation>
         </MenuItem>
@@ -89,24 +89,7 @@ export default function TopAppBar() {
               alt="logo of east company"
             />
           </IconButton>
-          <IconButton
-            color="inherit"
-            target="_blank"
-            href="https://github.com/raselmahmud-coder"
-            aria-label="GitHub"
-            sx={{
-              alignSelf: "center",
-              "&:hover": {
-                bgcolor: "success.main",
-              },
-            }}>
-            <CustomImage
-              blurDataURL={`https://placehold.co/600x400/EEE/31343C`}
-              src={LinkedInIcon}
-              style={{ width: "23px", height: "auto", cursor: "pointer" }}
-              alt="logo of east company"
-            />
-          </IconButton>
+         
         </Box>
       </Toolbar>
     </Container>

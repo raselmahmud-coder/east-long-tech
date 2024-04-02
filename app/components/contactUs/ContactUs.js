@@ -42,7 +42,7 @@ const ContactUs = ({ mode }) => {
 
     setOpen(false);
   };
-  console.log(error, "conact us form");
+  // console.log(error, "conact us form");
   return (
     <>
       {(message || error) && (

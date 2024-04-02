@@ -13,7 +13,6 @@ import FacebookIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CustomImage from "@/lib/customImage";
 
-
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" mt={1}>
@@ -58,12 +57,15 @@ export default function Footer({ mode }) {
             minWidth: { xs: "100%", sm: "60%" },
           }}>
           <Box sx={{ width: { xs: "100%", sm: "60%" } }}>
-            <Box sx={{ ml: "-15px" }}>
+            <Box sx={{mb:4}}>
               <CustomImage
                 style={{ width: "150px", height: "auto", cursor: "pointer" }}
                 src={mode === "dark" ? whiteLogo : darkLogo}
                 alt="logo of east company"
               />
+            <Typography variant="body1" fontWeight={600} gutterBottom>
+            Shenzhen Eastlong Technology Co., Ltd.
+            </Typography>
             </Box>
             <Typography variant="body2" fontWeight={600} gutterBottom>
               Newsletter
@@ -163,15 +165,11 @@ export default function Footer({ mode }) {
           borderColor: "divider",
         }}>
         <div>
-          <Link color="text.secondary" href="#">
-            Privacy Policy
-          </Link>
-          <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>
-            &nbsp;•&nbsp;
+          <Typography display="inline">
+            204, Building A17, Cuigang Industrial Zone 4, Huaide Community,
+            Fuyong Street, Shenzhen, Guangdong, China
           </Typography>
-          <Link color="text.secondary" sx={{ display: "block" }} href="#">
-            Terms of Service
-          </Link>
+
           <Copyright />
         </div>
 
