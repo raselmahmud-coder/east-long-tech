@@ -20,6 +20,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { openDialog } from "../redux/slices/alertDialogSlice";
 import CustomWeChatIcon from "@/public/images/WeChat-Icon-Logo.png";
 import CustomWhatsAppIcon from "@/public/images/WhatsApp-Logo..png";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 function AppAppBar({ position = "static", top }) {
   const [open, setOpen] = React.useState(false);
@@ -50,19 +52,14 @@ function AppAppBar({ position = "static", top }) {
   };
   const trigger = useScrollTrigger();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [subMenuAnchorEl, setSubMenuAnchorEl] = React.useState(null);
 
   const handleMainMenuItemMouseEnter = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleSubMenuItemMouseEnter = (event) => {
-    setSubMenuAnchorEl(event.currentTarget);
-  };
 
   const handleClose = () => {
     setAnchorEl(null);
-    setSubMenuAnchorEl(null);
   };
   return (
     <React.Fragment>
@@ -120,9 +117,10 @@ function AppAppBar({ position = "static", top }) {
                     sx={{ py: "6px", px: "12px" }}>
                     <Typography
                       variant="subtitle1"
-                      sx={{ textTransform: "capitalize" }}
+                      sx={{ textTransform: "capitalize", display:"flex", alignItems:"center" }}
                       color="text.primary">
                       {menu}
+                      {menu == "products" && (Boolean(anchorEl) ? <ExpandLessIcon/> : <ExpandMoreIcon />)}
                     </Typography>
                   </MenuItem>
                 ))}
@@ -167,7 +165,11 @@ function AppAppBar({ position = "static", top }) {
               </Button>
               <Button
                 title="Click Here"
-                sx={{ ml: "5px" }}
+                sx={{
+                  ml: "5px",
+                  border: "1px solid black",
+                  backgroundColor: "transparent",
+                }}
                 color="primary"
                 variant="outlined"
                 size="medium"
@@ -248,7 +250,11 @@ function AppAppBar({ position = "static", top }) {
                     WhatsApp
                   </Button>
                   <Button
-                    sx={{ ml: "5px" }}
+                    sx={{
+                      ml: "5px",
+                      border: "1px solid black",
+                      backgroundColor: "transparent",
+                    }}
                     color="primary"
                     variant="outlined"
                     size="medium"

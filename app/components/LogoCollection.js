@@ -24,12 +24,7 @@ export default function LogoCollection({ mode }) {
   return (
     <>
       <Box id="logoCollection" sx={{ py: 4, mb: { xs: 8, md: 18 } }}>
-        <Typography
-          sx={{ mb: 4 }}
-          component="h2"
-          variant="h2"
-          align="center"
-          color="text.secondary">
+        <Typography sx={{ mb: 4 }} component="h2" variant="h2" align="center">
           Trusted by many Companies
         </Typography>
         <Box

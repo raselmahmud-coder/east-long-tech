@@ -12,18 +12,26 @@ import darkLogo from "@/public/assets/black-logo.png";
 import FacebookIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CustomImage from "@/lib/customImage";
+import { nestedMenus } from "@/lib/fakeData";
+import courierServices from "@/public/assets/Express_collection.png";
+
+import SubdirectoryArrowRightIcon from "@mui/icons-material/SubdirectoryArrowRight";
+import { Grid } from "@mui/material";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="text.secondary" mt={1}>
-      {"© "}
+    <Typography
+      variant="caption"
+      color="text.secondary"
+      sx={{ mt: { xs: 5, md: 2 } }}>
       <Link href="/">Shenzhen Eastlong Technology Co., Ltd. </Link>
-      {new Date().getFullYear()}{" "}
+      {"© "}
+      2023 - {new Date().getFullYear()}{" "}
       <Link
         color="text.secondary"
         target="_blank"
         href="https://github.com/raselmahmud-coder">
-        Developed By RM
+        Build By RM
       </Link>
     </Typography>
   );
@@ -42,30 +50,18 @@ export default function Footer({ mode }) {
         pb: { xs: 4, sm: 5 },
         textAlign: { sm: "center", md: "left" },
       }}>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: { xs: "column", sm: "row" },
-          width: "100%",
-          justifyContent: "space-between",
-        }}>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 4,
-            minWidth: { xs: "100%", sm: "60%" },
-          }}>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={5}>
           <Box sx={{ width: { xs: "100%", sm: "60%" } }}>
-            <Box sx={{mb:4}}>
+            <Box sx={{ mb: 4 }}>
               <CustomImage
                 style={{ width: "150px", height: "auto", cursor: "pointer" }}
                 src={mode === "dark" ? whiteLogo : darkLogo}
                 alt="logo of east company"
               />
-            <Typography variant="body1" fontWeight={600} gutterBottom>
-            Shenzhen Eastlong Technology Co., Ltd.
-            </Typography>
+              <Typography variant="body1" fontWeight={600} gutterBottom>
+                Shenzhen Eastlong Technology Co., Ltd.
+              </Typography>
             </Box>
             <Typography variant="body2" fontWeight={600} gutterBottom>
               Newsletter
@@ -95,65 +91,46 @@ export default function Footer({ mode }) {
               </Button>
             </Stack>
           </Box>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: "none", sm: "flex" },
-            flexDirection: "column",
-            gap: 1,
-          }}>
-          <Typography variant="body2" fontWeight={600}>
-            Product
+        </Grid>
+
+        <Grid item xs={12} md={4}>
+          <Typography variant="h3" sx={{}}>
+            Our Int. Express Partner
           </Typography>
-          <Link color="text.secondary" href="#">
-            Features
-          </Link>
-          <Link color="text.secondary" href="#">
-            Testimonials
-          </Link>
-          <Link color="text.secondary" href="#">
-            Highlights
-          </Link>
-          <Link color="text.secondary" href="#">
-            Products
-          </Link>
-          <Link color="text.secondary" href="#">
-            FAQs
-          </Link>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: "none", sm: "flex" },
-            flexDirection: "column",
-            gap: 1,
-          }}>
-          <Typography variant="body2" fontWeight={600}>
-            Company
-          </Typography>
-          <Link color="text.secondary" href="#">
-            About us
-          </Link>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: "none", sm: "flex" },
-            flexDirection: "column",
-            gap: 1,
-          }}>
-          <Typography variant="body2" fontWeight={600}>
-            Legal
-          </Typography>
-          <Link color="text.secondary" href="#">
-            Terms
-          </Link>
-          <Link color="text.secondary" href="#">
-            Privacy
-          </Link>
-          <Link color="text.secondary" href="#">
-            Contact
-          </Link>
-        </Box>
-      </Box>
+
+          <CustomImage
+            src={courierServices}
+            unoptimized={true}
+            style={{
+              width: "100%",
+              height: "auto",
+              borderRadius: "5px",
+            }}
+            alt="express collection logo"
+          />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={3}
+          sx={{ display: { md: "flex" }, justifyContent: "flex-end" }}>
+          <Box>
+            <Typography variant="body1" fontWeight={700}>
+              Products
+            </Typography>
+            {nestedMenus.map(({ href, title }) => (
+              <Link
+                color="text.secondary"
+                href={href}
+                key={title}
+                sx={{ display: "flex", alignItems: "center" }}>
+                <SubdirectoryArrowRightIcon />
+                {title}
+              </Link>
+            ))}
+          </Box>
+        </Grid>
+      </Grid>
       <Box
         sx={{
           display: "flex",
@@ -163,41 +140,14 @@ export default function Footer({ mode }) {
           width: "100%",
           borderTop: "1px solid",
           borderColor: "divider",
+          flexDirection: { xs: "column", md: "row" },
         }}>
-        <div>
-          <Typography display="inline">
-            204, Building A17, Cuigang Industrial Zone 4, Huaide Community,
-            Fuyong Street, Shenzhen, Guangdong, China
-          </Typography>
+        <Typography sx={{}} variant="body1">
+          204, Building A17, Cuigang Industrial Zone 4, Huaide Community, Fuyong
+          Street, Shenzhen, Guangdong, China
+        </Typography>
 
-          <Copyright />
-        </div>
-
-        <Stack
-          direction="row"
-          justifyContent="left"
-          spacing={1}
-          useFlexGap
-          sx={{
-            color: "text.secondary",
-          }}>
-          <IconButton
-            color="inherit"
-            target="_blank"
-            href="https://github.com/raselmahmud-coder"
-            aria-label="GitHub"
-            sx={{ alignSelf: "center" }}>
-            <FacebookIcon />
-          </IconButton>
-
-          <IconButton
-            color="inherit"
-            href="https://www.linkedin.com/in/rasel-mahmud-coder/"
-            aria-label="LinkedIn"
-            sx={{ alignSelf: "center" }}>
-            <LinkedInIcon />
-          </IconButton>
-        </Stack>
+        <Copyright />
       </Box>
     </Container>
   );

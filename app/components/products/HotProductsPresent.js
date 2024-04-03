@@ -14,16 +14,6 @@ import blackLogo from "../../../public/assets/black-logo.png";
 import { hotProductsCollection } from "../../../lib/fakeData";
 import bgImage from "@/public/assets/bgImages/bgImg.png";
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <Button variant="contained" {...other} />;
-})(({ theme, expand }) => ({
-  marginLeft: "auto",
-  transition: "all 0.5s",
-  "& .MuiSvgIcon-root": {
-    transform: expand ? "rotate(180deg)" : "rotate(0deg)",
-  },
-}));
 
 const HotProductsPresent = ({ mode }) => {
   const [favorites, setFavorites] = React.useState([]);
@@ -69,9 +59,9 @@ const HotProductsPresent = ({ mode }) => {
         variant="h2"
         sx={{
           textAlign: "center",
-          pt:3,
+          pt: 3,
           mb: 8,
-          color: mode == "dark" ? "primary.main" : "grey.50"
+          color: mode == "dark" ? "primary.main" : "grey.50",
         }}>
         Hot Products&nbsp;
         <Typography
@@ -84,48 +74,58 @@ const HotProductsPresent = ({ mode }) => {
           Presentation
         </Typography>
       </Typography>
-      <Grid container spacing={3} sx={{px:1, pb:3}}>
+      <Grid container spacing={3} sx={{ px: 1, pb: 3 }}>
         {hotProductsCollection.map(
           ({ id, title, description, details, image }) => (
             <Grid item xs={12} sm={4} md={3} key={id}>
               <Card
                 sx={{
-                  bgcolor: mode === "dark" ? "grey.800" : "linear-gradient(0deg, #f3f3f3, #fffdfa)",
+                  bgcolor:
+                    mode === "dark"
+                      ? "grey.800"
+                      : "linear-gradient(0deg, #f3f3f3, #fffdfa)",
                   minHeight: { xs: "auto", sm: "515px", md: "515px" },
+                  display: "flex", // Enables flex layout
+                  flexDirection: "column", // Stacks children vertically
+                  height: "100%", // Makes card stretch to full height of the grid item
                 }}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    flexDirection: "column",
-                    py: 3,
-                  }}>
+                <Box flexGrow={1}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      flexDirection: "column",
+                      py: 3,
+                    }}>
+                    <CustomImage
+                      src={mode === "dark" ? whiteLogo : blackLogo}
+                      style={{ width: "120px", height: "auto" }} //these logo need to export small size 70X40
+                    />
+                    <Typography variant="body1">
+                      Shenzhen Eastlong Technology Co., Ltd.
+                    </Typography>
+                  </Box>
                   <CustomImage
-                    src={mode === "dark" ? whiteLogo : blackLogo}
-                    style={{ width: "120px", height: "auto" }} //these logo need to export small size 70X40
+                    src={image}
+                    blurDataURL={`https://placehold.co/600x400/EEE/31343C`}
+                    style={{
+                      width: "70%",
+                      height: "auto",
+                      display: "block",
+                      marginLeft: "auto",
+                      marginRight: "auto",
+                    }}
                   />
-                  <Typography variant="body1">
-                    Shenzhen Eastlong Technology Co., Ltd.
-                  </Typography>
+                  <CardContent>
+                    <Typography
+                      variant="h5"
+                      sx={{ mt: 2, textAlign: "center", fontWeight:530 }}>
+                      {title}
+                    </Typography>
+                  </CardContent>
                 </Box>
-                <CustomImage
-                  src={image}
-                  blurDataURL={`https://placehold.co/600x400/EEE/31343C`}
-                  style={{
-                    width: "70%",
-                    height: "auto",
-                    display: "block",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                  }}
-                />
-                <CardContent>
-                  <Typography variant="h5" sx={{ my: 2, textAlign: "center" }}>
-                    {title}
-                  </Typography>
-                </CardContent>
-                <CardActions disableSpacing sx={{ pt: 1 }}>
+                <CardActions disableSpacing sx={{ justifyContent: 'space-between', alignItems: 'center', p: 2 }}>
                   <IconButton
                     onClick={() => handleFavoriteClick(id.toString())}
                     aria-label="add to favorites"
@@ -138,13 +138,12 @@ const HotProductsPresent = ({ mode }) => {
                       }}
                     />
                   </IconButton>
-                  <ExpandMore
-                    onClick={() => handleExpandClick(id)}
-                    aria-expanded={expanded.isExpanded}
-                    aria-label="show more">
+                  <Button
+                    variant="contained"
+                    title="Click here to show more">
                     <ArrowOutwardIcon />
                     View Details
-                  </ExpandMore>
+                  </Button>
                 </CardActions>
               </Card>
             </Grid>

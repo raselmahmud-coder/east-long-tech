@@ -56,43 +56,39 @@ const CompanyProfile = () => {
           mb: 3,
         }}
       />
-      <Grid container spacing={2.5} sx={{
-        mb:5
-      }}>
+      <Grid
+        container
+        spacing={2.5}
+        sx={{
+          mb: 5,
+        }}>
         <Grid item xs={12} sm={6} md={6}>
-          <Grid container spacing={2.5}>
-            <Grid item xs={12} sm={6} md={6}>
-              <CompanyValues
-                marginBottom={{ xs: 2, sm: 3, md: 4 }}
-                title={"Two Main Production Equipment Solutions"}
-                number={2}
-                mode={colorMode}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={6}>
-              <CompanyValues
-                marginBottom={{ xs: 2, sm: 3, md: 4 }}
-                title={`Focused On Machine Designing and Manufacturing Over 20 Years`}
-                number={20}
-                mode={colorMode}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={6}>
-              <CompanyValues
-                marginBottom={{ xs: 2, sm: 3, md: 4 }}
-                title={`Training More Than 500 Experts and Technician For Customers`}
-                number={500}
-                mode={colorMode}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={6}>
-              <CompanyValues
-                title={`Helping Customers to Build More Than 100 New Factories Around The World`}
-                number={100}
-                mode={colorMode}
-              />
-            </Grid>
-          </Grid>
+          <CompanyValues
+            marginBottom={{ xs: 1, sm: 2, md: 2 }}
+            title={"Two Main Production Equipment Solutions"}
+            number={2}
+            mode={colorMode}
+          />
+
+          <CompanyValues
+            marginBottom={{ xs: 1, sm: 2, md: 2 }}
+            title={`Focused On Machine Designing and Manufacturing Over 20 Years`}
+            number={20}
+            mode={colorMode}
+          />
+
+          <CompanyValues
+            marginBottom={{ xs: 1, sm: 2, md: 2 }}
+            title={`Training More Than 500 Experts and Technician For Customers`}
+            number={500}
+            mode={colorMode}
+          />
+
+          <CompanyValues
+            title={`Helping Customers to Build More Than 100 New Factories Around The World`}
+            number={100}
+            mode={colorMode}
+          />
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
           <Box
@@ -105,8 +101,8 @@ const CompanyProfile = () => {
                 component={"video"}
                 controls
                 sx={{
-                  width: { xs: "100%", md: "660px" },
-                  height: { xs: "auto", md: "auto" },
+                  width: { xs: "100%", md: "100%" },
+                  height: { xs: "auto", md: "51vh" },
                   objectFit: "cover",
                   "&:hover": {
                     transition: "all 0.5s",

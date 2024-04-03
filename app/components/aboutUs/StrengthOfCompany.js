@@ -69,13 +69,13 @@ const StrengthOfCompany = ({ colorMode }) => (
               minHeight: 250,
               background:
                 colorMode === "dark"
-                  ? "linear-gradient(to right, #182023, #3B0202)"
-                  : "linear-gradient(to right, #7b060642, #FBFCFE)",
+                  ? "linear-gradient(to right, #090E10, #5B6B7C)"
+                  : "linear-gradient(to right, #c1c3c4, #ffffff00)",
+              boxShadow: 3,
               mb: index != 3 && 2,
               borderRadius: 2,
               px: 3,
               py: 2,
-              boxShadow:5
             }}>
             <Box sx={{ display: "flex", justifyContent: "center" }}>{icon}</Box>
             <Typography

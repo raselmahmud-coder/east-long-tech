@@ -10,10 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import CustomImage from "../../../lib/customImage";
-import courierServices from "@/public/assets/Express_collection.png";
 import { sendContactForm } from "@/app/redux/slices/sendEmailSlice";
 import GradientCircleProgress from "@/lib/GradientCircleProgress";
+import Visibility from "@mui/icons-material/Visibility";
 
 const ContactUs = ({ mode }) => {
   const [open, setOpen] = React.useState(false);
@@ -87,72 +86,76 @@ const ContactUs = ({ mode }) => {
         spacing={{ xs: 4, md: 15 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
         sx={{ p: 2, mb: 15 }}>
-        <Grid item xs={12} sm={6} md={6}>
-          <Box component="form" onSubmit={handleSubmit}>
+        <Grid item xs={12} sm={12} md={12}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{ maxWidth: {md:"50%"}, mx: "auto" }}>
             <TextField
+              focused
               required
               sx={{
                 my: 2,
               }}
               name="name"
-              label="Name"
+              placeholder="Type Your Name"
               fullWidth
-              variant="standard"
+              label={
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  Full Name
+                  <Visibility />
+                </Box>
+              }
             />
             <TextField
+              focused
               required
               sx={{
                 my: 2,
               }}
               name="email"
-              label="Email"
+              placeholder="Type Your Valid Email"
               fullWidth
-              variant="standard"
+              label={
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  Your Email
+                  <Visibility />
+                </Box>
+              }
             />
             <TextField
+              focused
               sx={{
                 my: 2,
               }}
               name="phone"
-              label="Phone"
               fullWidth
-              variant="standard"
+              label={
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  Phone
+                  <Visibility />
+                </Box>
+              }
             />
             <TextField
+              focused
               required
               sx={{
                 my: 2,
               }}
               name="message"
-              label="Your Message"
-              variant="standard"
+              placeholder="Please write here full message"
+              label={
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  Your Message
+                  <Visibility />
+                </Box>
+              }
               fullWidth
             />
-            <Button disabled={loading} type="submit" variant="contained">
+            <Button sx={{width:"30%"}} disabled={loading} type="submit" variant="contained">
               {loading ? <GradientCircleProgress /> : "Submit"}
             </Button>
-          </Box>
-        </Grid>
-        <Grid item xs={12} sm={6} md={6}>
-          <Typography variant="h3" sx={{ textAlign: "center" }}>
-            Our Int. Express Partner
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              //   my: 4,
-            }}>
-            <CustomImage
-              src={courierServices}
-              unoptimized={true}
-              style={{
-                width: "100%",
-                height: "auto",
-                borderRadius: "5px",
-              }}
-              alt="express collection logo"
-            />
           </Box>
         </Grid>
       </Grid>

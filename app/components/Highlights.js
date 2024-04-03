@@ -81,8 +81,9 @@ export default function Highlights({ mode }) {
                   height: "100%",
                   border: "1px solid",
                   borderColor: "grey.800",
-                  bgcolor: mode === "light" ? "#fafafa" : "grey.400",
-                  boxShadow:8
+                  bgcolor: mode === "light" ? "grey.900" : "grey.700",
+                  color: "grey.50",
+                  boxShadow: 9,
                 }}>
                 <Box
                   sx={{
