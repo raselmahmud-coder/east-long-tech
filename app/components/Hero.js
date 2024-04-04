@@ -1,9 +1,5 @@
 import * as React from "react";
-import { alpha } from "@mui/material";
 import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import ProductCategories from "./products/ProductCategories";
 import CustomImage from "@/lib/customImage";
 import image from "@/public/assets/pod.png";
 import image2 from "@/public/assets/prod2.avif";

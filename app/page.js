@@ -17,13 +17,10 @@ import CompanyProfile from "./components/aboutUs/CompanyProfile";
 import ContactUs from "./components/contactUs/ContactUs";
 import {
   AppBar,
-  Box,
   Container,
   CssBaseline,
   Divider,
   Slide,
-  Toolbar,
-  Typography,
   useMediaQuery,
   useScrollTrigger,
 } from "@mui/material";
