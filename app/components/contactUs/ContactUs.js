@@ -13,6 +13,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { sendContactForm } from "@/app/redux/slices/sendEmailSlice";
 import GradientCircleProgress from "@/lib/GradientCircleProgress";
 import Visibility from "@mui/icons-material/Visibility";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import MailIcon from "@mui/icons-material/Mail";
+import PhoneIcon from "@mui/icons-material/Phone";
+import MessageIcon from "@mui/icons-material/Message";
+import SendIcon from "@mui/icons-material/Send";
 
 const ContactUs = ({ mode }) => {
   const [open, setOpen] = React.useState(false);
@@ -90,20 +95,32 @@ const ContactUs = ({ mode }) => {
           <Box
             component="form"
             onSubmit={handleSubmit}
-            sx={{ maxWidth: {md:"50%"}, mx: "auto" }}>
+            sx={{ maxWidth: { md: "50%" }, mx: "auto" }}>
             <TextField
               focused
               required
               sx={{
                 my: 2,
+                "& .MuiOutlinedInput-root": {
+                  // Increase the specificity for the pseudo-class
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#6b1515", // Your desired color
+                    borderWidth: "2px",
+                  },
+                },
               }}
               name="name"
               placeholder="Type Your Name"
               fullWidth
               label={
-                <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    color: "grey.900",
+                  }}>
                   Full Name
-                  <Visibility />
+                  <PermIdentityIcon />
                 </Box>
               }
             />
@@ -112,28 +129,53 @@ const ContactUs = ({ mode }) => {
               required
               sx={{
                 my: 2,
+                "& .MuiOutlinedInput-root": {
+                  // Increase the specificity for the pseudo-class
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#6b1515", // Your desired color
+                    borderWidth: "2px",
+                  },
+                },
               }}
               name="email"
               placeholder="Type Your Valid Email"
               fullWidth
               label={
-                <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    color: "grey.900",
+                  }}>
                   Your Email
-                  <Visibility />
+                  <MailIcon />
                 </Box>
               }
             />
             <TextField
+              placeholder="Type Your Phone"
               focused
               sx={{
                 my: 2,
+                "& .MuiOutlinedInput-root": {
+                  // Increase the specificity for the pseudo-class
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#6b1515", // Your desired color
+                    borderWidth: "2px",
+                  },
+                },
               }}
               name="phone"
               fullWidth
               label={
-                <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    color: "grey.900",
+                  }}>
                   Phone
-                  <Visibility />
+                  <PhoneIcon />
                 </Box>
               }
             />
@@ -142,19 +184,42 @@ const ContactUs = ({ mode }) => {
               required
               sx={{
                 my: 2,
+                "& .MuiOutlinedInput-root": {
+                  // Increase the specificity for the pseudo-class
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#6b1515", // Your desired color
+                    borderWidth: "2px",
+                  },
+                },
               }}
               name="message"
               placeholder="Please write here full message"
               label={
-                <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    color: "grey.900",
+                  }}>
                   Your Message
-                  <Visibility />
+                  <MessageIcon />
                 </Box>
               }
               fullWidth
             />
-            <Button sx={{width:"30%"}} disabled={loading} type="submit" variant="contained">
-              {loading ? <GradientCircleProgress /> : "Submit"}
+            <Button
+              sx={{ width: "30%", fontWeight:"bold" }}
+              disabled={loading}
+              type="submit"
+              variant="contained">
+              {loading ? (
+                <GradientCircleProgress />
+              ) : (
+                <>
+                  Submit
+                  <SendIcon sx={{ml:2}} />
+                </>
+              )}
             </Button>
           </Box>
         </Grid>
