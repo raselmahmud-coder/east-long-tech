@@ -74,7 +74,7 @@ export default function TopAppBar() {
           <IconButton
             color="inherit"
             target="_blank"
-            href="https://github.com/raselmahmud-coder"
+            href="https://www.facebook.com/CenstarTechnology?mibextid=LQQJ4d"
             aria-label="GitHub"
             sx={{
               alignSelf: "center",
@@ -86,10 +86,27 @@ export default function TopAppBar() {
               blurDataURL={`https://placehold.co/600x400/EEE/31343C`}
               src={FacebookIcon}
               style={{ width: "22px", height: "auto", cursor: "pointer" }}
-              alt="logo of east company"
+              alt="facebook page"
             />
           </IconButton>
-         
+          <IconButton
+            color="inherit"
+            target="_blank"
+            href="https://www.linkedin.com/company/shenzhen-censtar-technology-co-ltd/"
+            aria-label="GitHub"
+            sx={{
+              alignSelf: "center",
+              "&:hover": {
+                bgcolor: "success.main",
+              },
+            }}>
+            <CustomImage
+              blurDataURL={`https://placehold.co/600x400/EEE/31343C`}
+              src={LinkedInIcon}
+              style={{ width: "22px", height: "auto", cursor: "pointer" }}
+              alt="facebook page"
+            />
+          </IconButton>
         </Box>
       </Toolbar>
     </Container>
