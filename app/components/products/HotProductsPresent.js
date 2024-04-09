@@ -14,7 +14,6 @@ import blackLogo from "../../../public/assets/black-logo.png";
 import { hotProductsCollection } from "../../../lib/fakeData";
 import bgImage from "@/public/assets/bgImages/bgImg.png";
 
-
 const HotProductsPresent = ({ mode }) => {
   const [favorites, setFavorites] = React.useState([]);
 
@@ -120,12 +119,18 @@ const HotProductsPresent = ({ mode }) => {
                   <CardContent>
                     <Typography
                       variant="h5"
-                      sx={{ mt: 2, textAlign: "center", fontWeight:530 }}>
+                      sx={{ mt: 2, textAlign: "center", fontWeight: 530 }}>
                       {title}
                     </Typography>
                   </CardContent>
                 </Box>
-                <CardActions disableSpacing sx={{ justifyContent: 'space-between', alignItems: 'center', p: 2 }}>
+                <CardActions
+                  disableSpacing
+                  sx={{
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    p: 2,
+                  }}>
                   <IconButton
                     onClick={() => handleFavoriteClick(id.toString())}
                     aria-label="add to favorites"
@@ -139,9 +144,19 @@ const HotProductsPresent = ({ mode }) => {
                     />
                   </IconButton>
                   <Button
+                    sx={{
+                      
+                      backgroundColor: "grey.900",
+                      color: "#FFF0F0",
+                      background: "#212930",
+                      backgroundImage:
+                        "linear-gradient(to bottom, #2c2d2d, #212930)",
+                    }}
                     variant="contained"
                     title="Click here to show more">
-                    <ArrowOutwardIcon />
+                    <ArrowOutwardIcon sx={{
+                      fontSize:18
+                    }}/>
                     View Details
                   </Button>
                 </CardActions>

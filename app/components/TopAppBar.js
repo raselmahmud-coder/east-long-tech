@@ -74,7 +74,7 @@ export default function TopAppBar() {
           <IconButton
             color="inherit"
             target="_blank"
-            href="https://www.facebook.com/CenstarTechnology?mibextid=LQQJ4d"
+            href="https://www.facebook.com/"
             aria-label="GitHub"
             sx={{
               alignSelf: "center",
@@ -92,7 +92,7 @@ export default function TopAppBar() {
           <IconButton
             color="inherit"
             target="_blank"
-            href="https://www.linkedin.com/company/shenzhen-censtar-technology-co-ltd/"
+            href="https://www.linkedin.com/"
             aria-label="GitHub"
             sx={{
               alignSelf: "center",
