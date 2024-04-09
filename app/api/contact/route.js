@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from "next/server";
+/* import { NextResponse, NextRequest } from "next/server";
 const nodemailer = require("nodemailer");
 
 export async function POST(request) {
@@ -52,3 +52,4 @@ export async function POST(request) {
     NextResponse.status(500).json({ message: "COULD NOT SEND MESSAGE" });
   }
 }
+ */
